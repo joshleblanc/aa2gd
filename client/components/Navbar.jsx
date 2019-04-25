@@ -23,11 +23,7 @@ export default () => {
     <AppBar position={"static"}>
     <Toolbar>
       <LinkButton href='/'>Home</LinkButton>
-      {
-        data.token 
-          ? <Button onClick={logout}>Logout</Button>
-          : <LinkButton href='/login'>Login</LinkButton>
-      }
+      <Button component='a' href={process.env.DISCORD_OAUTH_URL}>Login with Discord</Button>
     </Toolbar>
   </AppBar>
   )
