@@ -22,7 +22,7 @@
       }
     ],
     "env": {
-        "MONGO_URL": "@apollo-test-mongo-url",
-        "JWT_SECRET": "@jwt-secret"
+        "MONGO_URL": "@aa2gd-mongo-url",
+        "JWT_SECRET": "@aa2gd-jwt-secret"
     }
   }
