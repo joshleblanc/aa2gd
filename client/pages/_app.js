@@ -61,6 +61,8 @@ export default class extends App {
                 <ApolloProvider client={apollo}>
                   <CssBaseline />
                   <Navbar />
+                  <nav>
+                  </nav>  
                   <Component {...pageProps} />
                 </ApolloProvider>
               </SnackbarProvider>
