@@ -40,7 +40,7 @@ const resolvers = {
       }
     },
     currentUser: async (a, { token:passedToken }, { token }) => {
-      console.log("token:", token);
+      console.log("token:", token, passedToken);
       if(token && passedToken) {
         const decoded = jwt.verify(passedToken, process.env.JWT_SECRET);
         console.log(decoded);

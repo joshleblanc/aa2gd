@@ -10,6 +10,10 @@ import { ApolloProvider, getMarkupFromTree } from 'react-apollo-hooks';
 import { renderToString } from 'react-dom/server';
 import theme from '../lib/theme';
 import { ThemeProvider } from "@material-ui/styles";
+import Drawer from '../components/drawer/Drawer';
+import DrawerToolbar from '../components/drawer/DrawerToolbar';
+import Main from '../components/Main';
+
 
 export default class extends App {
 
@@ -26,7 +30,7 @@ export default class extends App {
     }
   }
 
-  static async getInitialProps({ Component, ...pageProps }) {
+  static async getInitialProps({ Component, classes, ...pageProps }) {
     let host;
     if(process.env.NODE_ENV === 'development') {
       host = "http://localhost:4000/graphql";
@@ -45,6 +49,7 @@ export default class extends App {
     apollo.cache.writeData({
       data: {
         token: token || null,
+        drawerOpen: false
       }
     })
     
@@ -61,9 +66,11 @@ export default class extends App {
                 <ApolloProvider client={apollo}>
                   <CssBaseline />
                   <Navbar />
-                  <nav>
-                  </nav>  
-                  <Component {...pageProps} />
+                  <Drawer /> 
+                  <Main>
+                    <DrawerToolbar />
+                    <Component {...pageProps} />
+                  </Main>
                 </ApolloProvider>
               </SnackbarProvider>
             </ThemeProvider>
@@ -96,7 +103,11 @@ export default class extends App {
             <ApolloProvider client={this.apolloClient}>
               <CssBaseline />
               <Navbar />
-              <Component {...pageProps} />
+              <Drawer /> 
+              <Main>
+                <DrawerToolbar />
+                <Component {...pageProps} />
+              </Main>
             </ApolloProvider>
           </SnackbarProvider>
         </ThemeProvider>
