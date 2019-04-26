@@ -27,7 +27,13 @@
         "ENGINE_API_KEY": "@aa2gd-engine-api-key",
         "DISCORD_CLIENT_ID": "@aa2gd-discord-client-id",
         "DISCORD_CLIENT_SECRET": "@aa2gd-discord-client-secret",
-        "DISCORD_REDIRECT_URL": "@aa2gd-discord-redirect-url",
-        "DISCORD_OAUTH_URL": "@aa2gd-discord-oauth-url"
+        "DISCORD_REDIRECT_URL": "@aa2gd-discord-redirect-url"
+    },
+    "build": {
+      "env": {
+        "DISCORD_CLIENT_ID": "@aa2gd-discord-client-id",
+        "DISCORD_REDIRECT_URL": "@aa2gd-discord-redirect-url"
+
+      }
     }
   }
