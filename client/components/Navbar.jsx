@@ -3,6 +3,7 @@ import {AppBar, Toolbar, Button} from '@material-ui/core';
 import LinkButton from './LinkButton';
 import gql from 'graphql-tag';
 import { useQuery, useMutation } from "react-apollo-hooks";
+import CurrentUserName from './CurrentUserName';
 
 const GET_TOKEN = gql`
   {
@@ -24,6 +25,7 @@ export default () => {
     <Toolbar>
       <LinkButton href='/'>Home</LinkButton>
       <Button component='a' href={process.env.DISCORD_OAUTH_URL}>Login with Discord</Button>
+      <CurrentUserName />
     </Toolbar>
   </AppBar>
   )

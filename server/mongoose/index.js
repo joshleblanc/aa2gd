@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-let connectionString = 'mongodb://localhost:27017/apollo-next-now-test';
+let connectionString = 'mongodb://localhost:27017/aa2gd';
 if(process.env.MONGO_URL) {
   connectionString = process.env.MONGO_URL;
 }

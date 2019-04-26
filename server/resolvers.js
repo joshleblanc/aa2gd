@@ -1,6 +1,16 @@
 const User = require('./models/user');
 const jwt = require('jsonwebtoken');
 const fetch = require('node-fetch');
+const FormData = require('form-data');
+
+async function discord_req(path, token) {
+  const api_url = "https://discordapp.com/api"
+  return fetch(`${api_url}/${path}`, {
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  });
+}
 
 const resolvers = {
   Query: {
@@ -8,25 +18,32 @@ const resolvers = {
       return "Hello, world!";
     },
     getDiscordToken: async (_, { code }) => {
-      const data = new URLSearchParams();
+      const data = new FormData();
       data.append('client_id', process.env.DISCORD_CLIENT_ID);
       data.append('client_secret', process.env.DISCORD_CLIENT_SECRET);
       data.append('redirect_uri', process.env.DISCORD_REDIRECT_URL);
-      data.append('code', code);
       data.append('grant_type', 'authorization_code');
       data.append('scope', 'email identify guilds connections');
-      headers = {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-      const tmp = "client_id=570931295253823488&client_secret=C6RXU2uDnb1Um1yxRxlnTXBdYsAiTCE8&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauthenticate&code=o83il4kSOLNFuBcNlZTGNf3aPvdZEj&grant_type=authorization_code&scope=email identify guilds connections"
-      console.log(data.toString());
+      data.append('code', code);
+
       r = await fetch(`https://discordapp.com/api/oauth2/token`, {
         method: "POST",
-        body: tmp,
-        headers
+        body: data,
       });
+      
       json = await r.json();
-      console.log(json);
+      if(json.error) {
+        throw new Error("Invalid code");
+      } else {
+        return jwt.sign(json, process.env.JWT_SECRET, {expiresIn: json.expires_in});
+      }
+    },
+    currentUser: async (a, b, { token }) => {
+      console.log("token:", token);
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      console.log(decoded);
+      const r = await discord_req("users/@me", decoded.access_token);
+      const json = await r.json();
       return json;
     }
   },
