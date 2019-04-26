@@ -24,7 +24,7 @@ export default () => {
     <AppBar position={"static"}>
     <Toolbar>
       <LinkButton href='/'>Home</LinkButton>
-      <Button component='a' href={process.env.DISCORD_OAUTH_URL}>Login with Discord</Button>
+      <Button component='a' href={`https://discordapp.com/api/oauth2/authorize?client_id=${process.env.DISCORD_CLIENT_ID}&redirect_uri=${process.env.DISCORD_REDIRECT_URL}&response_type=code&scope=email identify guilds connections`}>Login with Discord</Button>
       <CurrentUserName />
     </Toolbar>
   </AppBar>
