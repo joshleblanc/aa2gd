@@ -14,6 +14,9 @@ export default ({router}) => {
             code: router.query.code
         }
     });
+    console.log(error);
+    if(loading) return "Loading...";
+    if(error) return "Error";
     console.log(data);
     return(null);
 }

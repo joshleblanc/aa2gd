@@ -18,7 +18,7 @@ const resolvers = {
       headers = {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
-      const tmp = "client_id=570931295253823488&client_secret=C6RXU2uDnb1Um1yxRxlnTXBdYsAiTCE8&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauthenticate&code=o83il4kSOLNFuBcNlZTGNf3aPvdZEj&grant_type=authorization_code&scope=email identify+guilds+connections"
+      const tmp = "client_id=570931295253823488&client_secret=C6RXU2uDnb1Um1yxRxlnTXBdYsAiTCE8&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauthenticate&code=o83il4kSOLNFuBcNlZTGNf3aPvdZEj&grant_type=authorization_code&scope=email identify guilds connections"
       console.log(data.toString());
       r = await fetch(`https://discordapp.com/api/oauth2/token`, {
         method: "POST",
