@@ -1,16 +1,12 @@
 import { makeStyles } from '@material-ui/styles';
 import DrawerToolbar from './DrawerToolbar';
 import { Divider, List, ListItem, ListItemText } from '@material-ui/core';
-
-const useStyles = makeStyles(theme => ({
-    toolbar: theme.mixins.toolbar
-}));
+import CurrentUserDisplay from '../CurrentUserDisplay';
 
 export default () => {
-    const classes = useStyles();
     return(
         <div>
-            <DrawerToolbar />
+            <CurrentUserDisplay />
             <Divider />
             <List>
                 <ListItem>

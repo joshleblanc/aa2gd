@@ -48,7 +48,7 @@ const resolvers = {
         const json = await r.json();
         return {
           ...json,
-          avatar: `http://cdn.discordapp.com/${json.id}/${json.avatar}.png`
+          avatar: `http://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.png`
         };
       } else {
         return null;

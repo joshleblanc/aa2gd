@@ -1,12 +1,11 @@
 import React from "react";
 import {AppBar, Toolbar, Button, IconButton, Typography} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import LinkButton from './LinkButton';
 import gql from 'graphql-tag';
-import { useQuery, useMutation } from "react-apollo-hooks";
-import CurrentUserName from './CurrentUserName';
+import { useMutation } from "react-apollo-hooks";
 import useToken from '../hooks/useToken';
 import { makeStyles } from '@material-ui/styles';
+import useDrawer from '../hooks/useDrawer';
 
 
 const useStyles = makeStyles(theme => ({
@@ -24,16 +23,9 @@ const LOGOUT = gql`
   }
 `;
 
-const TOGGLE_DRAWER = gql`
-  mutation ToggleDrawer {
-    toggleDrawer @client
-  }
-`;
 
 export default () => {
-  const token = useToken();
-  const logout = useMutation(LOGOUT);
-  const toggleDrawer = useMutation(TOGGLE_DRAWER);
+  const { toggleDrawer } = useDrawer();
   const classes = useStyles();
   return(
     <AppBar position="fixed" className={classes.appBar}>

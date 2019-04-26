@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie';
-import { GET_DRAWER_STATE } from '../components/drawer/MobileDrawer';
+import { GET_DRAWER_STATE } from '../hooks/useDrawer';
 
 export default {
     Mutation: {
