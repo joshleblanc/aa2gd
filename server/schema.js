@@ -3,7 +3,7 @@ const typeDefs = gql`
   type Query {
     hello: String,
     getDiscordToken(code: String!): String
-    currentUser: User!
+    currentUser(token: String): User
   },
   type Mutation {
     login(email: String!, password: String!): String!

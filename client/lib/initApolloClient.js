@@ -38,7 +38,6 @@ function create(initialState, host) {
                 }
             });
             Cookies.remove('token');
-            Router.push('/');
         }
     })
 

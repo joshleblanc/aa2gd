@@ -32,22 +32,28 @@ const resolvers = {
       });
       
       json = await r.json();
+      console.log(json);
       if(json.error) {
         throw new Error("Invalid code");
       } else {
         return jwt.sign(json, process.env.JWT_SECRET, {expiresIn: json.expires_in});
       }
     },
-    currentUser: async (a, b, { token }) => {
+    currentUser: async (a, { token:passedToken }, { token }) => {
       console.log("token:", token);
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      console.log(decoded);
-      const r = await discord_req("users/@me", decoded.access_token);
-      const json = await r.json();
-      return {
-        ...json,
-        avatar: `http://cdn.discordapp.com/${json.id}/${json.avatar}.png`
-      };
+      if(token && passedToken) {
+        const decoded = jwt.verify(passedToken, process.env.JWT_SECRET);
+        console.log(decoded);
+        const r = await discord_req("users/@me", decoded.access_token);
+        const json = await r.json();
+        return {
+          ...json,
+          avatar: `http://cdn.discordapp.com/${json.id}/${json.avatar}.png`
+        };
+      } else {
+        return null;
+      }
+      
     }
   },
   Mutation: {
