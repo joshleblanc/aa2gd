@@ -44,7 +44,10 @@ const resolvers = {
       console.log(decoded);
       const r = await discord_req("users/@me", decoded.access_token);
       const json = await r.json();
-      return json;
+      return {
+        ...json,
+        avatar: `http://cdn.discordapp.com/${json.id}/${json.avatar}.png`
+      };
     }
   },
   Mutation: {
