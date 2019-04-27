@@ -13,7 +13,8 @@ import { ThemeProvider } from "@material-ui/styles";
 import Drawer from '../components/drawer/Drawer';
 import DrawerToolbar from '../components/drawer/DrawerToolbar';
 import Main from '../components/Main';
-
+import { config } from '@fortawesome/fontawesome-svg-core'
+config.autoAddCss = false
 
 export default class extends App {
 

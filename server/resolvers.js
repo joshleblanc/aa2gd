@@ -26,13 +26,30 @@ const resolvers = {
       data.append('scope', 'email identify guilds connections');
       data.append('code', code);
 
-      r = await fetch(`https://discordapp.com/api/oauth2/token`, {
+      const r = await fetch(`https://discordapp.com/api/oauth2/token`, {
         method: "POST",
         body: data,
       });
       
       json = await r.json();
-      console.log(json);
+      const userRequest = await discord_req("users/@me", json.access_token);
+      const user = await userRequest.json();
+      const connectionsRequest = await discord_req("users/@me/connections", json.access_token);
+      const connections = await connectionsRequest.json();
+      const serversRequest = await discord_req("users/@me/guilds", json.access_token);
+      const servers = await serversRequest.json();
+      console.log(servers);
+      await User.findOneAndUpdate({ id: user.id }, {
+        ...user,
+        avatarUrl: `http://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`,
+        connections,
+        servers: servers.map(s => ({
+          ...s,
+          iconUrl: `https://cdn.discordapp.com/icons/${s.id}/${s.icon}.png`
+        }))
+      }, { upsert: true });
+
+      console.log(connections);  
       if(json.error) {
         throw new Error("Invalid code");
       } else {
@@ -46,10 +63,8 @@ const resolvers = {
         console.log(decoded);
         const r = await discord_req("users/@me", decoded.access_token);
         const json = await r.json();
-        return {
-          ...json,
-          avatar: `http://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.png`
-        };
+
+        return User.findOne({ id: json.id });
       } else {
         return null;
       }

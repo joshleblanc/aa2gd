@@ -39,7 +39,7 @@ export default () => {
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" color="inherit" noWrap>
-          Responsive drawer
+          Cereal
         </Typography>
       </Toolbar>
     </AppBar>

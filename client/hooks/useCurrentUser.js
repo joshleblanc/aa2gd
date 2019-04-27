@@ -7,8 +7,20 @@ const GET_CURRENT_USER = gql`
     currentUser(token: $token) {
       username
       avatar
+      avatarUrl
       id
       email
+      connections {
+        id
+        type
+        name
+      }
+      servers {
+        id
+        name
+        icon
+        iconUrl
+      }
     }
   }
 `;

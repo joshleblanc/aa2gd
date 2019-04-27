@@ -11,15 +11,26 @@ const typeDefs = gql`
   }
   type User {
     username: String!
-    verified: Boolean!
-    locale: String!
-    premium_type: Int!
-    mfa_enabled: Boolean!
     id: String!
-    flags: Int!
-    avatar: String!
-    discriminator: String!
+    avatar: String
+    avatarUrl: String
     email: String!
+    connections: [Connection]
+    servers: [Server]
+  }
+  type Connection {
+    id: String!
+    name: String!
+    type: String!
+    revoked: Boolean!
+    visibility: Int!
+  }
+  type Server {
+    id: String!
+    name: String!
+    icon: String
+    iconUrl: String
+    owner: Boolean!
   }
 `;
 

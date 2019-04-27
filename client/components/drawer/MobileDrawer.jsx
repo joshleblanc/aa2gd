@@ -22,7 +22,7 @@ export default () => {
             classes={{
                 paper: classes.drawerPaper
             }}
-            modalProps={{
+            ModalProps={{
                 keepMounted: true
             }}
             open={drawerOpen}

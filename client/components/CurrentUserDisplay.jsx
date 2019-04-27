@@ -12,11 +12,18 @@ export default () => {
   const { data, error, loading } = useCurrentUser();
   if (loading) return "Loading...";
   if (error) return "Something went wrong";
+  if(!data.currentUser) {
+    return(
+      <ListItem button component='a' href={`https://discordapp.com/api/oauth2/authorize?client_id=${process.env.DISCORD_CLIENT_ID}&redirect_uri=${process.env.DISCORD_REDIRECT_URL}&response_type=code&scope=email identify guilds connections`}>
+        <ListItemText primary="Login" />
+      </ListItem>
+    )
+  }
   return(
     <Link href="/profile">
       <ListItem button>
         <ListItemAvatar>
-          <Avatar src={data.currentUser.avatar} alt={"profile picture"} />
+          <Avatar src={data.currentUser.avatarUrl} alt={"profile picture"} />
         </ListItemAvatar>
         <ListItemText primary={data.currentUser.username} secondary={data.currentUser.email} />
       </ListItem>
