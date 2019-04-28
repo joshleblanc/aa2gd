@@ -3,7 +3,7 @@ import FixedHeightList from './FixedHeightList';
 
 export default ({ servers }) => {
     return (
-        <FixedHeightList hieght={400} title="Servers">
+        <FixedHeightList height={400} title="Servers">
             { 
                 servers.map(s => {
                     return (
