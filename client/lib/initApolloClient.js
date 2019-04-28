@@ -17,7 +17,9 @@ const GET_TOKEN = gql`
 
 let client = null;
 function create(initialState, host) {
-    const cache = new InMemoryCache().restore(initialState || {});
+    const cache = new InMemoryCache({
+        dataIdFromObject: object => object._id || null
+    }).restore(initialState || {});
     const authLink = setContext((_, {headers}) => {
         const { token } = cache.readQuery({ query: GET_TOKEN });
         console.log("auth token:", token);
