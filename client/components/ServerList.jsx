@@ -1,15 +1,7 @@
 import { List, ListItemText, ListItem, ListItemAvatar, Typography, makeStyles, Avatar } from '@material-ui/core';
 import FixedHeightList from './FixedHeightList';
 
-const useStyles = makeStyles({
-    serverList: {
-        height: 400,
-        overflow: 'scroll'
-    }
-});
-
 export default ({ servers }) => {
-    const classes = useStyles();
     return (
         <FixedHeightList hieght={400} title="Servers">
             { 
