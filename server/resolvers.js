@@ -36,6 +36,7 @@ const resolvers = {
       const user = await userRequest.json();
       const connectionsRequest = await discord_req("users/@me/connections", json.access_token);
       const connections = await connectionsRequest.json();
+      console.log(connections);
       const serversRequest = await discord_req("users/@me/guilds", json.access_token);
       const servers = await serversRequest.json();
       console.log(servers);
