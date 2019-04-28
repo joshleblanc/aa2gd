@@ -42,7 +42,7 @@ const resolvers = {
       await User.findOneAndUpdate({ id: user.id }, {
         ...user,
         avatarUrl: `http://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`,
-        connections,
+        connections: connections.filter(c => c.visibility === 1),
         servers: servers.map(s => ({
           ...s,
           iconUrl: `https://cdn.discordapp.com/icons/${s.id}/${s.icon}.png`
@@ -63,7 +63,6 @@ const resolvers = {
         console.log(decoded);
         const r = await discord_req("users/@me", decoded.access_token);
         const json = await r.json();
-
         return User.findOne({ id: json.id });
       } else {
         return null;
