@@ -26,7 +26,8 @@ function create(initialState, host) {
         return {
             headers: {
                 ...headers,
-                authorization: token ? `Bearer ${token}` : ''
+                authorization: token ? `Bearer ${token}` : '',
+                source: host
             }
         }
     })
@@ -44,7 +45,7 @@ function create(initialState, host) {
     })
 
     const link = createHttpLink({
-        uri: host,
+        uri: host + "/graphql",
         fetch: fetch,
         credentials: 'same-origin'
     })

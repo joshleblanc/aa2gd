@@ -17,15 +17,15 @@ const resolvers = {
     hello: (root, args, context) => {
       return "Hello, world!";
     },
-    getDiscordToken: async (_, { code }) => {
+    getDiscordToken: async (_, { code }, {origin}) => {
       const data = new FormData();
       data.append('client_id', process.env.DISCORD_CLIENT_ID);
       data.append('client_secret', process.env.DISCORD_CLIENT_SECRET);
-      data.append('redirect_uri', process.env.DISCORD_REDIRECT_URL);
+      data.append('redirect_uri', `${origin}/authenticate`);
       data.append('grant_type', 'authorization_code');
       data.append('scope', 'email identify guilds connections');
       data.append('code', code);
-
+      console.log(data);
       const r = await fetch(`https://discordapp.com/api/oauth2/token`, {
         method: "POST",
         body: data,
@@ -39,7 +39,6 @@ const resolvers = {
       console.log(connections);
       const serversRequest = await discord_req("users/@me/guilds", json.access_token);
       const servers = await serversRequest.json();
-      console.log(servers);
       await User.findOneAndUpdate({ id: user.id }, {
         ...user,
         avatarUrl: `http://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`,

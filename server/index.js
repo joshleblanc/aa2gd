@@ -6,11 +6,20 @@ require('./mongoose');
 
 const context = async ({ req }) => {
   let token = '';
+  let host;
+  console.log(process.env.NODE_ENV);
+  if(process.env.NODE_ENV === 'development') {
+    host = "http://localhost:3000"
+  } else {
+    host = req.headers.origin
+  }
+  console.log(req.headers)
   if(req.headers.authorization) {
     token = req.headers.authorization.split(' ')[1];
   }
   return {
-    token
+    token,
+    origin: host
   }
   
 }

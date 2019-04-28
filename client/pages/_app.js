@@ -20,7 +20,7 @@ export default class extends App {
 
   constructor(props) {
     super(props);
-    this.apolloClient = initApollo(props.apolloState, props.host + "/graphql");
+    this.apolloClient = initApollo(props.apolloState, props.host);
   }
 
   componentDidMount() {
@@ -45,11 +45,11 @@ export default class extends App {
         apolloHost = host;
       }
     }
-    // console.log(global);
+    // console.log(global);  
     // console.log(host)
     const { token } = nextCookie(pageProps.ctx);
 
-    const apollo = initApollo(null, apolloHost + "/graphql");
+    const apollo = initApollo(null, apolloHost);
     apollo.cache.writeData({
       data: {
         token: token || null,
