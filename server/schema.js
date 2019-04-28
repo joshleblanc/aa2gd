@@ -10,6 +10,7 @@ const typeDefs = gql`
     register(email: String!, password: String!, confirmPassword: String!): Boolean!
   }
   type User {
+    _id: ID!
     username: String!
     id: String!
     avatar: String
@@ -19,6 +20,7 @@ const typeDefs = gql`
     servers: [Server]
   }
   type Connection {
+    _id: ID!
     id: String!
     name: String!
     type: String!
@@ -26,6 +28,7 @@ const typeDefs = gql`
     visibility: Int!
   }
   type Server {
+    _id: ID!
     id: String!
     name: String!
     icon: String
