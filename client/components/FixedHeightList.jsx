@@ -2,7 +2,7 @@ import { List, Typography, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles({
     serverList: {
-        overflow: 'scroll'
+        overflowY: 'auto'
     }
 });
 
