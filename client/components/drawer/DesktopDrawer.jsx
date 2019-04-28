@@ -1,13 +1,13 @@
 import DrawerItems from './DrawerItems';
 import StyledDrawer from './StyledDrawer';
 
-export default () => {
+export default ({host}) => {
     return(
         <StyledDrawer
             variant="permanent"
             open
         >
-            <DrawerItems />
+            <DrawerItems host={host} />
         </StyledDrawer>
     )
 }

@@ -1,7 +1,7 @@
-import { Drawer, Hidden } from "@material-ui/core";
 import MobileDrawer from './MobileDrawer';
 import DesktopDrawer from './DesktopDrawer';
 import { makeStyles } from '@material-ui/styles';
+import { Hidden } from '@material-ui/core';
 
 const drawerWidth = 240;
 
@@ -19,10 +19,10 @@ export default () => {
   return(
     <nav className={classes.drawer}>
       <Hidden smUp implementation="css">
-        <MobileDrawer />
+        <MobileDrawer/>
       </Hidden>
       <Hidden xsDown implmentation="css">
-        <DesktopDrawer />
+        <DesktopDrawer/>
       </Hidden>
     </nav>
   )

@@ -2,19 +2,16 @@ import { makeStyles } from '@material-ui/styles';
 import { Avatar, Typography, ListItem, ListItemText, ListItemAvatar, Icon } from "@material-ui/core";
 import Link from 'next/link';
 import useCurrentUser from '../hooks/useCurrentUser';
-
-const useStyles = makeStyles(theme => ({
-
-}));
+import useHost from "../hooks/useHost";
 
 export default () => {
-  const classes = useStyles();
   const { data, error, loading } = useCurrentUser();
+  const host = useHost();
   if (loading) return "Loading...";
   if (error) return "Something went wrong";
   if(!data.currentUser) {
     return(
-      <ListItem button component='a' href={`https://discordapp.com/api/oauth2/authorize?client_id=${process.env.DISCORD_CLIENT_ID}&redirect_uri=${process.env.DISCORD_REDIRECT_URL}&response_type=code&scope=email identify guilds connections`}>
+      <ListItem button component='a' href={`https://discordapp.com/api/oauth2/authorize?client_id=${process.env.DISCORD_CLIENT_ID}&redirect_uri=${host +  "/authenticate"}&response_type=code&scope=email identify guilds connections`}>
         <ListItemText primary="Login" />
       </ListItem>
     )

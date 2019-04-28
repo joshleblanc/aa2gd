@@ -29,6 +29,7 @@ const LOGOUT = gql`
     logout @client
   }
 `;
+
 export default () => {
   const classes = useStyles();
   const logout = useMutation(LOGOUT);
@@ -38,7 +39,6 @@ export default () => {
   if(!data.currentUser) {
     return "You're not logged in!"
   }
-  console.log(data.currentUser);
   return(
     <Card>
       <CardMedia 
