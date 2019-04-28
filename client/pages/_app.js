@@ -65,13 +65,15 @@ export default class extends App {
             <ThemeProvider theme={theme}>
               <SnackbarProvider>
                 <ApolloProvider client={apollo}>
-                  <CssBaseline />
-                  <Navbar />
-                  <Drawer /> 
-                  <Main>
-                    <DrawerToolbar />
-                    <Component {...pageProps} />
-                  </Main>
+                  <div style={{display: 'flex'}}>
+                    <CssBaseline />
+                    <Navbar />
+                    <Drawer /> 
+                    <Main>
+                      <DrawerToolbar />
+                      <Component {...pageProps} />
+                    </Main>
+                  </div>
                 </ApolloProvider>
               </SnackbarProvider>
             </ThemeProvider>
@@ -102,13 +104,15 @@ export default class extends App {
         <ThemeProvider theme={theme}>
           <SnackbarProvider>
             <ApolloProvider client={this.apolloClient}>
-              <CssBaseline />
-              <Navbar />
-              <Drawer /> 
-              <Main>
-                <DrawerToolbar />
-                <Component {...pageProps} />
-              </Main>
+              <div style={{display: 'flex'}}>
+                <CssBaseline />
+                <Navbar />
+                <Drawer /> 
+                <Main>
+                  <DrawerToolbar />
+                  <Component {...pageProps} />
+                </Main>
+              </div>
             </ApolloProvider>
           </SnackbarProvider>
         </ThemeProvider>
