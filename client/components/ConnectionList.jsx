@@ -1,7 +1,7 @@
 import FixedHeightList from "./FixedHeightList";
 import { ListItemText, ListItem, ListItemAvatar } from "@material-ui/core";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBattleNet, faSteam, faTwitch, faYoutube, faSkype, faReddit, faFacebook, faTwitter, faSpotify } from '@fortawesome/free-brands-svg-icons';
+import { faBattleNet, faSteam, faTwitch, faYoutube, faSkype, faReddit, faFacebook, faTwitter, faSpotify, faXbox } from '@fortawesome/free-brands-svg-icons';
 
 const Connection = ({href, icon, name}) => (
     <ListItem button component='a' href={href}>
@@ -27,7 +27,8 @@ export default ({connections}) => {
                         case 'reddit': return <Connection href={`https://reddit.com/u/${c.name}`} name={c.name} icon={faReddit} />
                         case 'facebook': return <Connection href={`https://facebook.com/profile?id=${c.id}`} name={c.name} icon={faFacebook} />
                         case 'twitter': return <Connection href={`https://twitter.com/intent/user?user_id=${c.id}`} name={c.name} icon={faTwitter} />
-                        case 'spotify': return <Connection href={`https://open.spotify.com/user/horizonshadow`} name={c.name} icon={faSpotify} />
+                        case 'spotify': return <Connection href={`https://open.spotify.com/user/${c.id}`} name={c.name} icon={faSpotify} />
+                        case 'xbox': return <Connection name={c.name} icon={faXbox} />
                         default: return <Connection name={c.name} icon={faBattleNet} />
                     }
                 })
