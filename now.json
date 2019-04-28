@@ -33,7 +33,8 @@
     "build": {
       "env": {
         "DISCORD_CLIENT_ID": "@aa2gd-discord-client-id",
-        "DISCORD_REDIRECT_URL": "@aa2gd-discord-redirect-url"
+        "DISCORD_REDIRECT_URL": "@aa2gd-discord-redirect-url",
+        "FONTAWESOME_TOKEN": "@fontawesome-token"
       }
     }
   }
