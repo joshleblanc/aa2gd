@@ -11,7 +11,7 @@ const context = async ({ req }) => {
   if(process.env.NODE_ENV === 'development') {
     host = "http://localhost:3000"
   } else {
-    host = req.headers.origin
+    host = req.headers.source
   }
   console.log(req.headers)
   if(req.headers.authorization) {
