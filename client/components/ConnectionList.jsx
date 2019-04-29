@@ -1,18 +1,19 @@
 import FixedHeightList from "./FixedHeightList";
-import { ListItemText, ListItem, ListItemAvatar } from "@material-ui/core";
+import {ListItemText, ListItem, ListItemAvatar, Icon} from "@material-ui/core";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBattleNet, faSteam, faTwitch, faYoutube, faSkype, faReddit, faFacebook, faTwitter, faSpotify, faXbox } from '@fortawesome/free-brands-svg-icons';
+import React from "react";
 
 const Connection = ({href, icon, name}) => (
     <ListItem button component='a' href={href}>
         <ListItemAvatar>
-            <FontAwesomeIcon icon={icon} />
+            <Icon component={'svg'}>
+                <FontAwesomeIcon icon={icon} />
+            </Icon>
         </ListItemAvatar>
         <ListItemText primary={name} />
     </ListItem>
-)
-    
-
+);
 
 export default ({connections}) => {
     return(
