@@ -4,12 +4,22 @@ const fetch = require('node-fetch');
 const FormData = require('form-data');
 
 async function discord_req(path, token) {
-  const api_url = "https://discordapp.com/api"
+  const api_url = "https://discordapp.com/api";
   return fetch(`${api_url}/${path}`, {
     headers: {
       "Authorization": `Bearer ${token}`
     }
   });
+}
+
+function auth(token) {
+  if(token) {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    console.log(decoded);
+    return true;
+  } else {
+    return false;
+  }
 }
 
 const resolvers = {
@@ -54,6 +64,16 @@ const resolvers = {
         throw new Error("Invalid code");
       } else {
         return jwt.sign(json, process.env.JWT_SECRET, {expiresIn: json.expires_in});
+      }
+    },
+    server: async (_, { id }, { token }) => {
+      if(auth(token)) {
+        console.log(id);
+
+        console.log(json);
+        return json;
+      } else {
+        return null;
       }
     },
     currentUser: async (a, { token:passedToken }, { token }) => {

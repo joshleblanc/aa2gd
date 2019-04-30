@@ -18,9 +18,9 @@ export default () => {
   }
   return(
     <Link href="/profile">
-      <ListItem button>
+      <ListItem component="a" button href={"/profile"}>
         <ListItemAvatar>
-          <Avatar src={data.currentUser.avatarUrl} alt={"profile picture"} />
+          <Avatar component="div" src={data.currentUser.avatarUrl} alt={"profile picture"} />
         </ListItemAvatar>
         <ListItemText primary={data.currentUser.username} secondary={data.currentUser.email} />
       </ListItem>

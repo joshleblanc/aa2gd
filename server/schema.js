@@ -4,6 +4,7 @@ const typeDefs = gql`
     hello: String,
     getDiscordToken(code: String!): String
     currentUser(token: String): User
+    server(id: ID!): Server
   },
   type Mutation {
     login(email: String!, password: String!): String!
