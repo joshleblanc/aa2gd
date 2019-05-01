@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { ServerSchema } = require('./server');
 
 const ConnectionSchema = mongoose.Schema({
   id: { type: String, required: true },
@@ -7,14 +8,6 @@ const ConnectionSchema = mongoose.Schema({
   revoked: { type: Boolean, required: true },
   visibility: { type: Number, required: true }
 });
-
-const ServerSchema = mongoose.Schema({
-  id: { type: String, required: true },
-  name: { type: String, required: true },
-  icon: { type: String },
-  iconUrl: { type: String },
-  owner: { type: Boolean, required: true }
-})
 
 const UserSchema = mongoose.Schema({
   email: { type: String, required: true },

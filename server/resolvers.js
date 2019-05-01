@@ -2,6 +2,7 @@ const User = require('./models/user');
 const jwt = require('jsonwebtoken');
 const fetch = require('node-fetch');
 const FormData = require('form-data');
+const { Server } = require('./models/server');
 
 async function discord_req(path, token) {
   const api_url = "https://discordapp.com/api";
@@ -48,15 +49,19 @@ const resolvers = {
       const connections = await connectionsRequest.json();
       console.log(connections);
       const serversRequest = await discord_req("users/@me/guilds", json.access_token);
-      const servers = await serversRequest.json();
+      let servers = await serversRequest.json();
+      servers = servers.map(s => ({
+        ...s,
+        iconUrl: `https://cdn.discordapp.com/icons/${s.id}/${s.icon}.png`
+      }));
+      servers.forEach(s => {
+        Server.findOneAndUpdate({ id: s.id }, s, { upsert: true });
+      });
       await User.findOneAndUpdate({ id: user.id }, {
         ...user,
         avatarUrl: `http://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`,
         connections: connections.filter(c => c.visibility === 1),
-        servers: servers.map(s => ({
-          ...s,
-          iconUrl: `https://cdn.discordapp.com/icons/${s.id}/${s.icon}.png`
-        }))
+        servers
       }, { upsert: true });
 
       console.log(connections);  
@@ -69,9 +74,7 @@ const resolvers = {
     server: async (_, { id }, { token }) => {
       if(auth(token)) {
         console.log(id);
-
-        console.log(json);
-        return json;
+        return {};
       } else {
         return null;
       }
