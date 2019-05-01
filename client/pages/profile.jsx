@@ -5,6 +5,8 @@ import gql from 'graphql-tag';
 import { useMutation } from 'react-apollo-hooks';
 import ServerList from '../components/ServerList'
 import ConnectionList from '../components/ConnectionList';
+import React from "react";
+import TimeTable from "../components/TimeTable";
 
 const useStyles = makeStyles(theme => ({
   media: {
@@ -52,7 +54,9 @@ export default () => {
         image={data.currentUser.avatarUrl}
       />
       <CardContent>
-        <Button onClick={logout} >Logout</Button>
+        <Button onClick={logout}>Logout</Button>
+        <TimeTable />
+
         <ConnectionList connections={data.currentUser.connections} />
         <ServerList servers={data.currentUser.servers}/>
       </CardContent>

@@ -71,10 +71,22 @@ const resolvers = {
         return jwt.sign(json, process.env.JWT_SECRET, {expiresIn: json.expires_in});
       }
     },
+    user: async(_, { id }, { token }) => {
+      if(auth(token)) {
+        return await User.findOne({id});
+      }
+    },
     server: async (_, { id }, { token }) => {
       if(auth(token)) {
         console.log(id);
-        return {};
+        const server = await Server.findOne({id});
+        const users = await User.aggregate([{
+          $match: {
+            "servers.id": id
+          }
+        }]);
+        server.users = users;
+        return server;
       } else {
         return null;
       }
