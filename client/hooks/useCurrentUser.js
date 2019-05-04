@@ -24,6 +24,9 @@ const GET_CURRENT_USER = gql`
         icon
         iconUrl
       }
+      timeTable {
+        Mo Tu We Th Fr Sa Su
+      }
     }
   }
 `;

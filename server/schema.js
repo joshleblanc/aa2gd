@@ -6,10 +6,20 @@ const typeDefs = gql`
         currentUser(token: String): User
         server(id: ID!): Server
         user(id: ID!): User
-    },
+    }
     type Mutation {
         login(email: String!, password: String!): String!
         register(email: String!, password: String!, confirmPassword: String!): Boolean!
+        updateTimetable(time: String, day: String): User
+    }
+    type TimeTable {
+        Mo: [String],
+        Tu: [String],
+        We: [String],
+        Th: [String],
+        Fr: [String],
+        Sa: [String],
+        Su: [String]
     }
     type User {
         _id: ID!
@@ -19,7 +29,8 @@ const typeDefs = gql`
         avatarUrl: String
         email: String!
         connections: [Connection]
-        servers: [Server]
+        servers: [Server],
+        timeTable: TimeTable
     }
     type Connection {
         _id: ID!

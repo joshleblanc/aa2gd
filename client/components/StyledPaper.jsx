@@ -4,10 +4,10 @@ import {makeStyles} from '@material-ui/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(2),
     margin: theme.spacing(1)
   }
-}), {withTheme: true})
+}), {withTheme: true});
 
 export default ({children}) => {
   const classes = useStyles();

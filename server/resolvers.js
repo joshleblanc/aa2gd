@@ -15,9 +15,7 @@ async function discord_req(path, token) {
 
 function auth(token) {
   if(token) {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log(decoded);
-    return true;
+    return jwt.verify(token, process.env.JWT_SECRET);
   } else {
     return false;
   }
@@ -57,18 +55,27 @@ const resolvers = {
       servers.forEach(s => {
         Server.findOneAndUpdate({ id: s.id }, s, { upsert: true });
       });
-      await User.findOneAndUpdate({ id: user.id }, {
+      const newUser = await User.findOneAndUpdate({ id: user.id }, {
         ...user,
         avatarUrl: `http://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`,
         connections: connections.filter(c => c.visibility === 1),
-        servers
-      }, { upsert: true });
+        servers,
+        timeTable: {
+          Mo: [],
+          Tu: [],
+          We: [],
+          Th: [],
+          Fr: [],
+          Sa: [],
+          Su: []
+        }
+      }, { upsert: true, new: true });
 
       console.log(connections);  
       if(json.error) {
         throw new Error("Invalid code");
       } else {
-        return jwt.sign(json, process.env.JWT_SECRET, {expiresIn: json.expires_in});
+        return jwt.sign({...json, _id: newUser._id }, process.env.JWT_SECRET, {expiresIn: json.expires_in});
       }
     },
     user: async(_, { id }, { token }) => {
@@ -106,6 +113,20 @@ const resolvers = {
     }
   },
   Mutation: {
+    updateTimetable: async (_, { time, day}, { token }) => {
+      const record = auth(token);
+      if(record) {
+        const user = await User.findOne({ _id: record._id });
+        console.log(user);
+        if(user.timeTable[day].includes(time)) {
+          user.timeTable[day] = user.timeTable[day].filter(t => t !== time);
+        } else {
+          user.timeTable[day].push(time);
+        }
+        user.save();
+        return user;
+      }
+    },
     login: async (_, {email, password}) => {
       const user = await User.findOne({email: email});
       if (!user) {

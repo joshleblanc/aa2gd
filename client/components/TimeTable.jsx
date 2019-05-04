@@ -1,6 +1,8 @@
 import {CardContent, Typography} from "@material-ui/core";
-import React, {useState} from "react";
+import React from "react";
 import {makeStyles} from "@material-ui/styles";
+import gql from "graphql-tag";
+import {useMutation} from "react-apollo-hooks";
 
 const useStyles = makeStyles({
     table: {
@@ -17,20 +19,30 @@ const makeTimes = () => {
     return times;
 };
 
+const UPDATE_TIMETABLE = gql`
+    mutation UpdateTimetable($day: String, $time: String) {
+        updateTimetable(day: $day, time: $time) {
+            _id
+            timeTable {
+                Mo, Tu, We, Th, Fr, Sa, Su
+            }
+            
+        }
+    }
+`;
+
 const daysOfWeek = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
-export default () => {
-    const [schedule, setSchedule] = useState(() => {
-        const defaultSchedule = {};
-        daysOfWeek.forEach(d => defaultSchedule[d] = []);
-        return defaultSchedule;
-
-    });
+export default ({editable, timeTable, _id}) => {
+    const updateTimetable = useMutation(UPDATE_TIMETABLE);
     const classes = useStyles();
     return (
         <React.Fragment>
             <Typography variant="h4">Times Available</Typography>
-            <Typography variant="caption">Tap a square to edit</Typography>
+            {
+                editable && <Typography variant="caption">Tap a square to edit</Typography>
+            }
+
             <table className={classes.table}>
                 <thead>
                 <tr>
@@ -48,21 +60,31 @@ export default () => {
                                 {
                                     daysOfWeek.map(d => {
                                         return <td onClick={() => {
-                                            setSchedule(prevSchedule => {
-                                                if (prevSchedule[d].includes(t)) {
-                                                    return {
-                                                        ...prevSchedule,
-                                                        [d]: prevSchedule[d].filter(s => s !== t)
-                                                    };
-                                                } else {
-                                                    console.log("Excludes");
-                                                    return {
-                                                        ...prevSchedule,
-                                                        [d]: [...prevSchedule[d], t]
-                                                    };
+                                            if(!editable) return;
+                                            const newTimeTable = { ...timeTable };
+                                            if(newTimeTable[d].includes(t)) {
+                                                newTimeTable[d] = newTimeTable[d].filter(newT => t !== newT);
+                                            } else {
+                                                newTimeTable[d] = [...newTimeTable[d], t];
+                                            }
+                                            updateTimetable({
+                                                variables: {
+                                                    time: t,
+                                                    day: d
+                                                },
+                                                optimisticResponse: {
+                                                    __typename: "Mutation",
+                                                    updateTimetable: {
+                                                        _id: _id,
+                                                        __typename: "User",
+                                                        timeTable: {
+                                                            __typename: "TimeTable",
+                                                            ...newTimeTable
+                                                        }
+                                                    }
                                                 }
-                                            })
-                                        }} style={{backgroundColor: schedule[d].includes(t) ? 'green' : 'white'}}>
+                                            });
+                                        }} style={{backgroundColor: timeTable[d].includes(t) ? 'green' : 'white'}}>
 
                                         </td>
                                     })

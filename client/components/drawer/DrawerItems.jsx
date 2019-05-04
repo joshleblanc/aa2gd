@@ -1,7 +1,7 @@
-import { Divider, List, ListItem, ListItemText } from '@material-ui/core';
+import { Divider, List, ListItemText } from '@material-ui/core';
 import CurrentUserDisplay from '../CurrentUserDisplay';
-import Link from 'next/link';
 import React from "react";
+import LinkListItem from "../LinkListItem";
 
 export default () => {
     return(
@@ -9,11 +9,12 @@ export default () => {
             <CurrentUserDisplay />
             <Divider component="hr" />
             <List component="ul">
-                <Link href={'/servers'}>
-                    <ListItem button component="a" href={"/servers"}>
-                        <ListItemText primary="Servers" />
-                    </ListItem>
-                </Link>
+                <LinkListItem href={'/servers'}>
+                    <ListItemText primary={"Servers"} />
+                </LinkListItem>
+                <LinkListItem href={'/create'}>
+                    <ListItemText primary={"Create"} />
+                </LinkListItem>
             </List>
         </div>
     )

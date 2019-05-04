@@ -5,6 +5,10 @@ import gql from 'graphql-tag';
 import {useMutation, useQuery} from 'react-apollo-hooks';
 import ServerList from '../components/ServerList'
 import ConnectionList from '../components/ConnectionList';
+import TimeTable from "../components/TimeTable";
+import StyledPaper from "../components/StyledPaper";
+import Grid from "@material-ui/core/Grid";
+import CardHeader from "@material-ui/core/CardHeader";
 
 const useStyles = makeStyles(theme => ({
     media: {
@@ -42,6 +46,9 @@ const GET_USER = gql`
             }
             avatar
             avatarUrl
+            timeTable {
+                Mo Tu We Th Fr Sa Su
+            }
         }
     }
 `;
@@ -53,111 +60,37 @@ export default ({router}) => {
     });
     if(loading) return "Loading...";
     if(error) return "Error";
+    console.log(data.user);
     return(
-        <Card>
-            <CardMedia
-                component="img"
-                className={classes.media}
-                image="https://picsum.photos/1920/1080"
-            />
-            <CardMedia
-                className={classes.avatar}
-                component="img"
-                image={data.user.avatarUrl}
-            />
-            <CardContent>
-                <ConnectionList connections={data.user.connections} />
-                <Typography variant="h4">Times Available</Typography>
-                <table className={classes.table}>
-                    <thead>
-                    <tr>
-                        <th />
-                        <th>S</th>
-                        <th>M</th>
-                        <th>T</th>
-                        <th>W</th>
-                        <th>T</th>
-                        <th>F</th>
-                        <th>S</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>12:00</td>
-                        <td>X</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    <tr>
-                        <td>12:00</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </CardContent>
-        </Card>
+        <React.Fragment>
+            <Card>
+                <CardMedia
+                    component="img"
+                    className={classes.media}
+                    image="https://picsum.photos/1920/1080"
+                />
+                <CardMedia
+                    className={classes.avatar}
+                    component="img"
+                    image={data.user.avatarUrl}
+                />
+                <CardContent>
+                    <Typography variant="h6">{data.user.username}</Typography>
+                </CardContent>
+            </Card>
+            <Grid container>
+                <Grid item xs={12}>
+                    <StyledPaper>
+                        <TimeTable timeTable={data.user.timeTable} />
+                    </StyledPaper>
+                </Grid>
+                <Grid item xs={12}>
+                    <StyledPaper>
+                        <ConnectionList connections={data.user.connections} />
+                    </StyledPaper>
+                </Grid>
+            </Grid>
+        </React.Fragment>
+
     )
 }

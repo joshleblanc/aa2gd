@@ -5,8 +5,18 @@ const ConnectionSchema = mongoose.Schema({
   id: { type: String, required: true },
   name: { type: String, required: true },
   type: { type: String, required: true },
-  revoked: { type: Boolean, required: true },
+  revoked: { type: Boolean, required: false },
   visibility: { type: Number, required: true }
+});
+
+const TimeTableSchema = mongoose.Schema({
+  Mo: { type: Array, default: []},
+  Tu: { type: Array, default: []},
+  We: { type: Array, default: []},
+  Th: { type: Array, default: []},
+  Fr: { type: Array, default: []},
+  Sa: { type: Array, default: []},
+  Su: { type: Array, default: []},
 });
 
 const UserSchema = mongoose.Schema({
@@ -16,7 +26,8 @@ const UserSchema = mongoose.Schema({
   avatar: { type: String },
   avatarUrl: { type: String },
   connections: [ConnectionSchema],
-  servers: [ServerSchema]
+  servers: [ServerSchema],
+  timeTable: TimeTableSchema
 });
 
 module.exports = mongoose.model('User', UserSchema);
