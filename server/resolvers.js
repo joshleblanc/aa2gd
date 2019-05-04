@@ -45,7 +45,6 @@ const resolvers = {
       const user = await userRequest.json();
       const connectionsRequest = await discord_req("users/@me/connections", json.access_token);
       const connections = await connectionsRequest.json();
-      console.log(connections);
       const serversRequest = await discord_req("users/@me/guilds", json.access_token);
       let servers = await serversRequest.json();
       servers = servers.map(s => ({
@@ -55,6 +54,14 @@ const resolvers = {
       servers.forEach(s => {
         Server.findOneAndUpdate({ id: s.id }, s, { upsert: true });
       });
+      const steamConnection = connections.find(c => c.type === 'steam');
+      let games = [];
+      if(steamConnection) {
+        const gamesResponse = await fetch(`http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${process.env.STEAM_KEY}&steamid=${steamConnection.id}&format=json&include_appinfo&include_played_free_games`);
+        const gamesJson = await gamesResponse.json();
+        console.log(gamesJson);
+      }
+
       const newUser = await User.findOneAndUpdate({ id: user.id }, {
         ...user,
         avatarUrl: `http://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`,
