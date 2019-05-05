@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 });
 
 const filterOptions = (options, query) => {
-    const limit = 10;
+    const limit = 25;
     const selectedOptions = options.filter(o => o.name.toLowerCase().startsWith(query.toLowerCase()));
     return selectedOptions.slice(0, limit);
 };
@@ -66,7 +66,7 @@ const Autocomplete = ({label, options, fullScreen, placeholder, value, ...props}
                         {
                             filterOptions(options, search).map(o => {
                                 return(
-                                    <ListItem button key={o.value} value={o.value} onClick={() => {
+                                    <ListItem dense button key={o.value} value={o.value} onClick={() => {
                                         console.log(o.value);
                                         props.onChange({
                                             target: {
