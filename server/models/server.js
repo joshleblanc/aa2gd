@@ -8,7 +8,9 @@ const ServerSchema = mongoose.Schema({
     owner: { type: Boolean, required: true }
 });
 
+const Server = mongoose.model("Server", ServerSchema);
+
 module.exports = {
     ServerSchema,
-    Server: mongoose.model('Server', ServerSchema)
+    Server
 };

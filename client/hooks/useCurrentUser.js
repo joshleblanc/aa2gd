@@ -26,6 +26,12 @@ const GET_CURRENT_USER = gql`
       }
       timeTable {
         Mo Tu We Th Fr Sa Su
+      },
+      games {
+        _id
+        name
+        logoUrl
+        iconUrl
       }
     }
   }

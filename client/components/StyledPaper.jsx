@@ -9,10 +9,10 @@ const useStyles = makeStyles(theme => ({
   }
 }), {withTheme: true});
 
-export default ({children}) => {
+export default ({children, elevation, className}) => {
   const classes = useStyles();
 
   return (
-    <Paper classes={classes}>{children}</Paper>
+    <Paper classes={classes} className={className} elevation={elevation}>{children}</Paper>
   )
 }

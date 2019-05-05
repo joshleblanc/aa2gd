@@ -5,6 +5,8 @@ import StyledPaper from "../components/StyledPaper";
 import Typography from "@material-ui/core/Typography";
 import useCurrentUser from "../hooks/useCurrentUser";
 import MenuItem from "@material-ui/core/MenuItem";
+import Button from "@material-ui/core/Button";
+import Autocomplete from "../components/Autocomplete";
 
 const initialValues = {
     name: '',
@@ -16,7 +18,7 @@ export default () => {
     const { data, error, loading } = useCurrentUser();
     if(error) return "Error";
     if(loading) return "Loading...";
-
+    console.log(data.currentUser);
     return(
         <StyledPaper>
             <Formik initialValues={initialValues} onSubmit={(props, values) => {
@@ -31,30 +33,32 @@ export default () => {
                         component={TextField}
                     />
                     <Field
-                        label={"Server"}
-                        fullWidth
-                        select
                         name={'server'}
-                        component={TextField}
-                    >
-                        {
-                            data.currentUser.servers.map(s => {
-                                return(
-                                    <MenuItem value={s._id} key={s._id}>
-                                        {s.name}
-                                    </MenuItem>
-                                )
-                            })
-                        }
-                    </Field>
+                        render={({field}) => {
+                            return(
+                                <Autocomplete
+                                    {...field}
+                                    options={data.currentUser.servers.map(s => ({ value: s._id, name: s.name, image: s.iconUrl }))}
+                                    label="Server"
+                                    placeholder="Select a server"
+                                />
+                            )
+                        }}
+                    />
                     <Field
-                        label="Game"
-                        fullWidth
-                        select
-                        name={'game'}
-                        component={TextField}
-                    >
-                    </Field>
+                        name="game"
+                        render={({field}) => {
+                            return(
+                                <Autocomplete
+                                    {...field}
+                                    options={data.currentUser.games.map(g => ({ value: g._id, name: g.name, image: g.iconUrl }))}
+                                    label="Game"
+                                    placeholder="Select a game"
+                                />
+                            )
+                        }}
+                    />
+                    <Button type="submit">Submit</Button>
                 </Form>
             </Formik>
         </StyledPaper>

@@ -57,9 +57,9 @@ const resolvers = {
       const steamConnection = connections.find(c => c.type === 'steam');
       let games = [];
       if(steamConnection) {
-        const gamesResponse = await fetch(`http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${process.env.STEAM_KEY}&steamid=${steamConnection.id}&format=json&include_appinfo&include_played_free_games`);
-        const gamesJson = await gamesResponse.json();
-        console.log(gamesJson);
+        const gamesResponse = await fetch(`http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${process.env.STEAM_KEY}&steamid=${steamConnection.id}&format=json&include_appinfo=1&include_played_free_games=1`);
+        const gamesResponseJson = await gamesResponse.json();
+        games = gamesResponseJson.response.games;
       }
 
       const newUser = await User.findOneAndUpdate({ id: user.id }, {
@@ -75,7 +75,8 @@ const resolvers = {
           Fr: [],
           Sa: [],
           Su: []
-        }
+        },
+        games
       }, { upsert: true, new: true });
 
       console.log(connections);  

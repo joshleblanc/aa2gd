@@ -12,6 +12,14 @@ const typeDefs = gql`
         register(email: String!, password: String!, confirmPassword: String!): Boolean!
         updateTimetable(time: String, day: String): User
     }
+    type Game {
+        _id: ID!
+        appid: Int!
+        name: String!
+        playtime_forever: Int!
+        iconUrl: String!
+        logoUrl: String!
+    }
     type TimeTable {
         Mo: [String],
         Tu: [String],
@@ -30,7 +38,8 @@ const typeDefs = gql`
         email: String!
         connections: [Connection]
         servers: [Server],
-        timeTable: TimeTable
+        timeTable: TimeTable,
+        games: [Game]!
     }
     type Connection {
         _id: ID!

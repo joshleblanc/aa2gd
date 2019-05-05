@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { ServerSchema } = require('./server');
+const { GameSchema } = require('./game');
 
 const ConnectionSchema = mongoose.Schema({
   id: { type: String, required: true },
@@ -27,7 +28,8 @@ const UserSchema = mongoose.Schema({
   avatarUrl: { type: String },
   connections: [ConnectionSchema],
   servers: [ServerSchema],
-  timeTable: TimeTableSchema
+  timeTable: TimeTableSchema,
+  games: [GameSchema]
 });
 
 module.exports = mongoose.model('User', UserSchema);
