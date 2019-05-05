@@ -33,7 +33,7 @@ const filterOptions = (options, query) => {
     return selectedOptions.slice(0, limit);
 };
 
-const Autocomplete = ({label, options, fullScreen, placeholder, value, ...props}) => {
+const Autocomplete = ({label, options, fullScreen, placeholder, value, onChange, name, disabled, ...props}) => {
     console.log(props);
     const [ modalOpen, setModal ] = useState(false);
     const [ search, setSearch ] = useState('');
@@ -48,7 +48,7 @@ const Autocomplete = ({label, options, fullScreen, placeholder, value, ...props}
                     value={selectedItem.name}
                     disabled
                 />
-                <IconButton onClick={() => setModal(true)}>
+                <IconButton onClick={() => setModal(true)} disabled={disabled}>
                     <SelectIcon />
                 </IconButton>
             </div>
@@ -68,9 +68,9 @@ const Autocomplete = ({label, options, fullScreen, placeholder, value, ...props}
                                 return(
                                     <ListItem dense button key={o.value} value={o.value} onClick={() => {
                                         console.log(o.value);
-                                        props.onChange({
+                                        onChange({
                                             target: {
-                                                name: props.name,
+                                                name: name,
                                                 value: o.value
                                             }
                                         });

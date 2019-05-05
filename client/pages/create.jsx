@@ -34,26 +34,28 @@ export default () => {
                     />
                     <Field
                         name={'server'}
-                        render={({field}) => {
+                        render={({field, form}) => {
                             return(
                                 <Autocomplete
                                     {...field}
                                     options={data.currentUser.servers.map(s => ({ value: s._id, name: s.name, image: s.iconUrl }))}
                                     label="Server"
                                     placeholder="Select a server"
+                                    disabled={form.isSubmitting}
                                 />
                             )
                         }}
                     />
                     <Field
                         name="game"
-                        render={({field}) => {
+                        render={({field, form}) => {
                             return(
                                 <Autocomplete
                                     {...field}
                                     options={data.currentUser.games.map(g => ({ value: g._id, name: g.name, image: g.iconUrl }))}
                                     label="Game"
                                     placeholder="Select a game"
+                                    disabled={form.isSubmitting}
                                 />
                             )
                         }}
