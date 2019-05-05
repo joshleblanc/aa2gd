@@ -18,10 +18,6 @@ import Avatar from "@material-ui/core/Avatar";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 
 const useStyles = makeStyles({
-    suggestions: {
-        position: 'fixed',
-        zIndex: 999
-    },
     displayContainer: {
         display: 'flex'
     },
