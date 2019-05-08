@@ -8,13 +8,27 @@ import List from "@material-ui/core/List";
 import StyledPaper from "../components/StyledPaper";
 import {Avatar, ListItemAvatar} from "@material-ui/core";
 import Link from "next/link";
+import {makeStyles} from "@material-ui/styles";
+
+const useStyles = makeStyles(theme => ({
+    nameContainer: {
+        display: 'flex'
+    },
+    name: {
+        margin: theme.spacing(1)
+    },
+    avatar: {
+        margin: theme.spacing(1)
+    }
+}));
 
 const GET_SERVER = gql`
     query Server($id: ID!) {
         server(id: $id) {
             _id
             id
-            name     
+            name    
+            iconUrl
             users {
                 _id
                 id
@@ -30,16 +44,18 @@ export default ({router}) => {
     const { data, error, loading } = useQuery(GET_SERVER, {
         variables: { id: router.query.id }
     });
+    const classes = useStyles();
     if(error) return "Error";
     if(loading) return "Loading...";
     return(
         <React.Fragment>
             <StyledPaper>
-                <Typography variant="h4" gutterBottom>{data.server.name}</Typography>
+                <Avatar src={data.server.iconUrl} className={classes.avatar} />
+                <Typography variant="h4" gutterBottom className={classes.name}>{data.server.name}</Typography>
             </StyledPaper>
             <StyledPaper>
                 <Typography variant={"h5"}>Events</Typography>
-
+                <Typography variant="caption">No events have been listed!</Typography>
             </StyledPaper>
             <StyledPaper>
                 <Typography variant="h5">Users</Typography>

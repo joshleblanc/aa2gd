@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 import { useMutation } from "react-apollo-hooks";
 import useToken from '../hooks/useToken';
 import { makeStyles } from '@material-ui/styles';
+import Link from 'next/link';
 import useDrawer from '../hooks/useDrawer';
 
 
@@ -14,6 +15,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${240}px)`,
     },
+  },
+  grow: {
+    flexGrow: 1
   }
 }));
 
@@ -38,9 +42,15 @@ export default () => {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" color="inherit" noWrap>
-          Cereal
+        <Typography variant="h6" color="inherit" noWrap className={classes.grow}>
+          Famti.me
         </Typography>
+        <Link href={'/create'}>
+          <Button component="a" href={'/create'}>
+            Create Event
+          </Button>
+        </Link>
+
       </Toolbar>
     </AppBar>
   )
