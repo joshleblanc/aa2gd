@@ -17,15 +17,18 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     displayContainer: {
         display: 'flex'
     },
     list: {
         overflowY: 'auto',
         height: 'calc(100% - 68px)'
+    },
+    button: {
+        padding: theme.spacing(3)
     }
-});
+}));
 
 const filterOptions = (options, query) => {
     const limit = 25;
@@ -34,7 +37,6 @@ const filterOptions = (options, query) => {
 };
 
 const Autocomplete = ({label, options, fullScreen, placeholder, value, onChange, name, disabled, ...props}) => {
-    console.log(props);
     const [ modalOpen, setModal ] = useState(false);
     const [ search, setSearch ] = useState('');
     const classes = useStyles();
@@ -45,10 +47,11 @@ const Autocomplete = ({label, options, fullScreen, placeholder, value, onChange,
                 <TextField
                     fullWidth
                     label={label}
+                    margin="normal"
                     value={selectedItem.name}
                     disabled
                 />
-                <IconButton onClick={() => setModal(true)} disabled={disabled}>
+                <IconButton onClick={() => setModal(true)} disabled={disabled} className={classes.button}>
                     <SelectIcon />
                 </IconButton>
             </div>
@@ -58,6 +61,7 @@ const Autocomplete = ({label, options, fullScreen, placeholder, value, onChange,
                     <TextField
                         fullWidth
                         label={label}
+                        margin="normal"
                         onChange={e => setSearch(e.target.value)}
                         value={search}
                     />

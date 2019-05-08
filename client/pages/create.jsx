@@ -4,24 +4,23 @@ import { TextField } from 'formik-material-ui';
 import StyledPaper from "../components/StyledPaper";
 import Typography from "@material-ui/core/Typography";
 import useCurrentUser from "../hooks/useCurrentUser";
-import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
 import Autocomplete from "../components/Autocomplete";
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
-import {DateTimePicker} from "@material-ui/pickers/DateTimePicker/DateTimePicker";
+import {DateTimePicker} from "@material-ui/pickers";
 
 const initialValues = {
     name: '',
     server: '',
-    game: ''
+    game: '',
+    date: new Date()
 };
 
 export default () => {
     const { data, error, loading } = useCurrentUser();
     if(error) return "Error";
     if(loading) return "Loading...";
-    console.log(data.currentUser);
     return(
         <MuiPickersUtilsProvider utils={MomentUtils}>
             <StyledPaper>
@@ -34,6 +33,7 @@ export default () => {
                             label={"Name"}
                             fullWidth
                             name={'name'}
+                            margin="normal"
                             component={TextField}
                         />
                         <Field
@@ -66,12 +66,18 @@ export default () => {
                         />
                         <Field
                             name={'date'}
-                            render={({field, form}) => {
+                            render={({field}) => {
+                                const onChange = e => {
+                                    field.onChange({ target: { value: e, name: 'date' }});
+                                };
                                 return(
                                     <DateTimePicker
                                         label={"Date and Time"}
-                                        onChange={field.onChange}
+                                        onChange={onChange}
                                         value={field.value}
+                                        name="date"
+                                        fullWidth
+                                        margin="normal"
                                     />
                                 )
                             }}
