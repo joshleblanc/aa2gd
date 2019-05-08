@@ -36,7 +36,7 @@ const filterOptions = (options, query) => {
     return selectedOptions.slice(0, limit);
 };
 
-const Autocomplete = ({label, options, fullScreen, placeholder, value, onChange, name, disabled, ...props}) => {
+const Autocomplete = ({label, options, fullScreen, placeholder, value, onChange, name, disabled}) => {
     const [ modalOpen, setModal ] = useState(false);
     const [ search, setSearch ] = useState('');
     const classes = useStyles();
