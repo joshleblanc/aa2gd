@@ -18,9 +18,6 @@ const useStyles = makeStyles(theme => ({
     list: {
         overflowY: 'auto',
         height: 'calc(100% - 68px)'
-    },
-    button: {
-        padding: theme.spacing(3)
     }
 }));
 
