@@ -125,7 +125,6 @@ const resolvers = {
       const record = auth(token);
       if(record) {
         const user = await User.findOne({ _id: record._id });
-        console.log(user);
         if(user.timeTable[day].includes(time)) {
           user.timeTable[day] = user.timeTable[day].filter(t => t !== time);
         } else {
