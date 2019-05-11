@@ -1,6 +1,6 @@
 import React from 'react';
 import TextField from "@material-ui/core/TextField/index";
-import {makeStyles} from "@material-ui/styles/index";
+import {makeStyles} from "@material-ui/styles";
 import IconButton from "@material-ui/core/IconButton/index";
 import SelectIcon from '@material-ui/icons/Add';
 import {useState} from "react";
