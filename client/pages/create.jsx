@@ -9,6 +9,8 @@ import Autocomplete from "../components/Autocomplete";
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import {DateTimePicker} from "@material-ui/pickers";
+import gql from 'graphql-tag';
+import {useMutation} from "react-apollo-hooks";
 
 const initialValues = {
     name: '',
@@ -17,8 +19,17 @@ const initialValues = {
     date: new Date()
 };
 
+const CREATE_EVENT = gql`    
+    mutation CreateEvent($name: String!, $server: ID!, $game: ID!, $date: String!) {
+        createEvent(name: $name, server: $server, game: $game, date: $date) {
+            _id
+        }
+    }
+`;
+
 export default () => {
     const { data, error, loading } = useCurrentUser();
+    const createEvent = useMutation(CREATE_EVENT);
     if(error) return "Error";
     if(loading) return "Loading...";
     return(
