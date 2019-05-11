@@ -18,18 +18,11 @@ import Avatar from "@material-ui/core/Avatar/index";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar/index";
 import AutocompleteDialog from "./AutocompleteDialog";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
     displayContainer: {
         display: 'flex'
-    },
-    list: {
-        overflowY: 'auto',
-        height: 'calc(100% - 68px)'
-    },
-    button: {
-        padding: theme.spacing(3)
     }
-}));
+});
 
 const Autocomplete = ({label, options, placeholder, value, onChange, name, disabled}) => {
     const [ modalOpen, setModal ] = useState(false);
