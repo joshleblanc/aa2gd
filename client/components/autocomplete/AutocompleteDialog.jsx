@@ -42,7 +42,25 @@ export default withMobileDialog()(({fullScreen, label, options, open, onClose, t
                     label={label}
                     margin="normal"
                     onChange={e => setSearch(e.target.value)}
+                    inputProps={{
+                        onKeyUp: e => {
+                            if(e.keyCode === 13) {
+                                const selectedOption = filterOptions(options, search)[0];
+                                if(selectedOption) {
+                                    onSelect({
+                                        target: {
+                                            name,
+                                            value: selectedOption.value
+                                        }
+                                    });
+                                    onClose();
+                                }
+
+                            }
+                        }
+                    }}
                     value={search}
+                    autoFocus
                 />
                 <Typography variant="caption">Type something to search</Typography>
                 <List className={classes.list}>
