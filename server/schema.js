@@ -21,6 +21,7 @@ const typeDefs = gql`
         logoUrl: String!
     }
     type TimeTable {
+        _id: ID!,
         Mo: [String],
         Tu: [String],
         We: [String],
