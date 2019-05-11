@@ -10,7 +10,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
-import React, {useMemo, useState} from "react";
+import React, {useCallback, useMemo, useState} from "react";
 import withMobileDialog from "@material-ui/core/withMobileDialog/withMobileDialog";
 import {makeStyles} from "@material-ui/styles";
 
@@ -24,6 +24,20 @@ const useStyles = makeStyles({
 export default withMobileDialog()(({fullScreen, label, options, open, onClose, title, onSelect, name}) => {
     const [ search, setSearch ] = useState('');
     const classes = useStyles();
+
+    const selectItem = useCallback((item) => {
+        if(item && item.value) {
+            onSelect({
+                target: {
+                    name,
+                    value: item.value
+                }
+            });
+            onClose();
+            setSearch("");
+        }
+
+    }, [name]);
 
     const filteredOptions = useMemo(() => {
         const limit = 25;
@@ -43,17 +57,7 @@ export default withMobileDialog()(({fullScreen, label, options, open, onClose, t
                     inputProps={{
                         onKeyUp: e => {
                             if(e.keyCode === 13) {
-                                const selectedOption = filteredOptions[0];
-                                if(selectedOption) {
-                                    onSelect({
-                                        target: {
-                                            name,
-                                            value: selectedOption.value
-                                        }
-                                    });
-                                    onClose();
-                                }
-
+                                selectItem(filteredOptions[0]);
                             }
                         }
                     }}
@@ -66,14 +70,7 @@ export default withMobileDialog()(({fullScreen, label, options, open, onClose, t
                         filteredOptions.map(o => {
                             return(
                                 <ListItem dense button key={o.value} value={o.value} onClick={() => {
-                                    console.log(o.value);
-                                    onSelect({
-                                        target: {
-                                            name: name,
-                                            value: o.value
-                                        }
-                                    });
-                                    onClose();
+                                    selectItem(o);
                                 }}>
                                     <ListItemAvatar>
                                         <Avatar  component="div" src={o.image} />
