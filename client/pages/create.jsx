@@ -5,7 +5,7 @@ import StyledPaper from "../components/StyledPaper";
 import Typography from "@material-ui/core/Typography";
 import useCurrentUser from "../hooks/useCurrentUser";
 import Button from "@material-ui/core/Button";
-import Autocomplete from "../components/Autocomplete";
+import Autocomplete from "../components/autocomplete/Autocomplete";
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import {DateTimePicker} from "@material-ui/pickers";
