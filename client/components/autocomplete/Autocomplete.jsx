@@ -6,14 +6,14 @@ import SelectIcon from '@material-ui/icons/Add';
 import {useState} from "react";
 import AutocompleteDialog from "./AutocompleteDialog";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     displayContainer: {
         display: 'flex'
     },
     button: {
         padding: theme.spacing(3)
     }
-});
+}));
 
 const Autocomplete = ({label, options, placeholder, value, onChange, name, disabled}) => {
     const [ modalOpen, setModal ] = useState(false);
