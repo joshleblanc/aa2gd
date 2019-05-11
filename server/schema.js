@@ -11,6 +11,14 @@ const typeDefs = gql`
         login(email: String!, password: String!): String!
         register(email: String!, password: String!, confirmPassword: String!): Boolean!
         updateTimetable(time: String, day: String): User
+        createEvent(name: String!, server: ID!, game: ID!, date: String!): Event!
+    }
+    type Event {
+        _id: ID!
+        name: String!
+        date: String!
+        server: Server!
+        game: Game!
     }
     type Game {
         _id: ID!

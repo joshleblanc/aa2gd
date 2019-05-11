@@ -35,7 +35,12 @@ export default () => {
     return(
         <MuiPickersUtilsProvider utils={MomentUtils}>
             <StyledPaper>
-                <Formik initialValues={initialValues} onSubmit={(props, values) => {
+                <Formik initialValues={initialValues} onSubmit={(fields, form) => {
+                    createEvent({
+                        variables: {
+                            ...fields
+                        }
+                    });
                     console.log(props, values);
                 }}>
                     <Form>

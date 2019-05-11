@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
-const { ServerSchema } = require('./server');
-const { GameSchema } = require('./game');
 
-const ConnectionSchema = mongoose.Schema({
+const Connection = mongoose.Schema({
   id: { type: String, required: true },
   name: { type: String, required: true },
   type: { type: String, required: true },
@@ -10,7 +8,7 @@ const ConnectionSchema = mongoose.Schema({
   visibility: { type: Number, required: true }
 });
 
-const TimeTableSchema = mongoose.Schema({
+const TimeTable = mongoose.Schema({
   Mo: { type: Array, default: []},
   Tu: { type: Array, default: []},
   We: { type: Array, default: []},
@@ -20,16 +18,16 @@ const TimeTableSchema = mongoose.Schema({
   Su: { type: Array, default: []},
 });
 
-const UserSchema = mongoose.Schema({
+const User = mongoose.Schema({
   email: { type: String, required: true },
   id: { type: String, required: true },
   username: { type: String, required: true },
   avatar: { type: String },
   avatarUrl: { type: String },
-  connections: [ConnectionSchema],
-  servers: [ServerSchema],
-  timeTable: TimeTableSchema,
-  games: [GameSchema]
+  connections: [Connection],
+  servers: [{ type: mongoose.Schema.Types.ObjectId, ref: "Server" }],
+  timeTable: TimeTable,
+  games: [{ type: mongoose.Schema.Types.ObjectId, ref: "Game"}]
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = User;

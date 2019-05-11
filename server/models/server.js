@@ -1,16 +1,21 @@
 const mongoose = require('mongoose');
 
-const ServerSchema = mongoose.Schema({
+const Server = mongoose.Schema({
     id: { type: String, required: true },
     name: { type: String, required: true },
     icon: { type: String },
-    iconUrl: { type: String },
     owner: { type: Boolean, required: true }
+}, {
+    toObject: {
+        virtuals: true
+    },
+    toJSON: {
+        virtuals: true
+    }
 });
 
-const Server = mongoose.model("Server", ServerSchema);
+Server.virtual('iconUrl').get(function() {
+    return `https://cdn.discordapp.com/icons/${this.id}/${this.icon}.png`;
+});
 
-module.exports = {
-    ServerSchema,
-    Server
-};
+module.exports = Server;
