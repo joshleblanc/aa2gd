@@ -9,6 +9,9 @@ import AutocompleteDialog from "./AutocompleteDialog";
 const useStyles = makeStyles({
     displayContainer: {
         display: 'flex'
+    },
+    button: {
+        padding: theme.spacing(3)
     }
 });
 
