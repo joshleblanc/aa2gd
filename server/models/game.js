@@ -4,9 +4,9 @@ const GameSchema = mongoose.Schema({
     appid: { type: Number, required: true },
     name: { type: String, required: true },
     playtime_forever: { type: Number, required: true },
-    img_icon_url: { type: String, required: true },
-    img_logo_url: { type: String, required: true },
-    has_community_visible_stats: { type: Boolean, required: true }
+    img_icon_url: { type: String, required: false },
+    img_logo_url: { type: String, required: false },
+    has_community_visible_stats: { type: Boolean, required: false }
 }, {
     toObject: {
         virtuals: true
