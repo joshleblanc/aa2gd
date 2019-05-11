@@ -67,6 +67,7 @@ export default ({editable, timeTable, _id}) => {
                                             } else {
                                                 newTimeTable[d] = [...newTimeTable[d], t];
                                             }
+                                            console.log(newTimeTable);
                                             updateTimetable({
                                                 variables: {
                                                     time: t,
