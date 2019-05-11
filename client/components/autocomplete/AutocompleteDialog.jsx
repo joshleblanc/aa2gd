@@ -10,7 +10,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
-import React, {useState} from "react";
+import React, {useMemo, useState} from "react";
 import withMobileDialog from "@material-ui/core/withMobileDialog/withMobileDialog";
 import {makeStyles} from "@material-ui/styles";
 
@@ -24,15 +24,16 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const filterOptions = (options, query) => {
-    const limit = 25;
-    const selectedOptions = options.filter(o => o.name.toLowerCase().startsWith(query.toLowerCase()));
-    return selectedOptions.slice(0, limit);
-};
-
 export default withMobileDialog()(({fullScreen, label, options, open, onClose, title, onSelect, name}) => {
     const [ search, setSearch ] = useState('');
     const classes = useStyles();
+
+    const filteredOptions = useMemo(() => {
+        const limit = 25;
+        const selectedOptions = options.filter(o => o.name.toLowerCase().startsWith(search.toLowerCase()));
+        return selectedOptions.slice(0, limit);
+    }, [options, search]);
+
     return(
         <Dialog fullScreen={fullScreen} open={open} fullWidth onClose={onClose}>
             <DialogTitle>{title}</DialogTitle>
@@ -45,7 +46,7 @@ export default withMobileDialog()(({fullScreen, label, options, open, onClose, t
                     inputProps={{
                         onKeyUp: e => {
                             if(e.keyCode === 13) {
-                                const selectedOption = filterOptions(options, search)[0];
+                                const selectedOption = filteredOptions[0];
                                 if(selectedOption) {
                                     onSelect({
                                         target: {
@@ -65,7 +66,7 @@ export default withMobileDialog()(({fullScreen, label, options, open, onClose, t
                 <Typography variant="caption">Type something to search</Typography>
                 <List className={classes.list}>
                     {
-                        filterOptions(options, search).map(o => {
+                        filteredOptions.map(o => {
                             return(
                                 <ListItem dense button key={o.value} value={o.value} onClick={() => {
                                     console.log(o.value);
