@@ -14,12 +14,12 @@ import React, {useMemo, useState} from "react";
 import withMobileDialog from "@material-ui/core/withMobileDialog/withMobileDialog";
 import {makeStyles} from "@material-ui/styles";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
     list: {
         overflowY: 'auto',
         height: 'calc(100% - 68px)'
     }
-}));
+});
 
 export default withMobileDialog()(({fullScreen, label, options, open, onClose, title, onSelect, name}) => {
     const [ search, setSearch ] = useState('');
