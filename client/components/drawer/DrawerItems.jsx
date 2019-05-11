@@ -17,8 +17,8 @@ export default () => {
                     servers ?
                         servers.map(s => {
                             return(
-                                <Link href={`/server?id=${s.id}`}>
-                                    <ServerListItem key={s._id} server={s}  component="a" button href={`/server?id=${s.id}`} />
+                                <Link key={s._id} href={`/server?id=${s.id}`}>
+                                    <ServerListItem server={s}  component="a" button href={`/server?id=${s.id}`} />
                                 </Link>
                             )
                         })
