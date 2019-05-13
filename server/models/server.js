@@ -4,7 +4,8 @@ const Server = mongoose.Schema({
     id: { type: String, required: true },
     name: { type: String, required: true },
     icon: { type: String },
-    owner: { type: Boolean, required: true }
+    owner: { type: Boolean, required: true },
+    events: [{ type: mongoose.Schema.Types.ObjectId, ref: "Event" }]
 }, {
     toObject: {
         virtuals: true

@@ -6,7 +6,8 @@ const Game = mongoose.Schema({
     playtime_forever: { type: Number, required: true },
     img_icon_url: { type: String, required: false },
     img_logo_url: { type: String, required: false },
-    has_community_visible_stats: { type: Boolean, required: false }
+    has_community_visible_stats: { type: Boolean, required: false },
+    events: [{ type: mongoose.Schema.Types.ObjectId, ref: "Event" }]
 }, {
     toObject: {
         virtuals: true

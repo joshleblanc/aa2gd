@@ -23,6 +23,10 @@ const GET_CURRENT_USER = gql`
         name
         icon
         iconUrl
+        events {
+          _id
+          date
+        }
       }
       timeTable {
         Mo Tu We Th Fr Sa Su
@@ -32,6 +36,10 @@ const GET_CURRENT_USER = gql`
         name
         logoUrl
         iconUrl
+        events {
+          _id
+          date
+        }
       }
     }
   }

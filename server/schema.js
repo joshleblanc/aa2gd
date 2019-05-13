@@ -6,6 +6,7 @@ const typeDefs = gql`
         currentUser(token: String): User
         server(id: ID!): Server
         user(id: ID!): User
+        events: [Event]!
     }
     type Mutation {
         login(email: String!, password: String!): String!
@@ -27,6 +28,7 @@ const typeDefs = gql`
         playtime_forever: Int!
         iconUrl: String!
         logoUrl: String!
+        events: [Event]
     }
     type TimeTable {
         _id: ID!,
@@ -66,6 +68,7 @@ const typeDefs = gql`
         iconUrl: String
         owner: Boolean!
         users: [User]
+        events: [Event]
     }
 `;
 

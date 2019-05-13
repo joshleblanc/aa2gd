@@ -41,7 +41,7 @@ export default () => {
                             ...fields
                         }
                     });
-                    console.log(props, values);
+                    console.log(fields, form);
                 }}>
                     <Form>
                         <Typography variant={"h5"}>Create a new event!</Typography>

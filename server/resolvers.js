@@ -1,8 +1,12 @@
-const User = require('./models/user');
 const jwt = require('jsonwebtoken');
 const fetch = require('node-fetch');
 const FormData = require('form-data');
 const mongoose = require("mongoose");
+
+const Server = mongoose.model('Server');
+const Game = mongoose.model('Game');
+const User = mongoose.model('User');
+const Event = mongoose.model('Event');
 
 async function discord_req(path, token) {
     const api_url = "https://discordapp.com/api";
@@ -61,7 +65,7 @@ const resolvers = {
 
 
             games = await Promise.all(games.map(async g => {
-                return await Game.findOneAndUpdate({ appid: g.appid }, g, { upsert: true });
+                return await Game.findOneAndUpdate({ appid: g.appid }, g, { upsert: true, new: true });
             }));
 
             const newUser = await User.findOneAndUpdate({id: user.id}, {
@@ -93,6 +97,12 @@ const resolvers = {
                 return await User.findOne({id});
             }
         },
+        events: async (_, {}, { token }) => {
+            if(auth(token)) {
+                const events = await Event.find({}).populate('game').populate('server').exec();
+                return events;
+            }
+        },
         server: async (_, {id}, {token}) => {
             if (auth(token)) {
                 console.log(id);
@@ -115,7 +125,13 @@ const resolvers = {
                 console.log(decoded);
                 const r = await discord_req("users/@me", decoded.access_token);
                 const json = await r.json();
-                return User.findOne({id: json.id}).populate('servers', 'games');
+                return User.findOne({id: json.id}).populate({
+                    path: 'servers',
+                    populate: { path: 'events'}
+                }).populate({
+                    path: 'games',
+                    populate: { path: 'events'}
+                }).exec();
             } else {
                 return null;
             }
@@ -128,7 +144,18 @@ const resolvers = {
             if(record) {
                 const game = await Game.findOne({ _id: fields.game });
                 const server = await Server.findOne({ _id: fields.server });
-                const event = new Event({});
+                const event = new Event({
+                    name: fields.name,
+                    date: fields.date,
+                    server: server,
+                    game: game
+                });
+                await event.save();
+                game.events.push(event);
+                server.events.push(event);
+                game.save();
+                server.save();
+                return event;
             }
         },
         updateTimetable: async (_, {time, day}, {token}) => {

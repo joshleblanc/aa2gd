@@ -1,17 +1,10 @@
 const mongoose = require('mongoose');
-const {GameSchema} = require("./game");
-const {ServerSchema} = require("./server");
 
-const EventSchema = mongoose.Schema({
+const Event = mongoose.Schema({
     name: { type: String, required: true },
     date: { type: Date, required: true },
-    server: ServerSchema,
-    game: GameSchema
+    server: { type: mongoose.Schema.Types.ObjectId, ref: "Server" },
+    game: { type: mongoose.Schema.Types.ObjectId, ref: "Game"}
 });
 
-const Event = mongoose.model("Event", EventSchema);
-
-module.exports = {
-    EventSchema,
-    Event
-};
+module.exports = Event;
