@@ -3,8 +3,16 @@ import React from "react";
 import ServerAvatar from "./ServerAvatar";
 import moment from 'moment';
 import Typography from "@material-ui/core/Typography";
+import {makeStyles} from "@material-ui/styles";
+
+const useStyles = makeStyles({
+    primaryEventText: {
+        display: "block"
+    }
+});
 
 export default ({server:s, ...props}) => {
+    const classes = useStyles();
     const futureEvents = [];
     const pastEvents = [];
     const currentEvents = [];
@@ -27,7 +35,7 @@ export default ({server:s, ...props}) => {
             </ListItemAvatar>
             <ListItemText primary={s.name} secondary={
                 <React.Fragment>
-                    <Typography color="textPrimary" component="div" variant="body2">{currentEvents.length} events ongoing</Typography>
+                    <Typography color="textPrimary" component="span" className={classes.primaryEventText} variant="body2">{currentEvents.length} events ongoing</Typography>
                     {futureEvents.length} upcoming
                 </React.Fragment>
 
