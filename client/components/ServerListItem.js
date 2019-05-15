@@ -27,7 +27,7 @@ export default ({server:s, ...props}) => {
             </ListItemAvatar>
             <ListItemText primary={s.name} secondary={
                 <React.Fragment>
-                    <Typography color="textPrimary" component="p" variant="body2">{currentEvents.length} events ongoing</Typography>
+                    <Typography color="textPrimary" component="div" variant="body2">{currentEvents.length} events ongoing</Typography>
                     {futureEvents.length} upcoming
                 </React.Fragment>
 
