@@ -16,6 +16,12 @@ const useStyles = makeStyles(theme => ({
       width: `calc(100% - ${240}px)`,
     },
   },
+  menuButton: {
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
+  },
   grow: {
     flexGrow: 1
   }
