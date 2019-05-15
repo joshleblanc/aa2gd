@@ -4,6 +4,7 @@ import ServerAvatar from "./ServerAvatar";
 import moment from 'moment';
 import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/styles";
+import Server from "../models/Server";
 
 const useStyles = makeStyles({
     primaryEventText: {
@@ -11,11 +12,11 @@ const useStyles = makeStyles({
     }
 });
 
-export default ({server:s, ...props}) => {
+export default ({server:s, ...props}: { server: Server }) => {
     const classes = useStyles();
-    const futureEvents = [];
-    const pastEvents = [];
-    const currentEvents = [];
+    const futureEvents:Array<moment.Moment> = [];
+    const pastEvents:Array<moment.Moment> = [];
+    const currentEvents:Array<moment.Moment> = [];
     const currentDate = moment();
     s.events.forEach(s => {
         const date = moment(parseInt(s.date));
