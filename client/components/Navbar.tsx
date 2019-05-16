@@ -1,12 +1,13 @@
 import React from "react";
-import {AppBar, Toolbar, Button, IconButton, Typography, Theme} from '@material-ui/core';
+import { AppBar, Toolbar, Button, IconButton, Typography, Theme } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/styles';
 import Link from 'next/link';
 import useDrawer from '../hooks/useDrawer';
+import useToken from "../hooks/useToken";
 
 
-const useStyles = makeStyles((theme:Theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   appBar: {
     marginLeft: 240,
     [theme.breakpoints.up('sm')]: {
@@ -26,8 +27,10 @@ const useStyles = makeStyles((theme:Theme) => ({
 
 export default () => {
   const { toggleDrawer } = useDrawer();
+  const token = useToken();
+
   const classes = useStyles();
-  return(
+  return (
     <AppBar position="fixed" className={classes.appBar}>
       <Toolbar>
         <IconButton
@@ -41,14 +44,18 @@ export default () => {
         <Typography variant="h6" color="inherit" noWrap className={classes.grow}>
           Famti.me
         </Typography>
-        <Link href={'/create'}>
-          <Button component="a" href={'/create'}>
-            Create Event
-          </Button>
-        </Link>
+        {
+          token &&
+          <Link href={'/create'}>
+            <Button component="a" href={'/create'}>
+              Create Event
+              </Button>
+          </Link>
+        }
+
 
       </Toolbar>
     </AppBar>
   )
-  
+
 }

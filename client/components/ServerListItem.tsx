@@ -32,7 +32,6 @@ export default ({server:s, ...props}:Props) => {
         } else {
             currentEvents.push(date);
         }
-        console.log(pastEvents, currentEvents, futureEvents);
     });
     return(
         <ListItem {...props}>
