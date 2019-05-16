@@ -1,4 +1,4 @@
-import {Card, CardMedia, CardContent, Typography, Button} from '@material-ui/core';
+import {Card, CardMedia, CardContent, Button, Theme} from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles';
 import useCurrentUser from '../hooks/useCurrentUser';
 import gql from 'graphql-tag';
@@ -10,7 +10,7 @@ import TimeTable from "../components/TimeTable";
 import Grid from "@material-ui/core/Grid";
 import StyledPaper from "../components/StyledPaper";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
     media: {
         height: 100
     },
@@ -58,7 +58,7 @@ export default () => {
                     image={data.currentUser.avatarUrl}
                 />
                 <CardContent>
-                    <Button onClick={logout}>Logout</Button>
+                    <Button onClick={() => logout()}>Logout</Button>
                 </CardContent>
             </Card>
             <Grid container>

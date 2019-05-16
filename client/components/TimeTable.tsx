@@ -1,8 +1,9 @@
-import {CardContent, Typography} from "@material-ui/core";
+import {Typography} from "@material-ui/core";
 import React from "react";
 import {makeStyles} from "@material-ui/styles";
 import gql from "graphql-tag";
 import {useMutation} from "react-apollo-hooks";
+import TimeTable, {TimesByDay} from "../models/TimeTable";
 
 const useStyles = makeStyles({
     table: {
@@ -31,9 +32,15 @@ const UPDATE_TIMETABLE = gql`
     }
 `;
 
-const daysOfWeek = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+const daysOfWeek:Array<keyof TimesByDay> = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
-export default ({editable, timeTable, _id}) => {
+interface Props {
+    editable?: boolean,
+    timeTable: TimeTable,
+    _id: string
+}
+
+export default ({editable, timeTable, _id}: Props) => {
     const updateTimetable = useMutation(UPDATE_TIMETABLE);
     const classes = useStyles();
     return (
@@ -52,26 +59,25 @@ export default ({editable, timeTable, _id}) => {
                 </thead>
                 <tbody>
                 {
-                    makeTimes().map(t => {
+                    makeTimes().map(time => {
                         return (
                             <tr>
-                                <td colSpan="2">{t}</td>
-
+                                <td colSpan={2}>{time}</td>
                                 {
-                                    daysOfWeek.map(d => {
+                                    daysOfWeek.map(day => {
                                         return <td onClick={() => {
                                             if(!editable) return;
-                                            const newTimeTable = { ...timeTable };
-                                            if(newTimeTable[d].includes(t)) {
-                                                newTimeTable[d] = newTimeTable[d].filter(newT => t !== newT);
+                                            const newTimeTable:TimeTable = { ...timeTable };
+                                            if(newTimeTable[day].includes(time)) {
+                                                newTimeTable[day] = newTimeTable[day].filter(newT => time !== newT);
                                             } else {
-                                                newTimeTable[d] = [...newTimeTable[d], t];
+                                                newTimeTable[day] = [...newTimeTable[day], time];
                                             }
                                             console.log(newTimeTable);
                                             updateTimetable({
                                                 variables: {
-                                                    time: t,
-                                                    day: d
+                                                    time: time,
+                                                    day: day
                                                 },
                                                 optimisticResponse: {
                                                     __typename: "Mutation",
@@ -85,8 +91,7 @@ export default ({editable, timeTable, _id}) => {
                                                     }
                                                 }
                                             });
-                                        }} style={{backgroundColor: timeTable[d].includes(t) ? 'green' : 'white'}}>
-
+                                        }} style={{backgroundColor: timeTable[day].includes(time) ? 'green' : 'white'}}>
                                         </td>
                                     })
                                 }

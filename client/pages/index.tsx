@@ -9,14 +9,14 @@ const HELLO_QUERY = gql`
   {
     hello
   }
-`
+`;
 
 export default () => {
   const { data, error, loading } = useQuery(HELLO_QUERY);
   const { enqueueSnackbar } = useSnackbar();
-  const handleClick = React.useCallback(() => {
+  const handleClick = () => {
     enqueueSnackbar("A notification!", { variant: "success" })
-  });
+  };
 
   if(loading) {
     return <LinearProgress />;
