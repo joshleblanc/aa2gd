@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { makeStyles, Link as MuiLink } from '@material-ui/core';
 import * as React from "react";
-import {FunctionComponent} from "react";
 
 const useStyles = makeStyles({
     link: {
@@ -9,7 +8,7 @@ const useStyles = makeStyles({
     }
 });
 
-export default ({ href, children }: { href: string, children: Array<FunctionComponent>}) => {
+export default ({ href, children }: { href: string, children: Array<React.ReactNode>}) => {
     const classes = useStyles();
     return (
         <Link href={href}>

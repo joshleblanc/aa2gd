@@ -22,7 +22,7 @@
     "resolveJsonModule": true
   },
   "exclude": [
-    "node_modules"
+    "client/node_modules"
   ],
   "include": [
     "**/*.ts",
