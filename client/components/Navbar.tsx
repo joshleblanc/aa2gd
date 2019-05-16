@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/styles';
 import Link from 'next/link';
 import useDrawer from '../hooks/useDrawer';
 import useToken from "../hooks/useToken";
+import useHost from "../hooks/useHost";
 
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -28,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 export default () => {
   const { toggleDrawer } = useDrawer();
   const token = useToken();
-
+  const host = useHost();
   const classes = useStyles();
   return (
     <AppBar position="fixed" className={classes.appBar}>
@@ -45,15 +46,16 @@ export default () => {
           Famti.me
         </Typography>
         {
-          token &&
-          <Link href={'/create'}>
-            <Button component="a" href={'/create'}>
-              Create Event
+          token 
+            ? <Link href={'/create'}>
+                <Button component="a" href={'/create'}>
+                  Create Event
+                </Button>
+              </Link>
+            : <Button component="a" href={`https://discordapp.com/api/oauth2/authorize?client_id=${process.env.DISCORD_CLIENT_ID}&redirect_uri=${host + "/authenticate"}&response_type=code&scope=email identify guilds connections`}>
+                Login
               </Button>
-          </Link>
         }
-
-
       </Toolbar>
     </AppBar>
   )
