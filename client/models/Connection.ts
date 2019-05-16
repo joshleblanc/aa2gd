@@ -1,15 +1,15 @@
-import Event from './Event';
 import User from "./User";
+import Event from "./Event";
 
-type Server = {
+type Connection = {
     _id: string,
-    events: Array<Event>
-    name: string,
     id: string,
+    name: string,
     icon: string,
     iconUrl: string,
     owner: boolean,
     users: Array<User>,
+    events: Array<Event>
 }
 
-export default Server;
+export default Connection;

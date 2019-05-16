@@ -1,5 +1,12 @@
+import Server from "./Server";
+import Game from "./Game";
+
 type Event = {
-    date: string
+    _id: string,
+    name: string,
+    date: string,
+    server: Server,
+    game: Game
 }
 
 export default Event;
