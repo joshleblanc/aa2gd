@@ -7,10 +7,7 @@ const theme = createMuiTheme({
     type: 'dark',
     primary: primary,
     secondary: secondary
-  },
-  typography: {
-    useNextVariants: true,
-  },
+  }
 });
 
 export default theme;

@@ -5,8 +5,9 @@ import IconButton from "@material-ui/core/IconButton/index";
 import SelectIcon from '@material-ui/icons/Add';
 import {useState} from "react";
 import AutocompleteDialog from "./AutocompleteDialog";
+import {Theme} from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme:Theme) => ({
     displayContainer: {
         display: 'flex'
     },
@@ -14,8 +15,23 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(3)
     }
 }));
+export interface Option {
+    value: string,
+    image?: string,
+    name: string
+}
 
-const Autocomplete = ({label, options, placeholder, value, onChange, name, disabled}) => {
+interface Props {
+    label: string,
+    options: Array<Option>,
+    placeholder: string,
+    value: string,
+    onChange: Function,
+    name: string,
+    disabled?: boolean
+}
+
+const Autocomplete = ({label, options, placeholder, value, onChange, name, disabled}: Props) => {
     const [ modalOpen, setModal ] = useState(false);
     const classes = useStyles();
     const selectedItem = options.find(o => o.value === value) || { name: '' };

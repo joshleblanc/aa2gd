@@ -99,7 +99,7 @@ const resolvers = {
         },
         events: async (_, {}, { token }) => {
             if(auth(token)) {
-                const events = await Event.find({}).populate('game').populate('server').exec();
+                const events = await Event.find({}).populate('game').populate('server.tsx').exec();
                 return events;
             }
         },

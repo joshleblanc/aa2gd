@@ -1,12 +1,11 @@
 import { createHttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import fetch from 'node-fetch'
-import resolvers from '../lib/resolvers';
+import resolvers from './resolvers';
 import ApolloClient from "apollo-client";
 import { setContext } from 'apollo-link-context';
 import { onError } from "apollo-link-error";
 import Cookies from 'js-cookie';
-import Router from 'next/router';
 import gql from 'graphql-tag';
 
 const GET_TOKEN = gql`

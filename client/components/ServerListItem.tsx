@@ -4,7 +4,7 @@ import ServerAvatar from "./ServerAvatar";
 import moment from 'moment';
 import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/styles";
-import Server from "../models/Server";
+import Server from "../types/Server";
 
 const useStyles = makeStyles({
     primaryEventText: {
@@ -12,7 +12,12 @@ const useStyles = makeStyles({
     }
 });
 
-export default ({server:s, ...props}: { server: Server }) => {
+interface Props {
+    server: Server,
+    href?: string
+}
+
+export default ({server:s, ...props}:Props) => {
     const classes = useStyles();
     const futureEvents:Array<moment.Moment> = [];
     const pastEvents:Array<moment.Moment> = [];

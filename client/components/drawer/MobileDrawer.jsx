@@ -2,7 +2,7 @@ import DrawerItems from './DrawerItems';
 import useDrawer from '../../hooks/useDrawer';
 import StyledDrawer from './StyledDrawer';
 
-export default ({host}) => {
+export default () => {
     const { drawerOpen, toggleDrawer } = useDrawer();
     return(
         <StyledDrawer
@@ -13,7 +13,7 @@ export default ({host}) => {
             open={drawerOpen}
             onClose={toggleDrawer}
         >
-            <DrawerItems host={host} />
+            <DrawerItems />
         </StyledDrawer>
     )
 }

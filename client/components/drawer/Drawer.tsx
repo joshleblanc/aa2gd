@@ -1,12 +1,12 @@
 import MobileDrawer from './MobileDrawer';
 import DesktopDrawer from './DesktopDrawer';
 import { makeStyles } from '@material-ui/styles';
-import { Hidden } from '@material-ui/core';
+import {Hidden, Theme} from '@material-ui/core';
 import React from "react";
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme:Theme) => ({
   drawer: {
     [theme.breakpoints.up('sm')]: {
       width: drawerWidth,

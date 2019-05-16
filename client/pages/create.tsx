@@ -1,5 +1,5 @@
 import React from "react";
-import {Field, Form, Formik} from "formik";
+import {Field, Form, Formik, FieldProps} from "formik";
 import { TextField } from 'formik-material-ui';
 import StyledPaper from "../components/StyledPaper";
 import Typography from "@material-ui/core/Typography";
@@ -11,6 +11,9 @@ import MomentUtils from '@date-io/moment';
 import {DateTimePicker} from "@material-ui/pickers";
 import gql from 'graphql-tag';
 import {useMutation} from "react-apollo-hooks";
+import Game from "../types/Game";
+import Server from "../types/Server";
+import {MaterialUiPickersDate} from "@material-ui/pickers/typings/date";
 
 const initialValues = {
     name: '',
@@ -26,6 +29,13 @@ const CREATE_EVENT = gql`
         }
     }
 `;
+
+interface FormValues {
+    name: string,
+    server: string,
+    game: string,
+    date: Date
+}
 
 export default () => {
     const { data, error, loading } = useCurrentUser();
@@ -53,12 +63,12 @@ export default () => {
                             component={TextField}
                         />
                         <Field
-                            name={'server'}
-                            render={({field, form}) => {
+                            name={'server.tsx'}
+                            render={({field, form}: FieldProps<FormValues>) => {
                                 return(
                                     <Autocomplete
                                         {...field}
-                                        options={data.currentUser.servers.map(s => ({ value: s._id, name: s.name, image: s.iconUrl }))}
+                                        options={data.currentUser.servers.map((s:Server) => ({ value: s._id, name: s.name, image: s.iconUrl }))}
                                         label="Server"
                                         placeholder="Select a server"
                                         disabled={form.isSubmitting}
@@ -68,11 +78,11 @@ export default () => {
                         />
                         <Field
                             name="game"
-                            render={({field, form}) => {
+                            render={({field, form}: FieldProps<FormValues>) => {
                                 return(
                                     <Autocomplete
                                         {...field}
-                                        options={data.currentUser.games.map(g => ({ value: g._id, name: g.name, image: g.iconUrl }))}
+                                        options={data.currentUser.games.map((g:Game) => ({ value: g._id, name: g.name, image: g.iconUrl }))}
                                         label="Game"
                                         placeholder="Select a game"
                                         disabled={form.isSubmitting}
@@ -82,8 +92,8 @@ export default () => {
                         />
                         <Field
                             name={'date'}
-                            render={({field}) => {
-                                const onChange = e => {
+                            render={({field}:FieldProps<FormValues>) => {
+                                const onChange = (e:MaterialUiPickersDate) => {
                                     field.onChange({ target: { value: e, name: 'date' }});
                                 };
                                 return(

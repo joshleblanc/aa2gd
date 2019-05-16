@@ -9,7 +9,8 @@ type Connection = {
     iconUrl: string,
     owner: boolean,
     users: Array<User>,
-    events: Array<Event>
+    events: Array<Event>,
+    type: string
 }
 
 export default Connection;

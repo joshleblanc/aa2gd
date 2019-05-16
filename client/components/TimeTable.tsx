@@ -3,7 +3,7 @@ import React from "react";
 import {makeStyles} from "@material-ui/styles";
 import gql from "graphql-tag";
 import {useMutation} from "react-apollo-hooks";
-import TimeTable, {TimesByDay} from "../models/TimeTable";
+import TimeTable, {TimesByDay} from "../types/TimeTable";
 
 const useStyles = makeStyles({
     table: {
@@ -37,7 +37,7 @@ const daysOfWeek:Array<keyof TimesByDay> = ["Su", "Mo", "Tu", "We", "Th", "Fr", 
 interface Props {
     editable?: boolean,
     timeTable: TimeTable,
-    _id: string
+    _id?: string
 }
 
 export default ({editable, timeTable, _id}: Props) => {

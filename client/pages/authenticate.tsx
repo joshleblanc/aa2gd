@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import { useQuery, useMutation } from 'react-apollo-hooks';
 import StyledPaper from '../components/StyledPaper';
 import Cookies from 'js-cookie';
+import Router from "../types/Router";
 
 
 const GET_DISCORD_TOKEN = gql`
@@ -17,7 +18,7 @@ const SET_TOKEN = gql`
   }
 `;
 
-export default ({router}) => {
+export default ({router}: { router: Router}) => {
     const { error, loading, data} = useQuery(GET_DISCORD_TOKEN, {
         variables: {
             code: router.query.code

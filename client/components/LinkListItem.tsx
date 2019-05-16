@@ -1,7 +1,13 @@
 import Link from 'next/link';
 import { ListItem } from '@material-ui/core';
+import * as React from "react";
 
-export default ({href, children}) => {
+interface Props {
+    href: string,
+    children: React.ReactNode
+}
+
+export default ({href, children}:Props) => {
     return(
         <Link href={href}>
             <ListItem button component="a" href={href}>

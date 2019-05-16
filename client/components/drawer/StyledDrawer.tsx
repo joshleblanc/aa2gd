@@ -1,15 +1,22 @@
 import { Drawer } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import * as React from "react";
 
 
 const drawerWidth = 240;
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
     drawerPaper: {
         width: drawerWidth,
       },
-}));
+});
 
-export default ({children, ...props}) => {
+interface Props {
+    children: React.ReactNode,
+    open: boolean,
+    variant: "permanent" | "temporary" | "persistent" | undefined
+}
+
+export default ({children, ...props}:Props) => {
     const classes = useStyles();
     return(
         <Drawer
@@ -21,4 +28,4 @@ export default ({children, ...props}) => {
             {children}
         </Drawer>
     )
-}
+};

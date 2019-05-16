@@ -1,16 +1,15 @@
-import { Card, CardMedia, CardContent, Typography, Button } from '@material-ui/core';
+import {Card, CardMedia, CardContent, Typography, Theme} from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles';
-import useCurrentUser from '../hooks/useCurrentUser';
 import gql from 'graphql-tag';
-import {useMutation, useQuery} from 'react-apollo-hooks';
-import ServerList from '../components/ServerList'
+import {useQuery} from 'react-apollo-hooks';
 import ConnectionList from '../components/ConnectionList';
 import TimeTable from "../components/TimeTable";
 import StyledPaper from "../components/StyledPaper";
 import Grid from "@material-ui/core/Grid";
-import CardHeader from "@material-ui/core/CardHeader";
+import Router from "../types/Router";
+import * as React from 'react';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme:Theme) => ({
     media: {
         height: 100
     },
@@ -53,15 +52,15 @@ const GET_USER = gql`
     }
 `;
 
-export default ({router}) => {
+export default ({router}: { router: Router }) => {
     const classes = useStyles();
-    const { data, loading, error } = useQuery(GET_USER, {
-        variables: { id: router.query.id }
+    const {data, loading, error} = useQuery(GET_USER, {
+        variables: {id: router.query.id}
     });
-    if(loading) return "Loading...";
-    if(error) return "Error";
+    if (loading) return "Loading...";
+    if (error) return "Error";
     console.log(data.user);
-    return(
+    return (
         <React.Fragment>
             <Card>
                 <CardMedia
@@ -81,12 +80,12 @@ export default ({router}) => {
             <Grid container>
                 <Grid item xs={12}>
                     <StyledPaper>
-                        <TimeTable timeTable={data.user.timeTable} />
+                        <TimeTable timeTable={data.user.timeTable}/>
                     </StyledPaper>
                 </Grid>
                 <Grid item xs={12}>
                     <StyledPaper>
-                        <ConnectionList connections={data.user.connections} />
+                        <ConnectionList connections={data.user.connections}/>
                     </StyledPaper>
                 </Grid>
             </Grid>

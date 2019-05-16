@@ -13,6 +13,7 @@ import Dialog from "@material-ui/core/Dialog";
 import React, {useCallback, useMemo, useState} from "react";
 import withMobileDialog from "@material-ui/core/withMobileDialog/withMobileDialog";
 import {makeStyles} from "@material-ui/styles";
+import {Option} from "./Autocomplete";
 
 const useStyles = makeStyles({
     list: {
@@ -21,7 +22,18 @@ const useStyles = makeStyles({
     }
 });
 
-export default withMobileDialog()(({fullScreen, label, options, open, onClose, title, onSelect, name}) => {
+interface Props {
+    fullScreen: boolean,
+    label: string,
+    options: Array<Option>,
+    open: boolean,
+    title: string,
+    onClose: (event?: {}, reason?: "backdropClick"|"escapeKeyDown") => void,
+    onSelect: Function,
+    name:string
+}
+
+export default withMobileDialog()(({fullScreen, label, options, open, onClose, title, onSelect, name}:Props) => {
     const [ search, setSearch ] = useState('');
     const classes = useStyles();
 
@@ -69,7 +81,7 @@ export default withMobileDialog()(({fullScreen, label, options, open, onClose, t
                     {
                         filteredOptions.map(o => {
                             return(
-                                <ListItem dense button key={o.value} value={o.value} onClick={() => {
+                                <ListItem dense button key={o.value} onClick={() => {
                                     selectItem(o);
                                 }}>
                                     <ListItemAvatar>

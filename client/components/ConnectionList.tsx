@@ -1,13 +1,25 @@
 import FixedHeightList from "./FixedHeightList";
 import {ListItemText, ListItem, ListItemAvatar, Icon} from "@material-ui/core";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBattleNet, faSteam, faTwitch, faYoutube, faSkype, faReddit, faFacebook, faTwitter, faSpotify, faXbox } from '@fortawesome/free-brands-svg-icons';
+import { faBattleNet, faSteam, faTwitch, faYoutube, faSkype, faReddit, faFacebook, faTwitter, faSpotify, faXbox,
+    IconDefinition } from '@fortawesome/free-brands-svg-icons';
 import React from "react";
+import IConnection from "../types/Connection";
 
-const Connection = ({href, icon, name}) => (
+interface ConnectionProps {
+    href?: string,
+    icon: IconDefinition,
+    name: string
+}
+
+interface Props {
+    connections: Array<IConnection>
+}
+
+const Connection = ({href, icon, name}:ConnectionProps) => (
     <ListItem button component='a' href={href}>
         <ListItemAvatar>
-            <Icon component={'svg'}>
+            <Icon>
                 <FontAwesomeIcon icon={icon} />
             </Icon>
         </ListItemAvatar>
@@ -15,7 +27,7 @@ const Connection = ({href, icon, name}) => (
     </ListItem>
 );
 
-export default ({connections}) => {
+export default ({connections}:Props) => {
     return(
         <FixedHeightList height={200} title="Connections">
             {
