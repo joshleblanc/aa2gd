@@ -11,6 +11,7 @@ import Link from "next/link";
 import {makeStyles} from "@material-ui/styles";
 import Router from "../types/Router";
 import User from "../types/User";
+import Event from '../types/Event';
 
 const useStyles = makeStyles((theme:Theme) => ({
     nameContainer: {
@@ -37,7 +38,11 @@ const GET_SERVER = gql`
                 username
                 avatar
                 avatarUrl
-            }   
+            }
+            events {
+                _id
+                name
+            } 
         }
     }
 `;
@@ -57,7 +62,16 @@ export default ({router}: { router: Router }) => {
             </StyledPaper>
             <StyledPaper>
                 <Typography variant={"h5"}>Events</Typography>
-                <Typography variant="caption">No events have been listed!</Typography>
+                {
+                    data.server.events.length > 0 
+                        ? data.server.events.map((e:Event) => {
+                            return(
+                                <Typography key={e._id}>{e.name}</Typography>
+                            )
+                        })
+                        : <Typography variant="caption">No events have been listed :(</Typography>
+                    
+                }
             </StyledPaper>
             <StyledPaper>
                 <Typography variant="h5">Users</Typography>
