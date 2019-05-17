@@ -78,7 +78,9 @@ export default ({router}: { router: Router }) => {
                                     data.server.events.map((e:Event) => {
                                         return(
                                             <ListItem key={e._id}>
-                                                
+                                                <ListItemAvatar>
+                                                    <Avatar component="div" src={e.game.iconUrl} />
+                                                </ListItemAvatar>
                                                 <ListItemText primary={e.name} secondary={moment(parseInt(e.date)).format()} />
                                             </ListItem>
                                         )
