@@ -63,7 +63,7 @@ export default () => {
                             component={TextField}
                         />
                         <Field
-                            name={'server.tsx'}
+                            name={'server'}
                             render={({field, form}: FieldProps<FormValues>) => {
                                 return(
                                     <Autocomplete
