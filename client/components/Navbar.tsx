@@ -53,7 +53,7 @@ export default () => {
                 </Button>
               </Link>
             : <Button component="a" href={`https://discordapp.com/api/oauth2/authorize?client_id=${process.env.DISCORD_CLIENT_ID}&redirect_uri=${host + "/authenticate"}&response_type=code&scope=email identify guilds connections`}>
-                Login
+                Login with discord
               </Button>
         }
       </Toolbar>
