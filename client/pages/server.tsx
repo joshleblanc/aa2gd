@@ -12,6 +12,7 @@ import {makeStyles} from "@material-ui/styles";
 import Router from "../types/Router";
 import User from "../types/User";
 import Event from '../types/Event';
+import moment from 'moment';
 
 const useStyles = makeStyles((theme:Theme) => ({
     nameContainer: {
@@ -42,6 +43,12 @@ const GET_SERVER = gql`
             events {
                 _id
                 name
+                date
+                game {
+                    _id
+                    name
+                    iconUrl
+                }
             } 
         }
     }
@@ -54,6 +61,7 @@ export default ({router}: { router: Router }) => {
     const classes = useStyles();
     if(error) return "Error";
     if(loading) return "Loading...";
+    console.log(data.server);
     return(
         <React.Fragment>
             <StyledPaper>
@@ -64,11 +72,19 @@ export default ({router}: { router: Router }) => {
                 <Typography variant={"h5"}>Events</Typography>
                 {
                     data.server.events.length > 0 
-                        ? data.server.events.map((e:Event) => {
-                            return(
-                                <Typography key={e._id}>{e.name}</Typography>
-                            )
-                        })
+                        ? 
+                            <List>
+                                {
+                                    data.server.events.map((e:Event) => {
+                                        return(
+                                            <ListItem key={e._id}>
+                                                
+                                                <ListItemText primary={e.name} secondary={moment(parseInt(e.date)).format()} />
+                                            </ListItem>
+                                        )
+                                    })
+                                }
+                            </List>
                         : <Typography variant="caption">No events have been listed :(</Typography>
                     
                 }

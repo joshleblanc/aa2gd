@@ -106,7 +106,12 @@ const resolvers = {
         server: async (_, {id}, {token}) => {
             if (auth(token)) {
                 console.log(id);
-                const server = await Server.findOne({id}).populate('events').exec();
+                const server = await Server.findOne({id}).populate({
+                    path: 'events',
+                    populate: {
+                        path: "game"
+                    }
+                }).exec();
                 const users = await User.aggregate([{
                     $match: {
                         "servers.id": id
