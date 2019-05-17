@@ -1,19 +1,23 @@
 import React from "react";
-import {Field, Form, Formik, FieldProps} from "formik";
+import { Field, Form, Formik, FieldProps } from "formik";
 import { TextField } from 'formik-material-ui';
 import StyledPaper from "../components/StyledPaper";
 import Typography from "@material-ui/core/Typography";
-import useCurrentUser from "../hooks/useCurrentUser";
+import useCurrentUser, { GET_CURRENT_USER } from "../hooks/useCurrentUser";
 import Button from "@material-ui/core/Button";
 import Autocomplete from "../components/autocomplete/Autocomplete";
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
-import {DateTimePicker} from "@material-ui/pickers";
+import { DateTimePicker } from "@material-ui/pickers";
 import gql from 'graphql-tag';
-import {useMutation} from "react-apollo-hooks";
+import { useMutation } from "react-apollo-hooks";
 import Game from "../types/Game";
 import Server from "../types/Server";
-import {MaterialUiPickersDate} from "@material-ui/pickers/typings/date";
+import { MaterialUiPickersDate } from "@material-ui/pickers/typings/date";
+import uuid from 'uuid/v1';
+import User from '../types/User';
+import Event from '../types/Event';
+import useToken from "../hooks/useToken";
 
 const initialValues = {
     name: '',
@@ -40,16 +44,45 @@ interface FormValues {
 export default () => {
     const { data, error, loading } = useCurrentUser();
     const createEvent = useMutation(CREATE_EVENT);
-    if(error) return "Error";
-    if(loading) return "Loading...";
-    return(
+    const token = useToken();
+    if (error) return "Error";
+    if (loading) return "Loading...";
+    return (
         <MuiPickersUtilsProvider utils={MomentUtils}>
             <StyledPaper>
                 <Formik initialValues={initialValues} onSubmit={(fields, form) => {
                     createEvent({
                         variables: {
                             ...fields
-                        }
+                        },
+                        optimisticResponse: {
+                            __typename: "Mutation",
+                            createEvent: {
+                                __typename: "Event",
+                                _id: uuid(),
+                                ...fields
+                            }
+                        },
+                        update: (proxy) => {
+                            const proxyData: { currentUser: User } | null = proxy.readQuery({ query: GET_CURRENT_USER, variables: { token } });
+                            console.log(proxyData);
+                            const server = proxyData!.currentUser.servers.find((s:Server) => s._id === fields.server);
+                            const game = proxyData!.currentUser.games.find((g:Game) => g._id === fields.game);
+                            if(game && server) {
+                                const tmpEvent = {
+                                    _id: uuid(),
+                                    ...fields,
+                                    server: server,
+                                    game: game,
+                                    date: fields.date.toString()
+                                }
+                                game.events.push(tmpEvent as Event);
+                                server.events.push(tmpEvent as Event);
+                            }
+                            proxy.writeQuery({ query: GET_CURRENT_USER, data: proxyData });
+                            
+                        },
+                        refetchQueries: [{ query: GET_CURRENT_USER }]
                     });
                     console.log(fields, form);
                 }}>
@@ -64,11 +97,11 @@ export default () => {
                         />
                         <Field
                             name={'server'}
-                            render={({field, form}: FieldProps<FormValues>) => {
-                                return(
+                            render={({ field, form }: FieldProps<FormValues>) => {
+                                return (
                                     <Autocomplete
                                         {...field}
-                                        options={data.currentUser.servers.map((s:Server) => ({ value: s._id, name: s.name, image: s.iconUrl }))}
+                                        options={data.currentUser.servers.map((s: Server) => ({ value: s._id, name: s.name, image: s.iconUrl }))}
                                         label="Server"
                                         placeholder="Select a server"
                                         disabled={form.isSubmitting}
@@ -78,11 +111,11 @@ export default () => {
                         />
                         <Field
                             name="game"
-                            render={({field, form}: FieldProps<FormValues>) => {
-                                return(
+                            render={({ field, form }: FieldProps<FormValues>) => {
+                                return (
                                     <Autocomplete
                                         {...field}
-                                        options={data.currentUser.games.map((g:Game) => ({ value: g._id, name: g.name, image: g.iconUrl }))}
+                                        options={data.currentUser.games.map((g: Game) => ({ value: g._id, name: g.name, image: g.iconUrl }))}
                                         label="Game"
                                         placeholder="Select a game"
                                         disabled={form.isSubmitting}
@@ -92,11 +125,11 @@ export default () => {
                         />
                         <Field
                             name={'date'}
-                            render={({field}:FieldProps<FormValues>) => {
-                                const onChange = (e:MaterialUiPickersDate) => {
-                                    field.onChange({ target: { value: e, name: 'date' }});
+                            render={({ field }: FieldProps<FormValues>) => {
+                                const onChange = (e: MaterialUiPickersDate) => {
+                                    field.onChange({ target: { value: e, name: 'date' } });
                                 };
-                                return(
+                                return (
                                     <DateTimePicker
                                         label={"Date and Time"}
                                         onChange={onChange}

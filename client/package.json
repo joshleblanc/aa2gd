@@ -12,6 +12,7 @@
     "@types/js-cookie": "^2.2.2",
     "@types/next": "^8.0.5",
     "@types/react-dom": "^16.8.4",
+    "@types/uuid": "^3.4.4",
     "@zeit/next-css": "^1.0.1",
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-client": "^2.5.1",
