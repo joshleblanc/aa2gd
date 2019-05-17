@@ -11,8 +11,7 @@ import Link from "next/link";
 import {makeStyles} from "@material-ui/styles";
 import Router from "../types/Router";
 import User from "../types/User";
-import Event from '../types/Event';
-import moment from 'moment';
+import EventTabs from "../components/EventTabs";
 
 const useStyles = makeStyles((theme:Theme) => ({
     nameContainer: {
@@ -70,26 +69,7 @@ export default ({router}: { router: Router }) => {
             </StyledPaper>
             <StyledPaper>
                 <Typography variant={"h5"}>Events</Typography>
-                {
-                    data.server.events.length > 0 
-                        ? 
-                            <List>
-                                {
-                                    data.server.events.map((e:Event) => {
-                                        return(
-                                            <ListItem key={e._id}>
-                                                <ListItemAvatar>
-                                                    <Avatar component="div" src={e.game.iconUrl} />
-                                                </ListItemAvatar>
-                                                <ListItemText primary={e.name} secondary={moment(parseInt(e.date)).format()} />
-                                            </ListItem>
-                                        )
-                                    })
-                                }
-                            </List>
-                        : <Typography variant="caption">No events have been listed :(</Typography>
-                    
-                }
+                <EventTabs events={data.server.events}/>
             </StyledPaper>
             <StyledPaper>
                 <Typography variant="h5">Users</Typography>
