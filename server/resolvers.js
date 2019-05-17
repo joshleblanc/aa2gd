@@ -52,7 +52,7 @@ const resolvers = {
             let servers = await serversRequest.json();
 
             servers = await Promise.all(servers.map(async s => {
-                return await Server.findOneAndUpdate({id: s.id}, s, {upsert: true});
+                return await Server.findOneAndUpdate({id: s.id}, s, {upsert: true, new: true });
             }));
 
             const steamConnection = connections.find(c => c.type === 'steam');
