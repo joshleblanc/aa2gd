@@ -3,7 +3,8 @@ import * as React from "react";
 
 const useStyles = makeStyles({
     content: {
-        flexGrow: 1
+        flexGrow: 1,
+        width: '100%'
       }
 });
 

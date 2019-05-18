@@ -4,9 +4,11 @@
     <bookmark url="file://$PROJECT_DIR$/client/components/TimeTable.tsx" line="15" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa029ff1-2f60-481c-8345-30b4dc743d92" name="Default" comment=".idea stuff">
-      <change afterPath="$PROJECT_DIR$/client/hooks/useServer.ts" afterDir="false" />
+    <list default="true" id="aa029ff1-2f60-481c-8345-30b4dc743d92" name="Default" comment="move server query to hook">
+      <change afterPath="$PROJECT_DIR$/client/components/DayTabs.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/EventTabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/EventTabs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Main.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/server.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/server.tsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -38,8 +40,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/pages/server.tsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="192">
-                  <caret line="41" column="29" lean-forward="true" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
+                <state relative-caret-position="580">
+                  <caret line="58" column="49" lean-forward="true" selection-start-line="58" selection-start-column="49" selection-end-line="58" selection-end-column="49" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -48,10 +50,13 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/components/EventTabs.tsx">
+            <entry file="file://$PROJECT_DIR$/client/components/DayTabs.tsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="360">
-                  <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+                <state relative-caret-position="504">
+                  <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+                  <folding>
+                    <element signature="e#0#31#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -139,18 +144,6 @@
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/components/EventList.tsx">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="504">
-                  <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-                  <folding>
-                    <element signature="e#0#31#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/types/Server.ts">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="312">
@@ -166,7 +159,7 @@
             <entry file="file://$PROJECT_DIR$/client/pages/server.tsx">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="258">
-                  <caret line="19" column="32" lean-forward="true" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+                  <caret line="20" column="32" lean-forward="true" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -174,11 +167,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/components/drawer/DrawerItems.tsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="378">
-                  <caret line="21" column="17" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+                <state relative-caret-position="522">
+                  <caret line="27" column="34" lean-forward="true" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
                   <folding>
                     <element signature="e#0#64#0" expanded="true" />
                   </folding>
@@ -187,10 +180,22 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/server/models/event.js">
+            <entry file="file://$PROJECT_DIR$/client/components/EventTabs.tsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="24">
-                  <caret line="1" selection-start-line="1" selection-end-line="1" />
+                <state relative-caret-position="210">
+                  <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/components/Main.tsx">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="144">
+                  <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+                  <folding>
+                    <element signature="e#0#49#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -291,7 +296,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/models/Event.ts" />
         <option value="$PROJECT_DIR$/client/models/User.ts" />
         <option value="$PROJECT_DIR$/client/pages/index.tsx" />
         <option value="$PROJECT_DIR$/client/pages/profile.tsx" />
@@ -312,7 +316,6 @@
         <option value="$PROJECT_DIR$/client/components/FixedHeightList.tsx" />
         <option value="$PROJECT_DIR$/client/components/LinkButton.tsx" />
         <option value="$PROJECT_DIR$/client/components/LinkListItem.tsx" />
-        <option value="$PROJECT_DIR$/client/components/Main.tsx" />
         <option value="$PROJECT_DIR$/client/components/Navbar.tsx" />
         <option value="$PROJECT_DIR$/client/components/ServerAvatar.tsx" />
         <option value="$PROJECT_DIR$/client/components/ServerList.tsx" />
@@ -327,7 +330,6 @@
         <option value="$PROJECT_DIR$/client/pages/_app.tsx" />
         <option value="$PROJECT_DIR$/client/components/ConnectionList.tsx" />
         <option value="$PROJECT_DIR$/server/models/event.ts" />
-        <option value="$PROJECT_DIR$/client/components/EventTabs.tsx" />
         <option value="$PROJECT_DIR$/client/types/Event.ts" />
         <option value="$PROJECT_DIR$/client/components/EventList.tsx" />
         <option value="$PROJECT_DIR$/server/models/game.js" />
@@ -342,6 +344,9 @@
         <option value="$PROJECT_DIR$/client/pages/create.tsx" />
         <option value="$PROJECT_DIR$/client/components/drawer/DrawerItems.tsx" />
         <option value="$PROJECT_DIR$/client/pages/server.tsx" />
+        <option value="$PROJECT_DIR$/client/components/DayTabs.tsx" />
+        <option value="$PROJECT_DIR$/client/components/EventTabs.tsx" />
+        <option value="$PROJECT_DIR$/client/components/Main.tsx" />
       </list>
     </option>
   </component>
@@ -373,6 +378,12 @@
               <item name="aa2gd" type="b2602c69:ProjectViewProjectNode" />
               <item name="aa2gd" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aa2gd" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aa2gd" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="aa2gd" type="b2602c69:ProjectViewProjectNode" />
@@ -487,14 +498,7 @@
       <workItem from="1557958220995" duration="7376000" />
       <workItem from="1558036582479" duration="8704000" />
       <workItem from="1558182197371" duration="6268000" />
-      <workItem from="1558203102579" duration="1728000" />
-    </task>
-    <task id="LOCAL-00010" summary="Autocomplete component">
-      <created>1557071788626</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1557071788626</updated>
+      <workItem from="1558203102579" duration="2979000" />
     </task>
     <task id="LOCAL-00011" summary="removed unused style">
       <created>1557071852712</created>
@@ -832,11 +836,18 @@
       <option name="project" value="LOCAL" />
       <updated>1558187612517</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="move server query to hook">
+      <created>1558204848096</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1558204848098</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83387000" />
+    <option name="totallyTimeSpent" value="84638000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -930,7 +941,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="remove unused style" />
     <MESSAGE value="pass object to make styles instead of callback" />
     <MESSAGE value="pass callback to make styles instead of object" />
     <MESSAGE value="fix bad import for makeStyles" />
@@ -955,7 +965,8 @@
     <MESSAGE value="sort servers by num relevant events" />
     <MESSAGE value="limit num events in past events to 10" />
     <MESSAGE value=".idea stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value=".idea stuff" />
+    <MESSAGE value="move server query to hook" />
+    <option name="LAST_COMMIT_MESSAGE" value="move server query to hook" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
@@ -1044,13 +1055,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/pages/profile.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="65" column="33" lean-forward="true" selection-start-line="65" selection-start-column="33" selection-end-line="65" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/components/drawer/MobileDrawer.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -1116,16 +1120,6 @@
           <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/Main.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="22" column="1" lean-forward="true" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1315,13 +1309,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/EventTabs.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/types/Event.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1427,16 +1414,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/drawer/DrawerItems.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/pages/create.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -1464,10 +1441,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/drawer/DrawerItems.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/DayTabs.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/EventTabs.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/Main.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/pages/server.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="41" column="29" lean-forward="true" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
+        <state relative-caret-position="580">
+          <caret line="58" column="49" lean-forward="true" selection-start-line="58" selection-start-column="49" selection-end-line="58" selection-end-column="49" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
