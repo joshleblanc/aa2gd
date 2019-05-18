@@ -3,10 +3,10 @@ import Game from "./Game";
 
 type Event = {
     _id: string,
-    name: string,
+    name?: string,
     date: string,
-    server: Server,
-    game: Game
+    server?: Server,
+    game?: Game
 }
 
 export default Event;
