@@ -1,7 +1,5 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
-import {useQuery} from "react-apollo-hooks";
-import gql from 'graphql-tag';
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import List from "@material-ui/core/List";
@@ -12,6 +10,7 @@ import {makeStyles} from "@material-ui/styles";
 import Router from "../types/Router";
 import User from "../types/User";
 import EventTabs from "../components/EventTabs";
+import useServer from "../hooks/useServer";
 
 const useStyles = makeStyles((theme:Theme) => ({
     nameContainer: {
@@ -25,38 +24,8 @@ const useStyles = makeStyles((theme:Theme) => ({
     }
 }));
 
-const GET_SERVER = gql`
-    query Server($id: ID!) {
-        server(id: $id) {
-            _id
-            id
-            name    
-            iconUrl
-            users {
-                _id
-                id
-                username
-                avatar
-                avatarUrl
-            }
-            events {
-                _id
-                name
-                date
-                game {
-                    _id
-                    name
-                    iconUrl
-                }
-            } 
-        }
-    }
-`;
-
 export default ({router}: { router: Router }) => {
-    const { data, error, loading } = useQuery(GET_SERVER, {
-        variables: { id: router.query.id }
-    });
+    const { data, error, loading } = useServer(router.query.id as string);
     const classes = useStyles();
     if(error) return "Error";
     if(loading) return "Loading...";
