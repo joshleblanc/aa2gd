@@ -11,6 +11,7 @@ import Router from "../types/Router";
 import User from "../types/User";
 import EventTabs from "../components/EventTabs";
 import useServer from "../hooks/useServer";
+import DayTabs from "../components/DayTabs";
 
 const useStyles = makeStyles((theme:Theme) => ({
     nameContainer: {
@@ -46,7 +47,8 @@ export default ({router}: { router: Router }) => {
             </Grid>
             <Grid item xs={12} md={6}>
                 <StyledPaper>
-                    <Typography variant="h5">Users</Typography>
+                    <Typography variant="h5">User Availability</Typography>
+                    <DayTabs users={data.server.users} />
                     <List component="ul">
                         {
                             data.server.users.map((u:User) => {

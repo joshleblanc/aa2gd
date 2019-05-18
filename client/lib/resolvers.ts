@@ -17,7 +17,6 @@ interface Obj {
 export default {
     Mutation: {
         setToken: async (_obj: Obj, { token }: Args, { cache }: Context ) => {
-            console.log(token);
             cache.writeData({ data: { token } })
         },
         logout: async (_obj: Obj, _context: Args, { cache }: Context) => {
