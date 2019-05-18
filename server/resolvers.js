@@ -85,7 +85,6 @@ const resolvers = {
                 games
             }, {upsert: true, new: true});
 
-            console.log(connections);
             if (json.error) {
                 throw new Error("Invalid code");
             } else {
@@ -105,8 +104,7 @@ const resolvers = {
         },
         server: async (_, {id}, {token}) => {
             if (auth(token)) {
-                console.log(id);
-                const server = await Server.findOne({id}).populate({
+                const server = await Server.findOne({_id: id}).populate({
                     path: 'events',
                     populate: {
                         path: "game"
@@ -114,9 +112,11 @@ const resolvers = {
                 }).exec();
                 const users = await User.aggregate([{
                     $match: {
-                        "servers.id": id
+                        "servers": new mongoose.Types.ObjectId(id)
                     }
                 }]);
+                console.log(users);
+
                 server.users = users;
                 return server;
             } else {
@@ -124,10 +124,8 @@ const resolvers = {
             }
         },
         currentUser: async (a, {token: passedToken}, {token}) => {
-            console.log("token:", token, passedToken);
             if (token && passedToken) {
                 const decoded = jwt.verify(passedToken, process.env.JWT_SECRET);
-                console.log(decoded);
                 const r = await discord_req("users/@me", decoded.access_token);
                 const json = await r.json();
                 return User.findOne({id: json.id}).populate({

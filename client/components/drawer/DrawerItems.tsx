@@ -20,8 +20,8 @@ export default () => {
                             return (b.currentEvents!.length + b.futureEvents!.length) - (a.currentEvents!.length + a.futureEvents!.length) ;
                         }).map((s:Server) => {
                             return(
-                                <Link key={s._id} href={`/server?id=${s.id}`}>
-                                    <ServerListItem server={s} href={`/server?id=${s.id}`} />
+                                <Link key={s._id} href={`/server?id=${s._id}`}>
+                                    <ServerListItem server={s} href={`/server?id=${s._id}`} />
                                 </Link>
                             )
                         })
