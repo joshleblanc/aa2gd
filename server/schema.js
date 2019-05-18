@@ -69,6 +69,9 @@ const typeDefs = gql`
         owner: Boolean!
         users: [User]
         events: [Event]
+        currentEvents: [Event]
+        pastEvents: [Event]
+        futureEvents: [Event]
     }
 `;
 
