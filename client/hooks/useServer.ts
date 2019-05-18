@@ -14,6 +14,15 @@ const GET_SERVER = gql`
                 username
                 avatar
                 avatarUrl
+                timeTable {
+                    Mo
+                    Tu
+                    We
+                    Th
+                    Fr
+                    Sa
+                    Su
+                }
             }
             events {
                 _id
