@@ -16,7 +16,9 @@ export default () => {
             <List component="ul">
                 {
                     servers ?
-                        servers.map((s:Server) => {
+                        servers.sort((a:Server, b:Server) => {
+                            return (b.currentEvents!.length + b.futureEvents!.length) - (a.currentEvents!.length + a.futureEvents!.length) ;
+                        }).map((s:Server) => {
                             return(
                                 <Link key={s._id} href={`/server?id=${s.id}`}>
                                     <ServerListItem server={s} href={`/server?id=${s.id}`} />
