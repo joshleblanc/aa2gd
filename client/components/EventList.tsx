@@ -20,6 +20,7 @@ export default ({events}: Props) => {
         <List>
             {
                 events.map((e:Event) => {
+                    if(!e.game) return null;
                     return(
                         <ListItem key={e._id}>
                             <ListItemAvatar>
