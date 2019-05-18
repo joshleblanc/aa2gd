@@ -23,7 +23,15 @@ export const GET_CURRENT_USER = gql`
         name
         icon
         iconUrl
-        events {
+        currentEvents {
+          _id
+          date
+        }
+        pastEvents {
+          _id
+          date
+        }
+        futureEvents {
           _id
           date
         }
