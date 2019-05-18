@@ -17,7 +17,7 @@ export default ({ events }: Props) => {
     const currentDate = moment();
     events.forEach(s => {
         const date = moment(parseInt(s.date));
-        if(date.diff(currentDate, 'hours') < -3) {
+        if(date.diff(currentDate, 'hours') < -3 && pastEvents.length < 10) {
             pastEvents.push(s);
         } else if(date.isAfter(currentDate)) {
             futureEvents.push(s);
@@ -25,7 +25,6 @@ export default ({ events }: Props) => {
             currentEvents.push(s);
         }
     });
-    console.log(futureEvents, pastEvents, currentEvents);
     return(
         <React.Fragment>
             <Tabs
