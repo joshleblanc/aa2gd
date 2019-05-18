@@ -14,10 +14,8 @@ import { useMutation } from "react-apollo-hooks";
 import Game from "../types/Game";
 import Server from "../types/Server";
 import { MaterialUiPickersDate } from "@material-ui/pickers/typings/date";
-import uuid from 'uuid/v1';
-import User from '../types/User';
-import Event from '../types/Event';
 import useToken from "../hooks/useToken";
+import {useSnackbar} from "notistack";
 
 const initialValues = {
     name: '',
@@ -43,48 +41,25 @@ interface FormValues {
 
 export default () => {
     const { data, error, loading } = useCurrentUser();
+    const { enqueueSnackbar } = useSnackbar();
     const createEvent = useMutation(CREATE_EVENT);
     const token = useToken();
     if (error) return "Error";
     if (loading) return "Loading...";
+    console.log(data);
     return (
         <MuiPickersUtilsProvider utils={MomentUtils}>
             <StyledPaper>
-                <Formik initialValues={initialValues} onSubmit={(fields, form) => {
-                    createEvent({
+                <Formik initialValues={initialValues} onSubmit={async (fields, form) => {
+                    form.setSubmitting(true);
+                    await createEvent({
                         variables: {
                             ...fields
                         },
-                        optimisticResponse: {
-                            __typename: "Mutation",
-                            createEvent: {
-                                __typename: "Event",
-                                _id: uuid(),
-                                ...fields
-                            }
-                        },
-                        update: (proxy) => {
-                            const proxyData: { currentUser: User } | null = proxy.readQuery({ query: GET_CURRENT_USER, variables: { token } });
-                            console.log(proxyData);
-                            const server = proxyData!.currentUser.servers.find((s:Server) => s._id === fields.server);
-                            const game = proxyData!.currentUser.games.find((g:Game) => g._id === fields.game);
-                            if(game && server) {
-                                const tmpEvent = {
-                                    _id: uuid(),
-                                    ...fields,
-                                    server: server,
-                                    game: game,
-                                    date: fields.date.toString()
-                                }
-                                game.events.push(tmpEvent as Event);
-                                server.events.push(tmpEvent as Event);
-                            }
-                            proxy.writeQuery({ query: GET_CURRENT_USER, data: proxyData });
-                            
-                        },
-                        refetchQueries: [{ query: GET_CURRENT_USER }]
+                        refetchQueries: [{ query: GET_CURRENT_USER, variables: { token  } }]
                     });
-                    console.log(fields, form);
+                    enqueueSnackbar("Event created!", { variant: "success" });
+                    form.setSubmitting(false);
                 }}>
                     <Form>
                         <Typography variant={"h5"}>Create a new event!</Typography>
