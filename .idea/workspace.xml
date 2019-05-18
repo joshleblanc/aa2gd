@@ -6,21 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="aa029ff1-2f60-481c-8345-30b4dc743d92" name="Default" comment="typescript">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/EventList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/EventList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/EventTabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/EventTabs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/ServerListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/ServerListItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/drawer/DrawerItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/drawer/DrawerItems.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/hooks/useCurrentUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/hooks/useCurrentUser.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/create.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/server.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/server.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/types/Event.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/Event.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/types/Server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/Server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/event.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/event.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/schema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/server/yarn.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -69,11 +56,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/pages/server.tsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="426">
-                  <caret line="60" column="29" lean-forward="true" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
+                <state relative-caret-position="474">
+                  <caret line="86" column="60" lean-forward="true" selection-start-line="86" selection-start-column="60" selection-end-line="86" selection-end-column="60" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -90,11 +77,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/components/drawer/DrawerItems.tsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="336">
-                  <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+                <state relative-caret-position="240">
+                  <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
                   <folding>
                     <element signature="e#0#64#0" expanded="true" />
                   </folding>
@@ -350,10 +337,10 @@
         <option value="$PROJECT_DIR$/client/types/Server.ts" />
         <option value="$PROJECT_DIR$/server/schema.js" />
         <option value="$PROJECT_DIR$/client/components/ServerListItem.tsx" />
-        <option value="$PROJECT_DIR$/client/components/drawer/DrawerItems.tsx" />
         <option value="$PROJECT_DIR$/client/pages/create.tsx" />
         <option value="$PROJECT_DIR$/server/resolvers.js" />
         <option value="$PROJECT_DIR$/client/pages/server.tsx" />
+        <option value="$PROJECT_DIR$/client/components/drawer/DrawerItems.tsx" />
       </list>
     </option>
   </component>
@@ -492,49 +479,7 @@
       <workItem from="1557780213370" duration="6054000" />
       <workItem from="1557958220995" duration="7376000" />
       <workItem from="1558036582479" duration="8704000" />
-      <workItem from="1558182197371" duration="4754000" />
-    </task>
-    <task id="LOCAL-00001" summary="fix connection icon size">
-      <created>1556573837763</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1556573837763</updated>
-    </task>
-    <task id="LOCAL-00002" summary="wip">
-      <created>1556619019807</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1556619019807</updated>
-    </task>
-    <task id="LOCAL-00003" summary="add servers as separate collection">
-      <created>1556706693416</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1556706693416</updated>
-    </task>
-    <task id="LOCAL-00004" summary="working on user pages">
-      <created>1556750743683</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1556750743683</updated>
-    </task>
-    <task id="LOCAL-00005" summary="working on time table">
-      <created>1556795195808</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1556795195808</updated>
-    </task>
-    <task id="LOCAL-00006" summary="saving time table">
-      <created>1556972321391</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1556972321392</updated>
+      <workItem from="1558182197371" duration="4963000" />
     </task>
     <task id="LOCAL-00007" summary="fix extensions">
       <created>1556972471596</created>
@@ -823,11 +768,67 @@
       <option name="project" value="LOCAL" />
       <updated>1558045173546</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="add past/current/future serverside">
+      <created>1558187370296</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1558187370296</updated>
+    </task>
+    <task id="LOCAL-00049" summary="guard for game not existing">
+      <created>1558187394342</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1558187394342</updated>
+    </task>
+    <task id="LOCAL-00050" summary="add serverside event stuff to user query">
+      <created>1558187412757</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1558187412758</updated>
+    </task>
+    <task id="LOCAL-00051" summary="polish create experience">
+      <created>1558187438528</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1558187438528</updated>
+    </task>
+    <task id="LOCAL-00052" summary="use server side stuff for server list item">
+      <created>1558187466655</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1558187466655</updated>
+    </task>
+    <task id="LOCAL-00053" summary="fix up types for various typescript errors">
+      <created>1558187484881</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1558187484881</updated>
+    </task>
+    <task id="LOCAL-00054" summary="gridify the server page">
+      <created>1558187499595</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1558187499595</updated>
+    </task>
+    <task id="LOCAL-00055" summary=".idea stuff">
+      <created>1558187505729</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1558187505729</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80145000" />
+    <option name="totallyTimeSpent" value="80354000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -921,14 +922,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add create event mutation" />
-    <MESSAGE value="add key to server list in drawer" />
-    <MESSAGE value="fix typo" />
-    <MESSAGE value="fix autocomplete not rendering on initial ssr" />
-    <MESSAGE value="select top search result if enter pressed in autoselect" />
-    <MESSAGE value="memorize filtered options" />
-    <MESSAGE value="memoize filtered options" />
-    <MESSAGE value="remove unused styles" />
     <MESSAGE value="remove unused imports" />
     <MESSAGE value="readd button style" />
     <MESSAGE value="remove unused style" />
@@ -946,7 +939,15 @@
     <MESSAGE value="added model types" />
     <MESSAGE value="working on typescript" />
     <MESSAGE value="typescript" />
-    <option name="LAST_COMMIT_MESSAGE" value="typescript" />
+    <MESSAGE value="add past/current/future serverside" />
+    <MESSAGE value="guard for game not existing" />
+    <MESSAGE value="add serverside event stuff to user query" />
+    <MESSAGE value="polish create experience" />
+    <MESSAGE value="use server side stuff for server list item" />
+    <MESSAGE value="fix up types for various typescript errors" />
+    <MESSAGE value="gridify the server page" />
+    <MESSAGE value=".idea stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value=".idea stuff" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1429,16 +1430,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/drawer/DrawerItems.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/lib/resolvers.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -1468,10 +1459,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/pages/server.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="60" column="29" lean-forward="true" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
+        <state relative-caret-position="474">
+          <caret line="86" column="60" lean-forward="true" selection-start-line="86" selection-start-column="60" selection-end-line="86" selection-end-column="60" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/drawer/DrawerItems.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
           </folding>
         </state>
       </provider>
