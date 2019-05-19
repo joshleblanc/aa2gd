@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Field, Form, Formik, FieldProps } from "formik";
 import { TextField } from 'formik-material-ui';
 import StyledPaper from "../components/StyledPaper";
@@ -16,6 +16,8 @@ import Server from "../types/Server";
 import { MaterialUiPickersDate } from "@material-ui/pickers/typings/date";
 import useToken from "../hooks/useToken";
 import {useSnackbar} from "notistack";
+import useServer from "../hooks/useServer";
+import {FormControl, FormHelperText} from "@material-ui/core";
 
 const initialValues = {
     name: '',
@@ -41,12 +43,14 @@ interface FormValues {
 
 export default () => {
     const { data, error, loading } = useCurrentUser();
+    const [ serverId, setServerId] = useState("");
     const { enqueueSnackbar } = useSnackbar();
     const createEvent = useMutation(CREATE_EVENT);
+    const serverQuery = useServer(serverId);
     const token = useToken();
     if (error) return "Error";
     if (loading) return "Loading...";
-    console.log(data);
+    console.log(serverQuery.data);
     return (
         <MuiPickersUtilsProvider utils={MomentUtils}>
             <StyledPaper>
@@ -76,6 +80,11 @@ export default () => {
                                 return (
                                     <Autocomplete
                                         {...field}
+                                        onChange={(e:{target: { value:string }})=> {
+                                            setServerId(e.target.value);
+                                            console.log(e.target.value);
+                                            field.onChange(e);
+                                        }}
                                         options={data.currentUser.servers.map((s: Server) => ({ value: s._id, name: s.name, image: s.iconUrl }))}
                                         label="Server"
                                         placeholder="Select a server"
@@ -105,14 +114,23 @@ export default () => {
                                     field.onChange({ target: { value: e, name: 'date' } });
                                 };
                                 return (
-                                    <DateTimePicker
-                                        label={"Date and Time"}
-                                        onChange={onChange}
-                                        value={field.value}
-                                        name="date"
-                                        fullWidth
-                                        margin="normal"
-                                    />
+                                    <FormControl>
+                                        <DateTimePicker
+                                            label={"Date and Time"}
+                                            onChange={onChange}
+                                            value={field.value}
+                                            name="date"
+                                            fullWidth
+                                            margin="normal"
+                                        />
+                                        <FormHelperText>
+                                            {
+                                                serverQuery.data.server &&
+                                                    "blah"
+                                            }
+                                        </FormHelperText>
+                                    </FormControl>
+
                                 )
                             }}
                         />

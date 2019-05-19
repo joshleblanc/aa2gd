@@ -1896,9 +1896,9 @@ callsites@^2.0.0:
   integrity sha1-BuuE8A7qQT2oav/vrL/7Ngk7PFA=
 
 caniuse-lite@^1.0.30000967:
-  version "1.0.30000967"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000967.tgz#a5039577806fccee80a04aaafb2c0890b1ee2f73"
-  integrity sha512-rUBIbap+VJfxTzrM4akJ00lkvVb5/n5v3EGXfWzSH5zT8aJmGzjA8HWhJ4U6kCpzxozUSnB+yvAYDRPY6mRpgQ==
+  version "1.0.30000969"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000969.tgz#7664f571f2072657bde70b00a1fc1ba41f1942a9"
+  integrity sha512-Kus0yxkoAJgVc0bax7S4gLSlFifCa7MnSZL9p9VuS/HIKEL4seaqh28KIQAAO50cD/rJ5CiJkJFapkdDAlhFxQ==
 
 chalk@2.4.2, chalk@^2.0.0, chalk@^2.3.0, chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
@@ -2486,9 +2486,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.133:
-  version "1.3.134"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.134.tgz#550222bddac43c6bd6c445c3543a0fe8a615021d"
-  integrity sha512-C3uK2SrtWg/gSWaluLHWSHjyebVZCe4ZC0NVgTAoTq8tCR9FareRK5T7R7AS/nPZShtlEcjVMX1kQ8wi4nU68w==
+  version "1.3.135"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.135.tgz#f5799b95f2bcd8de17cde47d63392d83a4477041"
+  integrity sha512-xXLNstRdVsisPF3pL3H9TVZo2XkMILfqtD6RiWIUmDK2sFX1Bjwqmd8LBp0Kuo2FgKO63JXPoEVGm8WyYdwP0Q==
 
 elliptic@^6.0.0:
   version "6.4.1"
@@ -3862,10 +3862,10 @@ methods@~1.1.2:
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
   integrity sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4=
 
-microevent.ts@~0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/microevent.ts/-/microevent.ts-0.1.0.tgz#390748b8a515083e6b63cd5112a3f18c2fe0eba8"
-  integrity sha1-OQdIuKUVCD5rY81REqPxjC/g66g=
+microevent.ts@~0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/microevent.ts/-/microevent.ts-0.1.1.tgz#70b09b83f43df5172d0205a63025bce0f7357fa0"
+  integrity sha512-jo1OfR4TaEwd5HOrt5+tAZ9mqT4jmpNAusXtyfNzqVm9uiSYFZlKM1wYL4oU7azZW/PxQW53wM0S6OR1JHNa2g==
 
 micromatch@^3.1.10, micromatch@^3.1.4, micromatch@^3.1.8:
   version "3.1.10"
@@ -4026,9 +4026,9 @@ ms@^2.1.1:
   integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
 
 nan@^2.12.1:
-  version "2.13.2"
-  resolved "https://registry.yarnpkg.com/nan/-/nan-2.13.2.tgz#f51dc7ae66ba7d5d55e1e6d4d8092e802c9aefe7"
-  integrity sha512-TghvYc72wlMGMVMluVo9WRJc0mB8KxxF/gZ4YYFy7V2ZQX9l7rgbPg7vjS9mt6U5HXODVFVI2bOduCzwOMv/lw==
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
+  integrity sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
 
 nanomatch@^1.2.9:
   version "1.2.13"
@@ -4074,10 +4074,10 @@ next-cookies@^1.1.2:
     component-cookie "1.1.3"
     cookie "^0.3.1"
 
-next-server@8.1.1-canary.29:
-  version "8.1.1-canary.29"
-  resolved "https://registry.yarnpkg.com/next-server/-/next-server-8.1.1-canary.29.tgz#087dc346495ba4787b46146b839a67e92e901fe5"
-  integrity sha512-2isW/U/2Xh3C7iqbcm1JDfMdSyGgQ+IIygPFQrkYWVfx5tU4NzxO1SkFsudx93D3AK4BdRyruMweQUmCcqFOoA==
+next-server@8.1.1-canary.33:
+  version "8.1.1-canary.33"
+  resolved "https://registry.yarnpkg.com/next-server/-/next-server-8.1.1-canary.33.tgz#ce9ca12f4762444ef84f1fb244aa34facf9ac1aa"
+  integrity sha512-T9/tNrHTlMNB+0xpx0FMQt7kwoPYnFOJ3ZwoKwCN6HuqfZWRjROGBAWxJyAiNCeM/scO9WUksL4ACp9+OO5C2w==
   dependencies:
     amp-toolbox-optimizer "0.5.3"
     etag "1.8.1"
@@ -4090,10 +4090,10 @@ next-server@8.1.1-canary.29:
     send "0.16.1"
     url "0.11.0"
 
-next@8.1.1-canary.29:
-  version "8.1.1-canary.29"
-  resolved "https://registry.yarnpkg.com/next/-/next-8.1.1-canary.29.tgz#5796d7279b941b7c055d74e261c87030e28c6380"
-  integrity sha512-kTRtz/KG+Wp3hdmPINKkAmmLevk5Vt3uuiKIlwOuy9dGmEJG+nJOtZWaucFK+qXZwHNg3RWpxe0C84nPE5l24A==
+next@8.1.1-canary.33:
+  version "8.1.1-canary.33"
+  resolved "https://registry.yarnpkg.com/next/-/next-8.1.1-canary.33.tgz#efb1dad76f5a06d0f5ffc8a6f1e71a4c7c1231b2"
+  integrity sha512-wpKRqUSuU5UjSMB4hlZe48pmBlO0YOi350VGtQUGuXlu9qD1ighpVWtXE7r3R0S8hmUeePZ2t4AygBFiEjnrLA==
   dependencies:
     "@babel/core" "7.1.2"
     "@babel/plugin-proposal-class-properties" "7.1.0"
@@ -4121,7 +4121,7 @@ next@8.1.1-canary.29:
     launch-editor "2.2.1"
     loader-utils "1.1.0"
     mkdirp "0.5.1"
-    next-server "8.1.1-canary.29"
+    next-server "8.1.1-canary.33"
     prop-types "15.6.2"
     prop-types-exact "1.2.0"
     react-error-overlay "5.1.4"
@@ -6158,11 +6158,11 @@ worker-farm@^1.7.0:
     errno "~0.1.7"
 
 worker-rpc@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/worker-rpc/-/worker-rpc-0.1.0.tgz#5f1258dca3d617cd18ca86587f8a05ac0eebd834"
-  integrity sha1-XxJY3KPWF80YyoZYf4oFrA7r2DQ=
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/worker-rpc/-/worker-rpc-0.1.1.tgz#cb565bd6d7071a8f16660686051e969ad32f54d5"
+  integrity sha512-P1WjMrUB3qgJNI9jfmpZ/htmBEjFh//6l/5y8SD9hg1Ef5zTTVVoRjTrTEzPrNBQvmhMxkoTsjOXN10GWU7aCg==
   dependencies:
-    microevent.ts "~0.1.0"
+    microevent.ts "~0.1.1"
 
 wrappy@1:
   version "1.0.2"

@@ -48,8 +48,14 @@ export default ({users}: Props) => {
                                             const count = users.reduce((total:number, user:User) => {
                                                 return user.timeTable[day].includes(time) ? total + 1 : total;
                                             }, 0);
+                                            let color;
+                                            if(count === 0) {
+                                                color = `rgb(100,0,0)`;
+                                            } else {
+                                                color = `rgb(0, ${(users.length / count) * 100}, 0)`;
+                                            }
                                             return(
-                                                <TableCell align="center">
+                                                <TableCell align="center" style={{backgroundColor: color}}>
                                                     {count}
                                                 </TableCell>
                                             )

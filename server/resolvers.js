@@ -103,7 +103,7 @@ const resolvers = {
             }
         },
         server: async (_, {id}, {token}) => {
-            if (auth(token)) {
+            if (auth(token) && id.length > 0) {
                 const server = await Server.findOne({_id: id}).populate({
                     path: 'events',
                     populate: {

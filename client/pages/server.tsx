@@ -1,14 +1,9 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import List from "@material-ui/core/List";
 import StyledPaper from "../components/StyledPaper";
-import {Avatar, Grid, ListItemAvatar, Theme} from "@material-ui/core";
-import Link from "next/link";
+import {Avatar, Grid, Theme} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
 import Router from "../types/Router";
-import User from "../types/User";
 import EventTabs from "../components/EventTabs";
 import useServer from "../hooks/useServer";
 import DayTabs from "../components/DayTabs";
@@ -49,26 +44,6 @@ export default ({router}: { router: Router }) => {
                 <StyledPaper>
                     <Typography variant="h5">User Availability</Typography>
                     <DayTabs users={data.server.users} />
-                    <List component="ul">
-                        {
-                            data.server.users.map((u:User) => {
-                                return(
-                                    <Link href={`/user?id=${u.id}`}>
-                                        <ListItem button component="a" href={`/user?id=${u.id}`}>
-                                            <ListItemAvatar>
-                                                {
-                                                    u.avatar
-                                                        ? <Avatar component="div" src={u.avatarUrl} />
-                                                        : <Avatar component="div">{u.username.split(' ').map((c:string) => c[0])}</Avatar>
-                                                }
-                                            </ListItemAvatar>
-                                            <ListItemText primary={u.username} />
-                                        </ListItem>
-                                    </Link>
-                                )
-                            })
-                        }
-                    </List>
                 </StyledPaper>
             </Grid>
         </Grid>
