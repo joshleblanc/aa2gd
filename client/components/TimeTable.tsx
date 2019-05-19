@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 
 export const makeTimes = () => {
     const times = [];
-    for (let i = 1; i < 24; i++) {
+    for (let i = 0; i < 24; i++) {
         times.push(`${i}:00`);
     }
     return times;
