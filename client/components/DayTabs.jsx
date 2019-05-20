@@ -34,7 +34,6 @@ export default ({id, max}) => {
     if (loading || error) {
         return <Typography>Loading...</Typography>;
     }
-    console.log(data);
     const timeTable = JSON.parse(data.availableTimeTable);
     return (
         <React.Fragment>

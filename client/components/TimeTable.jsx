@@ -51,7 +51,7 @@ export default ({editable, timeTable, _id}) => {
                 <TableHead>
                     <TableRow>
                         <TableCell colSpan={2}/>
-                        {daysOfWeek.map(d => <th key={d}>{d}</th>)}
+                        {daysOfWeek.map(d => <TableCell align="center" key={d}>{d}</TableCell>)}
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -64,6 +64,7 @@ export default ({editable, timeTable, _id}) => {
                                         daysOfWeek.map(day => {
                                             return (
                                                 <TableCell
+                                                    align="center"
                                                     onClick={() => {
                                                         if (!editable) return;
                                                         const newTimeTable = {...timeTable};
