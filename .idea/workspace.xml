@@ -4,9 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/client/components/TimeTable.jsx" line="18" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa029ff1-2f60-481c-8345-30b4dc743d92" name="Default" comment="fix timetable being reset on login">
+    <list default="true" id="aa029ff1-2f60-481c-8345-30b4dc743d92" name="Default" comment="add keys to connection list items">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/ConnectionList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/ConnectionList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/TimeTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/TimeTable.jsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,13 +22,13 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/hooks/useCurrentUser.js">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/components/TimeTable.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-552">
-                  <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
+                <state relative-caret-position="282">
+                  <caret line="53" column="56" selection-start-line="53" selection-start-column="56" selection-end-line="53" selection-end-column="56" />
                   <folding>
-                    <element signature="e#0#30#0" expanded="true" />
+                    <element signature="e#0#84#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -112,7 +112,7 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/components/ConnectionList.jsx">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="677">
@@ -309,7 +309,6 @@
         <option value="$PROJECT_DIR$/client/components/ServerList.jsx" />
         <option value="$PROJECT_DIR$/client/components/ServerListItem.jsx" />
         <option value="$PROJECT_DIR$/client/components/StyledPaper.jsx" />
-        <option value="$PROJECT_DIR$/client/components/TimeTable.jsx" />
         <option value="$PROJECT_DIR$/client/hooks/useServer.js" />
         <option value="$PROJECT_DIR$/client/pages/authenticate.jsx" />
         <option value="$PROJECT_DIR$/client/pages/user.jsx" />
@@ -319,6 +318,7 @@
         <option value="$PROJECT_DIR$/server/models/user.js" />
         <option value="$PROJECT_DIR$/server/resolvers.js" />
         <option value="$PROJECT_DIR$/client/components/ConnectionList.jsx" />
+        <option value="$PROJECT_DIR$/client/components/TimeTable.jsx" />
       </list>
     </option>
   </component>
@@ -466,14 +466,7 @@
       <workItem from="1558203102579" duration="4633000" />
       <workItem from="1558270783520" duration="5244000" />
       <workItem from="1558351202266" duration="11000" />
-      <workItem from="1558353025150" duration="14356000" />
-    </task>
-    <task id="LOCAL-00027" summary="fix autocomplete not rendering on initial ssr">
-      <created>1557584394407</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1557584394407</updated>
+      <workItem from="1558353025150" duration="14449000" />
     </task>
     <task id="LOCAL-00028" summary="select top search result if enter pressed in autoselect">
       <created>1557584651692</created>
@@ -811,11 +804,18 @@
       <option name="project" value="LOCAL" />
       <updated>1558376401340</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="add keys to connection list items">
+      <created>1558376529621</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1558376529621</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105903000" />
+    <option name="totallyTimeSpent" value="105996000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -909,7 +909,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add past/current/future serverside" />
     <MESSAGE value="guard for game not existing" />
     <MESSAGE value="add serverside event stuff to user query" />
     <MESSAGE value="polish create experience" />
@@ -934,7 +933,8 @@
     <MESSAGE value="blue primary color" />
     <MESSAGE value="gutters after text" />
     <MESSAGE value="fix timetable being reset on login" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix timetable being reset on login" />
+    <MESSAGE value="add keys to connection list items" />
+    <option name="LAST_COMMIT_MESSAGE" value="add keys to connection list items" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
@@ -1270,16 +1270,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/TimeTable.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="73" column="64" selection-start-line="73" selection-start-column="64" selection-end-line="73" selection-end-column="64" />
-          <folding>
-            <element signature="e#0#84#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/hooks/useServer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="522">
@@ -1455,6 +1445,16 @@
           <caret line="59" column="79" selection-start-line="59" selection-start-column="79" selection-end-line="59" selection-end-column="79" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/TimeTable.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="53" column="56" selection-start-line="53" selection-start-column="56" selection-end-line="53" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#84#0" expanded="true" />
           </folding>
         </state>
       </provider>
