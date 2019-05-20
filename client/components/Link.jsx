@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     }
 });
 
-export default ({ href, children }: { href: string, children: Array<React.ReactNode>}) => {
+export default ({ href, children }) => {
     const classes = useStyles();
     return (
         <Link href={href}>

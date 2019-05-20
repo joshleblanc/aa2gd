@@ -1,12 +1,7 @@
 import * as React from 'react';
 import { List, ListItem, ListItemAvatar, Avatar, ListItemText, Typography } from '@material-ui/core';
 import moment from 'moment';
-import Event from '../types/Event';
 import { makeStyles } from '@material-ui/styles';
-
-interface Props {
-    events: Array<Event>
-}
 
 const useStyles = makeStyles({
     primaryEventText: {
@@ -14,12 +9,12 @@ const useStyles = makeStyles({
     }
 });
 
-export default ({events}: Props) => {
+export default ({events}) => {
     const classes = useStyles();
     return(
         <List>
             {
-                events.map((e:Event) => {
+                events.map((e) => {
                     if(!e.game) return null;
                     return(
                         <ListItem key={e._id}>

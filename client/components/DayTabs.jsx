@@ -5,11 +5,6 @@ import {makeStyles} from "@material-ui/styles";
 import gql from "graphql-tag";
 import {useQuery} from "react-apollo-hooks";
 
-interface Props {
-    id: string,
-    max: number
-}
-
 const days = [
     "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa",
 ];
@@ -30,7 +25,7 @@ const GET_AVAILABLE_TIMETABLE = gql`
     }
 `;
 
-export default ({id, max}: Props) => {
+export default ({id, max}) => {
     const times = makeTimes();
     const classes = useStyles();
     const { data, loading, error } = useQuery(GET_AVAILABLE_TIMETABLE, {
@@ -48,7 +43,7 @@ export default ({id, max}: Props) => {
                     <TableRow>
                         <TableCell colSpan={2} />
                         {
-                            days.map((d:string) => (
+                            days.map(d => (
                                 <TableCell align="center">
                                     {d}
                                 </TableCell>
@@ -58,13 +53,12 @@ export default ({id, max}: Props) => {
                 </TableHead>
                 <TableBody>
                     {
-                        times.map((time:string) => {
+                        times.map(time => {
                             return(
                                 <TableRow hover>
                                     <TableCell colSpan={2}>{time}</TableCell>
                                     {
-                                        days.map((day:string) => {
-                                            console.log(day);
+                                        days.map(day => {
                                             const count = timeTable[time][day];
                                             let color;
                                             if(count === 0) {

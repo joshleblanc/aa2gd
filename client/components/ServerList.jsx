@@ -1,17 +1,12 @@
 import FixedHeightList from './FixedHeightList';
 import React from "react";
 import ServerListItem from "./ServerListItem";
-import Server from "../types/Server";
 
-interface Props {
-    servers: Array<Server>
-}
-
-export default ({ servers }:Props) => {
+export default ({ servers }) => {
     return (
         <FixedHeightList height={835} title="Servers">
             { 
-                servers.map((s:Server) => {
+                servers.map(s => {
                     return <ServerListItem server={s} key={s.id}/>
                 })
             }

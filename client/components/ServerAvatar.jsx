@@ -1,12 +1,7 @@
 import {Avatar} from "@material-ui/core";
 import React from "react";
-import Server from "../types/Server";
 
-interface Props {
-    server: Server
-}
-
-export default ({server}:Props) => {
+export default ({server}) => {
     return (
         <React.Fragment>
             {

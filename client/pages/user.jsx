@@ -9,7 +9,7 @@ import Grid from "@material-ui/core/Grid";
 import Router from "../types/Router";
 import * as React from 'react';
 
-const useStyles = makeStyles((theme:Theme) => ({
+const useStyles = makeStyles(theme => ({
     media: {
         height: 100
     },
@@ -52,14 +52,13 @@ const GET_USER = gql`
     }
 `;
 
-export default ({router}: { router: Router }) => {
+export default ({router}) => {
     const classes = useStyles();
     const {data, loading, error} = useQuery(GET_USER, {
         variables: {id: router.query.id}
     });
     if (loading) return "Loading...";
     if (error) return "Error";
-    console.log(data.user);
     return (
         <React.Fragment>
             <Card>

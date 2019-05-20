@@ -7,13 +7,7 @@ const useStyles = makeStyles({
     }
 });
 
-interface Props {
-    children: React.ReactNode,
-    title: string,
-    height: number
-}
-
-const FixedHeightList = ({children, title, height}:Props) => {
+const FixedHeightList = ({children, title, height}) => {
     const classes = useStyles();
     return(
         <div>

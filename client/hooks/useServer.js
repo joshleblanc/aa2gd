@@ -29,7 +29,7 @@ const GET_SERVER = gql`
     }
 `;
 
-export default (id:string) => {
+export default (id) => {
     return useQuery(GET_SERVER, {
         variables: { id }
     });

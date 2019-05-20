@@ -10,13 +10,7 @@ const useStyles = makeStyles({
       },
 });
 
-interface Props {
-    children: React.ReactNode,
-    open: boolean,
-    variant: "permanent" | "temporary" | "persistent" | undefined
-}
-
-export default ({children, ...props}:Props) => {
+export default ({children, ...props}) => {
     const classes = useStyles();
     return(
         <Drawer

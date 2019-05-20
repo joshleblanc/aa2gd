@@ -5,7 +5,6 @@ import LinkListItem from "../LinkListItem";
 import useServers from "../../hooks/useServers";
 import ServerListItem from "../ServerListItem";
 import Link from 'next/link';
-import Server from "../../types/Server";
 
 export default () => {
     const servers = useServers();
@@ -16,9 +15,9 @@ export default () => {
             <List component="ul">
                 {
                     servers ?
-                        servers.sort((a:Server, b:Server) => {
-                            return (b.currentEvents!.length + b.futureEvents!.length) - (a.currentEvents!.length + a.futureEvents!.length) ;
-                        }).map((s:Server) => {
+                        servers.sort((a, b) => {
+                            return (b.currentEvents.length + b.futureEvents.length) - (a.currentEvents.length + a.futureEvents.length) ;
+                        }).map(s => {
                             return(
                                 <Link key={s._id} href={`/server?id=${s._id}`}>
                                     <ServerListItem server={s} href={`/server?id=${s._id}`} />

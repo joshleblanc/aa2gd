@@ -4,7 +4,7 @@ import StyledPaper from "./StyledPaper";
 import React from "react";
 import {makeStyles} from "@material-ui/styles";
 
-const useStyles = makeStyles((theme:Theme) => ({
+const useStyles = makeStyles(theme => ({
     nameContainer: {
         display: 'flex'
     },
@@ -16,13 +16,7 @@ const useStyles = makeStyles((theme:Theme) => ({
     }
 }));
 
-interface Props {
-    imgUrl: string,
-    title: string,
-    children?: React.ReactNode
-}
-
-export default ({imgUrl, title, children}: Props) => {
+export default ({imgUrl, title, children}) => {
     const classes = useStyles();
     return(
         <StyledPaper className={classes.nameContainer}>

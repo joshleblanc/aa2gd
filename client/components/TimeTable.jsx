@@ -3,7 +3,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import gql from "graphql-tag";
 import { useMutation } from "react-apollo-hooks";
-import TimeTable, { TimesByDay } from "../types/TimeTable";
 import TableHead from "@material-ui/core/TableHead";
 
 const useStyles = makeStyles({
@@ -36,15 +35,9 @@ const UPDATE_TIMETABLE = gql`
     }
 `;
 
-const daysOfWeek: Array<keyof TimesByDay> = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+const daysOfWeek = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
-interface Props {
-    editable?: boolean,
-    timeTable: TimeTable,
-    _id?: string
-}
-
-export default ({ editable, timeTable, _id }: Props) => {
+export default ({ editable, timeTable, _id }) => {
     const updateTimetable = useMutation(UPDATE_TIMETABLE);
     const classes = useStyles();
     return (
@@ -71,7 +64,7 @@ export default ({ editable, timeTable, _id }: Props) => {
                                         daysOfWeek.map(day => {
                                             return <TableCell onClick={() => {
                                                 if (!editable) return;
-                                                const newTimeTable: TimeTable = { ...timeTable };
+                                                const newTimeTable = { ...timeTable };
                                                 if (newTimeTable[day].includes(time)) {
                                                     newTimeTable[day] = newTimeTable[day].filter(newT => time !== newT);
                                                 } else {

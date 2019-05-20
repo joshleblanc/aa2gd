@@ -1,19 +1,14 @@
 import * as React from 'react';
-import Event from '../types/Event';
 import {Tabs, Tab} from '@material-ui/core';
 import {useState} from 'react';
 import EventList from './EventList';
 import moment from 'moment';
 
-interface Props {
-    events: Array<Event>
-}
-
-export default ({events}: Props) => {
+export default ({events}) => {
     const [value, setValue] = useState(0);
-    const futureEvents: Array<Event> = [];
-    const pastEvents: Array<Event> = [];
-    const currentEvents: Array<Event> = [];
+    const futureEvents = [];
+    const pastEvents = [];
+    const currentEvents = [];
     const currentDate = moment();
     events.forEach(s => {
         const date = moment(parseInt(s.date));
