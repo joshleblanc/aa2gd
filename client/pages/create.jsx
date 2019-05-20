@@ -16,6 +16,13 @@ import {useSnackbar} from "notistack";
 import {FormControl, FormHelperText} from "@material-ui/core";
 import moment from 'moment';
 import * as Yup from 'yup';
+import {makeStyles} from "@material-ui/styles";
+
+const useStyles = makeStyles(theme => ({
+   submitButton: {
+       marginTop: theme.spacing(2)
+   }
+}));
 
 const initialValues = {
     name: '',
@@ -56,7 +63,7 @@ export default () => {
             date: date.format()
         }
     });
-    console.log(availableUsersQuery);
+    const classes = useStyles();
     const {enqueueSnackbar} = useSnackbar();
     const createEvent = useMutation(CREATE_EVENT);
     const token = useToken();
@@ -170,6 +177,7 @@ export default () => {
                                     }}
                                 />
                                 <Button
+                                    className={classes.submitButton}
                                     disabled={isSubmitting}
                                     onClick={submitForm}
                                 >Submit</Button>

@@ -4,7 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/client/components/TimeTable.jsx" line="18" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa029ff1-2f60-481c-8345-30b4dc743d92" name="Default" comment="fix misisng material themes on some components">
+    <list default="true" id="aa029ff1-2f60-481c-8345-30b4dc743d92" name="Default" comment="general polish to create form">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/create.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/create.jsx" afterDir="false" />
     </list>
@@ -130,8 +130,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/pages/create.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="450">
-                  <caret line="147" column="58" lean-forward="true" selection-start-line="147" selection-start-column="58" selection-end-line="147" selection-end-column="58" />
+                <state relative-caret-position="408">
+                  <caret line="35" column="36" lean-forward="true" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
                 </state>
               </provider>
             </entry>
@@ -152,7 +152,7 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/components/Main.jsx">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="168">
@@ -164,11 +164,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/components/autocomplete/Autocomplete.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="432">
-                  <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+                <state relative-caret-position="618">
+                  <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -219,7 +219,7 @@
             <entry file="file://$PROJECT_DIR$/client/pages/create.jsx">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="882">
-                  <caret line="175" column="16" selection-start-line="175" selection-start-column="16" selection-end-line="175" selection-end-column="16" />
+                  <caret line="185" column="16" selection-start-line="185" selection-start-column="16" selection-end-line="185" selection-end-column="16" />
                 </state>
               </provider>
             </entry>
@@ -304,7 +304,6 @@
         <option value="$PROJECT_DIR$/client/components/DrawerButton.jsx" />
         <option value="$PROJECT_DIR$/server/schema.js" />
         <option value="$PROJECT_DIR$/client/components/autocomplete/AutocompleteDialog.jsx" />
-        <option value="$PROJECT_DIR$/client/components/autocomplete/Autocomplete.jsx" />
         <option value="$PROJECT_DIR$/client/components/drawer/DrawerItems.jsx" />
         <option value="$PROJECT_DIR$/client/components/drawer/DrawerToolbar.jsx" />
         <option value="$PROJECT_DIR$/client/components/drawer/StyledDrawer.jsx" />
@@ -330,6 +329,7 @@
         <option value="$PROJECT_DIR$/client/components/ConnectionList.jsx" />
         <option value="$PROJECT_DIR$/client/components/DayTabs.jsx" />
         <option value="$PROJECT_DIR$/client/components/TimeTable.jsx" />
+        <option value="$PROJECT_DIR$/client/components/autocomplete/Autocomplete.jsx" />
         <option value="$PROJECT_DIR$/client/pages/create.jsx" />
       </list>
     </option>
@@ -478,21 +478,7 @@
       <workItem from="1558203102579" duration="4633000" />
       <workItem from="1558270783520" duration="5244000" />
       <workItem from="1558351202266" duration="11000" />
-      <workItem from="1558353025150" duration="14686000" />
-    </task>
-    <task id="LOCAL-00031" summary="remove unused imports">
-      <created>1557584961774</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1557584961774</updated>
-    </task>
-    <task id="LOCAL-00032" summary="readd button style">
-      <created>1557585027068</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1557585027068</updated>
+      <workItem from="1558353025150" duration="15152000" />
     </task>
     <task id="LOCAL-00033" summary="remove unused style">
       <created>1557585056360</created>
@@ -823,11 +809,25 @@
       <option name="project" value="LOCAL" />
       <updated>1558376805932</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="make datetime control fullwidth">
+      <created>1558376862168</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1558376862168</updated>
+    </task>
+    <task id="LOCAL-00081" summary="general polish to create form">
+      <created>1558377115319</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1558377115319</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106233000" />
+    <option name="totallyTimeSpent" value="106699000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -921,8 +921,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="use server side stuff for server list item" />
-    <MESSAGE value="fix up types for various typescript errors" />
     <MESSAGE value="gridify the server page" />
     <MESSAGE value="sort servers by num relevant events" />
     <MESSAGE value="limit num events in past events to 10" />
@@ -946,7 +944,9 @@
     <MESSAGE value="added keys to timetable maps" />
     <MESSAGE value="added keys to daytabs maps" />
     <MESSAGE value="fix misisng material themes on some components" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix misisng material themes on some components" />
+    <MESSAGE value="make datetime control fullwidth" />
+    <MESSAGE value="general polish to create form" />
+    <option name="LAST_COMMIT_MESSAGE" value="general polish to create form" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
@@ -1186,16 +1186,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/autocomplete/Autocomplete.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -1444,16 +1434,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/Main.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/components/TimeTable.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -1464,10 +1444,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/Main.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/autocomplete/Autocomplete.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="618">
+          <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/pages/create.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="147" column="58" lean-forward="true" selection-start-line="147" selection-start-column="58" selection-end-line="147" selection-end-column="58" />
+        <state relative-caret-position="408">
+          <caret line="35" column="36" lean-forward="true" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
         </state>
       </provider>
     </entry>
