@@ -8,10 +8,10 @@ export default () => {
         <Grid container>
             <Grid item xs={12}>
                 <StyledPaper>
-                    <Typography variant="h6">
+                    <Typography variant="h6" gutterBottom>
                         Login to get started
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography variant="body2" gutterBottom>
                         Sign in with discord and create events for any of the channels you're apart of.
                         Enter your availability to let event creators know when you're available.
                     </Typography>
