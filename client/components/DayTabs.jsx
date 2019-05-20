@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     }
 });
 
-const GET_AVAILABLE_TIMETABLE = gql`    
+const GET_AVAILABLE_TIMETABLE = gql`
     query AvailableTimeTable($id: ID!) {
         availableTimeTable(id: $id)
     }
@@ -28,10 +28,10 @@ const GET_AVAILABLE_TIMETABLE = gql`
 export default ({id, max}) => {
     const times = makeTimes();
     const classes = useStyles();
-    const { data, loading, error } = useQuery(GET_AVAILABLE_TIMETABLE, {
-        variables: { id }
+    const {data, loading, error} = useQuery(GET_AVAILABLE_TIMETABLE, {
+        variables: {id}
     });
-    if(loading || error) {
+    if (loading || error) {
         return <Typography>Loading...</Typography>;
     }
     console.log(data);
@@ -41,10 +41,10 @@ export default ({id, max}) => {
             <Table className={classes.table} size="small">
                 <TableHead>
                     <TableRow>
-                        <TableCell colSpan={2} />
+                        <TableCell colSpan={2}/>
                         {
                             days.map(d => (
-                                <TableCell align="center">
+                                <TableCell align="center" key={d}>
                                     {d}
                                 </TableCell>
                             ))
@@ -54,20 +54,21 @@ export default ({id, max}) => {
                 <TableBody>
                     {
                         times.map(time => {
-                            return(
-                                <TableRow hover>
+                            return (
+                                <TableRow hover key={time}>
                                     <TableCell colSpan={2}>{time}</TableCell>
                                     {
                                         days.map(day => {
                                             const count = timeTable[time][day];
                                             let color;
-                                            if(count === 0) {
-                                                color = `rgb(100,0,0)`;
+                                            if (count === 0) {
+                                                color = `rgb(100, 0, 0)`;
                                             } else {
                                                 color = `rgb(0, ${(max / count) * 100}, 0)`;
                                             }
-                                            return(
-                                                <TableCell align="center" style={{backgroundColor: color}} className={classes.cell}>
+                                            return (
+                                                <TableCell key={day} align="center" style={{backgroundColor: color}}
+                                                           className={classes.cell}>
                                                     {count}
                                                 </TableCell>
                                             )
