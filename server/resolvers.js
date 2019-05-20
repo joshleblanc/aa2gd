@@ -50,11 +50,15 @@ const resolvers = {
             }
             return null;
         },
-        availableUsers: async (_, {id, date}, {token}) => {
-            if (auth(token) && id) {
+        availableUsers: async (_, {serverId, gameId, date}, {token}) => {
+            if (auth(token) && serverId && gameId) {
                 const users = await User.aggregate([{
                     $match: {
-                        "servers": new mongoose.Types.ObjectId(id)
+                        "servers": new mongoose.Types.ObjectId(serverId)
+                    }
+                }, {
+                    $match: {
+                        "games": new mongoose.Types.ObjectId(gameId)
                     }
                 }]);
                 const momentDate = moment(date);
@@ -135,7 +139,7 @@ const resolvers = {
         },
         events: async (_, {}, {token}) => {
             if (auth(token)) {
-                const events = await Event.find({}).populate('game').populate('server.jsx.tsx').exec();
+                const events = await Event.find({}).populate('game').populate('server').exec();
                 return events;
             }
         },

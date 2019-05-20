@@ -7,7 +7,7 @@ const typeDefs = gql`
         server(id: ID!): Server
         user(id: ID!): User
         events: [Event]!
-        availableUsers(id: ID!, date: String!): String!
+        availableUsers(serverId: ID!, gameId: ID!, date: String!): String!
         availableTimeTable(id: ID!): String
     }
     type Mutation {

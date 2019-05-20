@@ -1,8 +1,9 @@
-import MenuIcon from "@material-ui/core/SvgIcon/SvgIcon";
+import MenuIcon from "@material-ui/icons/Menu";
 import {IconButton} from "@material-ui/core";
 import React from "react";
 import useDrawer from "../hooks/useDrawer";
 import {makeStyles} from "@material-ui/styles";
+import useToken from "../hooks/useToken";
 
 const useStyles = makeStyles(theme => ({
     menuButton: {
@@ -15,7 +16,9 @@ const useStyles = makeStyles(theme => ({
 
 export default () => {
     const { toggleDrawer } = useDrawer();
+    const token = useToken();
     const classes = useStyles();
+    if(!token) return null;
     return(
         <IconButton
             color="inherit"
