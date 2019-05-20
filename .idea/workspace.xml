@@ -4,10 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/client/components/TimeTable.jsx" line="18" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa029ff1-2f60-481c-8345-30b4dc743d92" name="Default" comment="gutters after text">
+    <list default="true" id="aa029ff1-2f60-481c-8345-30b4dc743d92" name="Default" comment="fix timetable being reset on login">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/resolvers.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/resolvers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/ConnectionList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/ConnectionList.jsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -69,27 +68,6 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/hooks/useDrawer.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="432">
-                  <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
-                  <folding>
-                    <element signature="e#0#59#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/hooks/useHost.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
-                  <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/lib/resolvers.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="48">
@@ -113,11 +91,35 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/server/resolvers.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="648">
                   <caret line="129" column="10" lean-forward="true" selection-start-line="129" selection-start-column="10" selection-end-line="129" selection-end-column="10" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/pages/profile.jsx">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="504">
+                  <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
+                  <folding>
+                    <element signature="e#0#41#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/components/ConnectionList.jsx">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="677">
+                  <caret line="59" column="79" selection-start-line="59" selection-start-column="79" selection-end-line="59" selection-end-column="79" />
+                  <folding>
+                    <element signature="e#0#48#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -295,7 +297,6 @@
         <option value="$PROJECT_DIR$/client/components/drawer/DrawerItems.jsx" />
         <option value="$PROJECT_DIR$/client/components/drawer/DrawerToolbar.jsx" />
         <option value="$PROJECT_DIR$/client/components/drawer/StyledDrawer.jsx" />
-        <option value="$PROJECT_DIR$/client/components/ConnectionList.jsx" />
         <option value="$PROJECT_DIR$/client/components/DayTabs.jsx" />
         <option value="$PROJECT_DIR$/client/components/EventList.jsx" />
         <option value="$PROJECT_DIR$/client/components/EventTabs.jsx" />
@@ -317,6 +318,7 @@
         <option value="$PROJECT_DIR$/client/lib/theme.js" />
         <option value="$PROJECT_DIR$/server/models/user.js" />
         <option value="$PROJECT_DIR$/server/resolvers.js" />
+        <option value="$PROJECT_DIR$/client/components/ConnectionList.jsx" />
       </list>
     </option>
   </component>
@@ -464,14 +466,7 @@
       <workItem from="1558203102579" duration="4633000" />
       <workItem from="1558270783520" duration="5244000" />
       <workItem from="1558351202266" duration="11000" />
-      <workItem from="1558353025150" duration="14222000" />
-    </task>
-    <task id="LOCAL-00026" summary="fix typo">
-      <created>1557582678669</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1557582678669</updated>
+      <workItem from="1558353025150" duration="14356000" />
     </task>
     <task id="LOCAL-00027" summary="fix autocomplete not rendering on initial ssr">
       <created>1557584394407</created>
@@ -809,11 +804,18 @@
       <option name="project" value="LOCAL" />
       <updated>1558376128352</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="fix timetable being reset on login">
+      <created>1558376401340</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1558376401340</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105769000" />
+    <option name="totallyTimeSpent" value="105903000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -907,7 +909,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="typescript" />
     <MESSAGE value="add past/current/future serverside" />
     <MESSAGE value="guard for game not existing" />
     <MESSAGE value="add serverside event stuff to user query" />
@@ -932,7 +933,8 @@
     <MESSAGE value="fix global" />
     <MESSAGE value="blue primary color" />
     <MESSAGE value="gutters after text" />
-    <option name="LAST_COMMIT_MESSAGE" value="gutters after text" />
+    <MESSAGE value="fix timetable being reset on login" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix timetable being reset on login" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
@@ -1021,16 +1023,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/components/Navbar.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="34" column="18" lean-forward="true" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/pages/_app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="478">
@@ -1129,16 +1121,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
           <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/ConnectionList.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1454,6 +1436,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="648">
           <caret line="129" column="10" lean-forward="true" selection-start-line="129" selection-start-column="10" selection-end-line="129" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/profile.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/ConnectionList.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="677">
+          <caret line="59" column="79" selection-start-line="59" selection-start-column="79" selection-end-line="59" selection-end-column="79" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
