@@ -43,7 +43,7 @@ export default ({router}: { router: Router }) => {
             <Grid item xs={12} md={6}>
                 <StyledPaper>
                     <Typography variant="h5">User Availability</Typography>
-                    <DayTabs users={data.server.users} />
+                    <DayTabs id={data.server._id} max={data.server.users.length} />
                 </StyledPaper>
             </Grid>
         </Grid>

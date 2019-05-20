@@ -1,15 +1,17 @@
 import * as React from "react";
-import { Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
-import User from "../types/User";
+import {Table, TableBody, TableCell, TableHead, TableRow, Typography} from "@material-ui/core";
 import {makeTimes} from "./TimeTable";
 import {makeStyles} from "@material-ui/styles";
+import gql from "graphql-tag";
+import {useQuery} from "react-apollo-hooks";
 
 interface Props {
-    users: Array<User>
+    id: string,
+    max: number
 }
 
 const days = [
-    "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"
+    "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa",
 ];
 
 const useStyles = makeStyles({
@@ -19,9 +21,23 @@ const useStyles = makeStyles({
     }
 });
 
-export default ({users}: Props) => {
+const GET_AVAILABLE_TIMETABLE = gql`    
+    query AvailableTimeTable($id: ID!) {
+        availableTimeTable(id: $id)
+    }
+`;
+
+export default ({id, max}: Props) => {
     const times = makeTimes();
     const classes = useStyles();
+    const { data, loading, error } = useQuery(GET_AVAILABLE_TIMETABLE, {
+        variables: { id }
+    });
+    if(loading || error) {
+        return <Typography>Loading...</Typography>;
+    }
+    console.log(data);
+    const timeTable = JSON.parse(data.availableTimeTable);
     return (
         <React.Fragment>
             <Table className={classes.table} size="small">
@@ -45,14 +61,13 @@ export default ({users}: Props) => {
                                     <TableCell colSpan={2}>{time}</TableCell>
                                     {
                                         days.map((day:string) => {
-                                            const count = users.reduce((total:number, user:User) => {
-                                                return user.timeTable[day].includes(time) ? total + 1 : total;
-                                            }, 0);
+                                            console.log(day);
+                                            const count = timeTable[time][day];
                                             let color;
                                             if(count === 0) {
                                                 color = `rgb(100,0,0)`;
                                             } else {
-                                                color = `rgb(0, ${(users.length / count) * 100}, 0)`;
+                                                color = `rgb(0, ${(max / count) * 100}, 0)`;
                                             }
                                             return(
                                                 <TableCell align="center" style={{backgroundColor: color}}>

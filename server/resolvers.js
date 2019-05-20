@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const fetch = require('node-fetch');
 const FormData = require('form-data');
 const mongoose = require("mongoose");
+const moment = require('moment');
 
 const Server = mongoose.model('Server');
 const Game = mongoose.model('Game');
@@ -27,8 +28,44 @@ function auth(token) {
 
 const resolvers = {
     Query: {
-        hello: (root, args, context) => {
-            return "Hello, world!";
+        availableTimeTable: async (_, {id}, {token}) => {
+            if (auth(token) && id) {
+                const users = await User.aggregate([{
+                    $match: {
+                        "servers": new mongoose.Types.ObjectId(id)
+                    }
+                }]);
+                const times = {};
+                for(let i = 0; i < 24; i++) {
+                    const timeString = `${i}:00`;
+                    times[timeString] = times[timeString] || {};
+                    moment.weekdaysMin().forEach(day => {
+                        times[timeString][day] = users.reduce((total, user) => {
+                            return user.timeTable[day].includes(timeString) ? total + 1 : total;
+                        }, 0);
+                    });
+                    console.log(times);
+                }
+                return JSON.stringify(times);
+            }
+            return null;
+        },
+        availableUsers: async (_, {id, date}, {token}) => {
+            if (auth(token) && id) {
+                const users = await User.aggregate([{
+                    $match: {
+                        "servers": new mongoose.Types.ObjectId(id)
+                    }
+                }]);
+                const momentDate = moment(date);
+                const day = moment.weekdaysMin()[momentDate.day()];
+                const hour = momentDate.hour();
+                return users.reduce((total, user) => {
+                    return user.timeTable[day].includes(`${hour}:00`) ? total + 1 : total;
+                }, 0).toString();
+            }
+
+            return "";
         },
         getDiscordToken: async (_, {code}, {origin}) => {
             const data = new FormData();
@@ -52,7 +89,7 @@ const resolvers = {
             let servers = await serversRequest.json();
 
             servers = await Promise.all(servers.map(async s => {
-                return await Server.findOneAndUpdate({id: s.id}, s, {upsert: true, new: true });
+                return await Server.findOneAndUpdate({id: s.id}, s, {upsert: true, new: true});
             }));
 
             const steamConnection = connections.find(c => c.type === 'steam');
@@ -65,7 +102,7 @@ const resolvers = {
 
 
             games = await Promise.all(games.map(async g => {
-                return await Game.findOneAndUpdate({ appid: g.appid }, g, { upsert: true, new: true });
+                return await Game.findOneAndUpdate({appid: g.appid}, g, {upsert: true, new: true});
             }));
 
             const newUser = await User.findOneAndUpdate({id: user.id}, {
@@ -96,8 +133,8 @@ const resolvers = {
                 return await User.findOne({id});
             }
         },
-        events: async (_, {}, { token }) => {
-            if(auth(token)) {
+        events: async (_, {}, {token}) => {
+            if (auth(token)) {
                 const events = await Event.find({}).populate('game').populate('server.tsx').exec();
                 return events;
             }
@@ -130,10 +167,10 @@ const resolvers = {
                 const json = await r.json();
                 return User.findOne({id: json.id}).populate({
                     path: 'servers',
-                    populate: { path: 'events'}
+                    populate: {path: 'events'}
                 }).populate({
                     path: 'games',
-                    populate: { path: 'events'}
+                    populate: {path: 'events'}
                 }).exec();
             } else {
                 return null;
@@ -142,11 +179,11 @@ const resolvers = {
         }
     },
     Mutation: {
-        createEvent: async (_, fields, { token }) => {
+        createEvent: async (_, fields, {token}) => {
             const record = auth(token);
-            if(record) {
-                const game = await Game.findOne({ _id: fields.game });
-                const server = await Server.findOne({ _id: fields.server });
+            if (record) {
+                const game = await Game.findOne({_id: fields.game});
+                const server = await Server.findOne({_id: fields.server});
                 const event = new Event({
                     name: fields.name,
                     date: fields.date,

@@ -10,14 +10,14 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import { DateTimePicker } from "@material-ui/pickers";
 import gql from 'graphql-tag';
-import { useMutation } from "react-apollo-hooks";
+import {useMutation, useQuery} from "react-apollo-hooks";
 import Game from "../types/Game";
 import Server from "../types/Server";
 import { MaterialUiPickersDate } from "@material-ui/pickers/typings/date";
 import useToken from "../hooks/useToken";
 import {useSnackbar} from "notistack";
-import useServer from "../hooks/useServer";
 import {FormControl, FormHelperText} from "@material-ui/core";
+import moment from 'moment';
 
 const initialValues = {
     name: '',
@@ -34,6 +34,12 @@ const CREATE_EVENT = gql`
     }
 `;
 
+const GET_AVAILABLE_USERS = gql`    
+    query GetAvailableUsers($id: ID!, $date: String!) {
+        availableUsers(date: $date, id: $id)
+    }
+`;
+
 interface FormValues {
     name: string,
     server: string,
@@ -44,13 +50,19 @@ interface FormValues {
 export default () => {
     const { data, error, loading } = useCurrentUser();
     const [ serverId, setServerId] = useState("");
+    const [ date, setDate ] = useState(moment().format());
+    const availableUsersQuery = useQuery(GET_AVAILABLE_USERS, {
+        variables: {
+            id: serverId,
+            date: date
+        }
+    });
+    console.log(availableUsersQuery);
     const { enqueueSnackbar } = useSnackbar();
     const createEvent = useMutation(CREATE_EVENT);
-    const serverQuery = useServer(serverId);
     const token = useToken();
     if (error) return "Error";
     if (loading) return "Loading...";
-    console.log(serverQuery.data);
     return (
         <MuiPickersUtilsProvider utils={MomentUtils}>
             <StyledPaper>
@@ -112,6 +124,7 @@ export default () => {
                             render={({ field }: FieldProps<FormValues>) => {
                                 const onChange = (e: MaterialUiPickersDate) => {
                                     field.onChange({ target: { value: e, name: 'date' } });
+                                    setDate(e!.format());
                                 };
                                 return (
                                     <FormControl>
@@ -125,12 +138,12 @@ export default () => {
                                         />
                                         <FormHelperText>
                                             {
-                                                serverQuery.data.server &&
-                                                    "blah"
+                                                availableUsersQuery.data.availableUsers &&
+                                                    availableUsersQuery.data.availableUsers.length > 0 &&
+                                                        `${availableUsersQuery.data.availableUsers} users are available at this time`
                                             }
                                         </FormHelperText>
                                     </FormControl>
-
                                 )
                             }}
                         />
