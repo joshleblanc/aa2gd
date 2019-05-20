@@ -4,9 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/client/components/TimeTable.jsx" line="18" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa029ff1-2f60-481c-8345-30b4dc743d92" name="Default" comment="general polish to create form">
+    <list default="true" id="aa029ff1-2f60-481c-8345-30b4dc743d92" name="Default" comment="add margin to submit button">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/create.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/create.jsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -71,18 +71,6 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/lib/resolvers.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="48">
-                  <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-                  <folding>
-                    <element signature="e#0#32#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/pages/index.jsx">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="456">
@@ -127,11 +115,20 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/pages/create.jsx">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="408">
                   <caret line="35" column="36" lean-forward="true" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/.gitignore">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="192">
+                  <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
                 </state>
               </provider>
             </entry>
@@ -280,7 +277,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/components/EventTabs.tsx" />
         <option value="$PROJECT_DIR$/client/components/Main.tsx" />
         <option value="$PROJECT_DIR$/client/lib/resolvers.ts" />
         <option value="$PROJECT_DIR$/client/components/drawer/DrawerItems.tsx" />
@@ -331,6 +327,7 @@
         <option value="$PROJECT_DIR$/client/components/TimeTable.jsx" />
         <option value="$PROJECT_DIR$/client/components/autocomplete/Autocomplete.jsx" />
         <option value="$PROJECT_DIR$/client/pages/create.jsx" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -478,14 +475,7 @@
       <workItem from="1558203102579" duration="4633000" />
       <workItem from="1558270783520" duration="5244000" />
       <workItem from="1558351202266" duration="11000" />
-      <workItem from="1558353025150" duration="15152000" />
-    </task>
-    <task id="LOCAL-00033" summary="remove unused style">
-      <created>1557585056360</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1557585056360</updated>
+      <workItem from="1558353025150" duration="15190000" />
     </task>
     <task id="LOCAL-00034" summary="pass object to make styles instead of callback">
       <created>1557585082962</created>
@@ -823,17 +813,24 @@
       <option name="project" value="LOCAL" />
       <updated>1558377115319</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="add margin to submit button">
+      <created>1558377330522</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1558377330522</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106699000" />
+    <option name="totallyTimeSpent" value="106737000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13514578" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13514578" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -847,7 +844,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3293556" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3293556" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run Dashboard" order="11" visible="true" weight="0.2688942" />
+      <window_info anchor="bottom" id="Run Dashboard" order="11" visible="true" weight="0.2688942" />
       <window_info anchor="bottom" id="TypeScript" order="12" weight="0.3293556" />
       <window_info anchor="bottom" id="GraphQL" order="13" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -921,7 +918,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="gridify the server page" />
     <MESSAGE value="sort servers by num relevant events" />
     <MESSAGE value="limit num events in past events to 10" />
     <MESSAGE value=".idea stuff" />
@@ -946,7 +942,8 @@
     <MESSAGE value="fix misisng material themes on some components" />
     <MESSAGE value="make datetime control fullwidth" />
     <MESSAGE value="general polish to create form" />
-    <option name="LAST_COMMIT_MESSAGE" value="general polish to create form" />
+    <MESSAGE value="add margin to submit button" />
+    <option name="LAST_COMMIT_MESSAGE" value="add margin to submit button" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
@@ -1035,13 +1032,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/schema.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/node_modules/formik-material-ui/dist/main.d.ts">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1468,6 +1458,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="35" column="36" lean-forward="true" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
         </state>
       </provider>
     </entry>
