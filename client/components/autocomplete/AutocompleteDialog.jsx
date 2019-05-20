@@ -17,7 +17,11 @@ import {makeStyles} from "@material-ui/styles";
 const useStyles = makeStyles({
     list: {
         overflowY: 'auto',
-        height: 'calc(100% - 68px)'
+        height: 'calc(100% - 92px)'
+    },
+    listContainer: {
+        display: 'flex',
+        flexDirection: 'column'
     }
 });
 
@@ -48,7 +52,7 @@ export default withMobileDialog()(({fullScreen, label, options, open, onClose, t
     return(
         <Dialog fullScreen={fullScreen} open={open} fullWidth onClose={onClose}>
             <DialogTitle>{title}</DialogTitle>
-            <DialogContent>
+            <DialogContent className={classes.listContainer}>
                 <TextField
                     fullWidth
                     label={label}
