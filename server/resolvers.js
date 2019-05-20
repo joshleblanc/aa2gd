@@ -84,7 +84,7 @@ const resolvers = {
                 body: data,
             });
 
-            json = await r.json();
+            const json = await r.json();
             const userRequest = await discord_req("users/@me", json.access_token);
             const user = await userRequest.json();
             const connectionsRequest = await discord_req("users/@me/connections", json.access_token);
