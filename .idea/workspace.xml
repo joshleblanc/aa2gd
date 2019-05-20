@@ -4,10 +4,10 @@
     <bookmark url="file://$PROJECT_DIR$/client/components/TimeTable.jsx" line="18" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa029ff1-2f60-481c-8345-30b4dc743d92" name="Default" comment="remove typescript">
+    <list default="true" id="aa029ff1-2f60-481c-8345-30b4dc743d92" name="Default" comment="gutters after text">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/lib/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/lib/resolvers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/lib/theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/lib/theme.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/resolvers.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/resolvers.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -92,8 +92,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/lib/resolvers.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="264">
-                  <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+                <state relative-caret-position="48">
+                  <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
                   <folding>
                     <element signature="e#0#32#0" expanded="true" />
                   </folding>
@@ -101,11 +101,32 @@
               </provider>
             </entry>
           </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/pages/index.jsx">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="456">
+                  <caret line="19" column="54" lean-forward="true" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/server/resolvers.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="648">
+                  <caret line="129" column="10" lean-forward="true" selection-start-line="129" selection-start-column="10" selection-end-line="129" selection-end-column="10" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/lib/theme.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="288">
-                  <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+                  <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
                   <folding>
                     <element signature="e#0#49#0" expanded="true" />
                   </folding>
@@ -171,11 +192,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/server/models/user.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="552">
-                  <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+                <state relative-caret-position="570">
+                  <caret line="35" column="19" lean-forward="true" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
                 </state>
               </provider>
             </entry>
@@ -189,11 +210,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/pages/user.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="836">
-                  <caret line="84" column="35" selection-start-line="84" selection-start-column="35" selection-end-line="84" selection-end-column="35" />
+                <state relative-caret-position="404">
+                  <caret line="66" column="40" selection-start-line="66" selection-start-column="40" selection-end-line="66" selection-end-column="40" />
                   <folding>
                     <element signature="e#0#82#0" expanded="true" />
                   </folding>
@@ -245,8 +266,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/components/ServerListItem.tsx" />
-        <option value="$PROJECT_DIR$/server/models/server.js" />
         <option value="$PROJECT_DIR$/client/components/EventTabs.tsx" />
         <option value="$PROJECT_DIR$/client/components/Main.tsx" />
         <option value="$PROJECT_DIR$/client/lib/resolvers.ts" />
@@ -270,8 +289,6 @@
         <option value="$PROJECT_DIR$/client/components/Navbar.jsx" />
         <option value="$PROJECT_DIR$/client/components/DrawerButton.jsx" />
         <option value="$PROJECT_DIR$/server/schema.js" />
-        <option value="$PROJECT_DIR$/client/pages/index.jsx" />
-        <option value="$PROJECT_DIR$/server/resolvers.js" />
         <option value="$PROJECT_DIR$/client/components/autocomplete/AutocompleteDialog.jsx" />
         <option value="$PROJECT_DIR$/client/components/autocomplete/Autocomplete.jsx" />
         <option value="$PROJECT_DIR$/client/pages/create.jsx" />
@@ -296,6 +313,10 @@
         <option value="$PROJECT_DIR$/client/pages/authenticate.jsx" />
         <option value="$PROJECT_DIR$/client/pages/user.jsx" />
         <option value="$PROJECT_DIR$/client/lib/resolvers.js" />
+        <option value="$PROJECT_DIR$/client/pages/index.jsx" />
+        <option value="$PROJECT_DIR$/client/lib/theme.js" />
+        <option value="$PROJECT_DIR$/server/models/user.js" />
+        <option value="$PROJECT_DIR$/server/resolvers.js" />
       </list>
     </option>
   </component>
@@ -443,35 +464,7 @@
       <workItem from="1558203102579" duration="4633000" />
       <workItem from="1558270783520" duration="5244000" />
       <workItem from="1558351202266" duration="11000" />
-      <workItem from="1558353025150" duration="13743000" />
-    </task>
-    <task id="LOCAL-00022" summary="remove log">
-      <created>1557580966799</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1557580966799</updated>
-    </task>
-    <task id="LOCAL-00023" summary="add _id to timetable">
-      <created>1557580972976</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1557580972976</updated>
-    </task>
-    <task id="LOCAL-00024" summary="add create event mutation">
-      <created>1557582552403</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1557582552403</updated>
-    </task>
-    <task id="LOCAL-00025" summary="add key to server list in drawer">
-      <created>1557582585161</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1557582585161</updated>
+      <workItem from="1558353025150" duration="14222000" />
     </task>
     <task id="LOCAL-00026" summary="fix typo">
       <created>1557582678669</created>
@@ -788,17 +781,45 @@
       <option name="project" value="LOCAL" />
       <updated>1558375772863</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="remove typescript">
+      <created>1558375940362</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1558375940362</updated>
+    </task>
+    <task id="LOCAL-00072" summary="fix global">
+      <created>1558376112770</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1558376112770</updated>
+    </task>
+    <task id="LOCAL-00073" summary="blue primary color">
+      <created>1558376119367</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1558376119367</updated>
+    </task>
+    <task id="LOCAL-00074" summary="gutters after text">
+      <created>1558376128352</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1558376128352</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105290000" />
+    <option name="totallyTimeSpent" value="105769000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13514578" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13514578" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -812,7 +833,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3293556" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3293556" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Run Dashboard" order="11" visible="true" weight="0.2688942" />
+      <window_info active="true" anchor="bottom" id="Run Dashboard" order="11" visible="true" weight="0.2688942" />
       <window_info anchor="bottom" id="TypeScript" order="12" weight="0.3293556" />
       <window_info anchor="bottom" id="GraphQL" order="13" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -886,9 +907,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="starting a voyage into typescript" />
-    <MESSAGE value="added model types" />
-    <MESSAGE value="working on typescript" />
     <MESSAGE value="typescript" />
     <MESSAGE value="add past/current/future serverside" />
     <MESSAGE value="guard for game not existing" />
@@ -911,7 +929,10 @@
     <MESSAGE value="fixing up stuff for logged out users" />
     <MESSAGE value="schema validation" />
     <MESSAGE value="remove typescript" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove typescript" />
+    <MESSAGE value="fix global" />
+    <MESSAGE value="blue primary color" />
+    <MESSAGE value="gutters after text" />
+    <option name="LAST_COMMIT_MESSAGE" value="gutters after text" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
@@ -1027,32 +1048,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/models/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/pages/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/node_modules/formik-material-ui/dist/main.d.ts">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/resolvers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/autocomplete/AutocompleteDialog.jsx">
       <provider selected="true" editor-type-id="text-editor">
@@ -1381,16 +1378,6 @@
     <entry file="file://$PROJECT_DIR$/client/types/Router.ts">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/pages/user.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
-          <caret line="84" column="35" selection-start-line="84" selection-start-column="35" selection-end-line="84" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#82#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/node_modules/typescript/lib/typescript.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -1418,10 +1405,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/lib/resolvers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+        <state relative-caret-position="48">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="19" column="54" lean-forward="true" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1429,10 +1426,34 @@
     <entry file="file://$PROJECT_DIR$/client/lib/theme.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
-          <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="66" column="40" selection-start-line="66" selection-start-column="40" selection-end-line="66" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#82#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/models/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="35" column="19" lean-forward="true" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/resolvers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="129" column="10" lean-forward="true" selection-start-line="129" selection-start-column="10" selection-end-line="129" selection-end-column="10" />
         </state>
       </provider>
     </entry>

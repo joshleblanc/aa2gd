@@ -114,15 +114,6 @@ const resolvers = {
                 avatarUrl: `http://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`,
                 connections: connections.filter(c => c.visibility === 1),
                 servers,
-                timeTable: {
-                    Mo: [],
-                    Tu: [],
-                    We: [],
-                    Th: [],
-                    Fr: [],
-                    Sa: [],
-                    Su: []
-                },
                 games
             }, {upsert: true, new: true});
 
