@@ -145,7 +145,7 @@ export default () => {
                                             }
                                         };
                                         return (
-                                            <FormControl>
+                                            <FormControl fullWidth>
                                                 <DateTimePicker
                                                     label={"Date and Time"}
                                                     onChange={onChange}

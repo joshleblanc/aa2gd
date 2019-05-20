@@ -4,10 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/client/components/TimeTable.jsx" line="18" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa029ff1-2f60-481c-8345-30b4dc743d92" name="Default" comment="added keys to daytabs maps">
+    <list default="true" id="aa029ff1-2f60-481c-8345-30b4dc743d92" name="Default" comment="fix misisng material themes on some components">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/DayTabs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DayTabs.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/TimeTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/TimeTable.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/create.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/create.jsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -47,11 +46,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/components/TimeTable.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="336">
-                  <caret line="47" column="13" lean-forward="true" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
+                <state relative-caret-position="480">
+                  <caret line="53" column="70" selection-start-line="53" selection-start-column="70" selection-end-line="53" selection-end-column="70" />
                   <folding>
                     <element signature="e#0#84#0" expanded="true" />
                   </folding>
@@ -128,14 +127,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/lib/theme.js">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/pages/create.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="288">
-                  <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-                  <folding>
-                    <element signature="e#0#49#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="450">
+                  <caret line="147" column="58" lean-forward="true" selection-start-line="147" selection-start-column="58" selection-end-line="147" selection-end-column="58" />
                 </state>
               </provider>
             </entry>
@@ -309,7 +305,6 @@
         <option value="$PROJECT_DIR$/server/schema.js" />
         <option value="$PROJECT_DIR$/client/components/autocomplete/AutocompleteDialog.jsx" />
         <option value="$PROJECT_DIR$/client/components/autocomplete/Autocomplete.jsx" />
-        <option value="$PROJECT_DIR$/client/pages/create.jsx" />
         <option value="$PROJECT_DIR$/client/components/drawer/DrawerItems.jsx" />
         <option value="$PROJECT_DIR$/client/components/drawer/DrawerToolbar.jsx" />
         <option value="$PROJECT_DIR$/client/components/drawer/StyledDrawer.jsx" />
@@ -335,6 +330,7 @@
         <option value="$PROJECT_DIR$/client/components/ConnectionList.jsx" />
         <option value="$PROJECT_DIR$/client/components/DayTabs.jsx" />
         <option value="$PROJECT_DIR$/client/components/TimeTable.jsx" />
+        <option value="$PROJECT_DIR$/client/pages/create.jsx" />
       </list>
     </option>
   </component>
@@ -482,14 +478,7 @@
       <workItem from="1558203102579" duration="4633000" />
       <workItem from="1558270783520" duration="5244000" />
       <workItem from="1558351202266" duration="11000" />
-      <workItem from="1558353025150" duration="14626000" />
-    </task>
-    <task id="LOCAL-00030" summary="remove unused styles">
-      <created>1557584950426</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1557584950426</updated>
+      <workItem from="1558353025150" duration="14686000" />
     </task>
     <task id="LOCAL-00031" summary="remove unused imports">
       <created>1557584961774</created>
@@ -827,11 +816,18 @@
       <option name="project" value="LOCAL" />
       <updated>1558376707332</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="fix misisng material themes on some components">
+      <created>1558376805932</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1558376805932</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106173000" />
+    <option name="totallyTimeSpent" value="106233000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -925,7 +921,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="polish create experience" />
     <MESSAGE value="use server side stuff for server list item" />
     <MESSAGE value="fix up types for various typescript errors" />
     <MESSAGE value="gridify the server page" />
@@ -950,7 +945,8 @@
     <MESSAGE value="add keys to connection list items" />
     <MESSAGE value="added keys to timetable maps" />
     <MESSAGE value="added keys to daytabs maps" />
-    <option name="LAST_COMMIT_MESSAGE" value="added keys to daytabs maps" />
+    <MESSAGE value="fix misisng material themes on some components" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix misisng material themes on some components" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
@@ -1307,13 +1303,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/pages/create.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="175" column="16" selection-start-line="175" selection-start-column="16" selection-end-line="175" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/types/Server.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1467,11 +1456,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/TimeTable.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="47" column="13" lean-forward="true" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
+        <state relative-caret-position="480">
+          <caret line="53" column="70" selection-start-line="53" selection-start-column="70" selection-end-line="53" selection-end-column="70" />
           <folding>
             <element signature="e#0#84#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/create.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="147" column="58" lean-forward="true" selection-start-line="147" selection-start-column="58" selection-end-line="147" selection-end-column="58" />
         </state>
       </provider>
     </entry>
