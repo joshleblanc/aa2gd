@@ -29,7 +29,7 @@ const Connection = ({href, icon, name}:ConnectionProps) => (
 
 export default ({connections}:Props) => {
     return(
-        <FixedHeightList height={200} title="Connections">
+        <FixedHeightList height={835} title="Connections">
             {
                 connections.map(c => {
                     switch(c.type) {

@@ -1,14 +1,18 @@
-import { Typography } from "@material-ui/core";
+import {Table, TableBody, TableCell, TableRow, Typography} from "@material-ui/core";
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import gql from "graphql-tag";
 import { useMutation } from "react-apollo-hooks";
 import TimeTable, { TimesByDay } from "../types/TimeTable";
+import TableHead from "@material-ui/core/TableHead";
 
 const useStyles = makeStyles({
     table: {
         width: '100%',
         tableLayout: 'fixed'
+    },
+    cell: {
+        border: '1px solid black'
     }
 });
 
@@ -50,22 +54,22 @@ export default ({ editable, timeTable, _id }: Props) => {
                 editable && <Typography variant="caption">Tap a square to edit</Typography>
             }
 
-            <table className={classes.table}>
-                <thead>
-                    <tr>
-                        <th colSpan={2} />
+            <Table className={classes.table} size="small">
+                <TableHead>
+                    <TableRow>
+                        <TableCell colSpan={2} />
                         {daysOfWeek.map(d => <th>{d}</th>)}
-                    </tr>
-                </thead>
-                <tbody>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
                     {
                         makeTimes().map(time => {
                             return (
-                                <tr>
-                                    <td colSpan={2}>{time}</td>
+                                <TableRow>
+                                    <TableCell colSpan={2}>{time}</TableCell>
                                     {
                                         daysOfWeek.map(day => {
-                                            return <td onClick={() => {
+                                            return <TableCell onClick={() => {
                                                 if (!editable) return;
                                                 const newTimeTable: TimeTable = { ...timeTable };
                                                 if (newTimeTable[day].includes(time)) {
@@ -90,16 +94,18 @@ export default ({ editable, timeTable, _id }: Props) => {
                                                         }
                                                     }
                                                 });
-                                            }} style={{ backgroundColor: timeTable[day].includes(time) ? 'green' : 'white' }}>
-                                            </td>
+                                            }} style={{ backgroundColor: timeTable[day].includes(time) ? 'rgb(0, 100, 0)' : 'rgb(100,0,0)' }}
+                                               className={classes.cell}
+                                            >
+                                            </TableCell>
                                         })
                                     }
-                                </tr>
+                                </TableRow>
                             )
                         })
                     }
-                </tbody>
-            </table>
+                </TableBody>
+            </Table>
         </React.Fragment>
     )
 }

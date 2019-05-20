@@ -50,11 +50,11 @@ interface FormValues {
 export default () => {
     const { data, error, loading } = useCurrentUser();
     const [ serverId, setServerId] = useState("");
-    const [ date, setDate ] = useState(moment().format());
+    const [ date, setDate ] = useState(moment());
     const availableUsersQuery = useQuery(GET_AVAILABLE_USERS, {
         variables: {
             id: serverId,
-            date: date
+            date: date!.format()
         }
     });
     console.log(availableUsersQuery);
@@ -87,14 +87,13 @@ export default () => {
                             component={TextField}
                         />
                         <Field
-                            name={'server'}
+                            name={'server.jsx'}
                             render={({ field, form }: FieldProps<FormValues>) => {
                                 return (
                                     <Autocomplete
                                         {...field}
                                         onChange={(e:{target: { value:string }})=> {
                                             setServerId(e.target.value);
-                                            console.log(e.target.value);
                                             field.onChange(e);
                                         }}
                                         options={data.currentUser.servers.map((s: Server) => ({ value: s._id, name: s.name, image: s.iconUrl }))}
@@ -124,7 +123,9 @@ export default () => {
                             render={({ field }: FieldProps<FormValues>) => {
                                 const onChange = (e: MaterialUiPickersDate) => {
                                     field.onChange({ target: { value: e, name: 'date' } });
-                                    setDate(e!.format());
+                                    if(date.hour() !== e!.hour()) {
+                                        setDate(e!);
+                                    }
                                 };
                                 return (
                                     <FormControl>

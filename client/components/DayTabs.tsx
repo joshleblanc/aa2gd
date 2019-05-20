@@ -18,6 +18,9 @@ const useStyles = makeStyles({
     table: {
         width: '100%',
         tableLayout: 'fixed'
+    },
+    cell: {
+        border: '1px solid black'
     }
 });
 
@@ -70,7 +73,7 @@ export default ({id, max}: Props) => {
                                                 color = `rgb(0, ${(max / count) * 100}, 0)`;
                                             }
                                             return(
-                                                <TableCell align="center" style={{backgroundColor: color}}>
+                                                <TableCell align="center" style={{backgroundColor: color}} className={classes.cell}>
                                                     {count}
                                                 </TableCell>
                                             )

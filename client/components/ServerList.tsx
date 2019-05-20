@@ -9,7 +9,7 @@ interface Props {
 
 export default ({ servers }:Props) => {
     return (
-        <FixedHeightList height={400} title="Servers">
+        <FixedHeightList height={835} title="Servers">
             { 
                 servers.map((s:Server) => {
                     return <ServerListItem server={s} key={s.id}/>

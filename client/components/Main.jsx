@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/styles';
-import * as React from "react";
+import React from "react";
 
 const useStyles = makeStyles({
     content: {
@@ -8,11 +8,7 @@ const useStyles = makeStyles({
       }
 });
 
-interface Props {
-    children: React.ReactNode
-}
-
-export default ({ children }: Props) => {
+export default ({ children }) => {
     const classes = useStyles();
     return(
         <main className={classes.content}>
