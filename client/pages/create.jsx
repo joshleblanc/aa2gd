@@ -103,7 +103,8 @@ export default () => {
                                                     name: s.name,
                                                     image: s.iconUrl
                                                 }))}
-                                                helperText={form.errors.server}
+                                                helperText={form.touched.server && form.errors.server}
+                                                error={form.touched.server && form.errors.server}
                                                 label="Server"
                                                 placeholder="Select a server"
                                                 disabled={form.isSubmitting}
@@ -127,7 +128,8 @@ export default () => {
                                                     name: g.name,
                                                     image: g.iconUrl
                                                 }))}
-                                                helperText={form.errors.game}
+                                                helperText={form.touched.game && form.errors.game}
+                                                error={form.touched.game && form.errors.game}
                                                 label="Game"
                                                 placeholder="Select a game"
                                                 disabled={form.isSubmitting}

@@ -11,16 +11,16 @@ const useStyles = makeStyles(theme => ({
         display: 'flex'
     },
     button: {
-        padding: theme.spacing(3)
+        marginTop: 'auto'
     }
 }));
 
-const Autocomplete = ({label, options, placeholder, value, onChange, name, disabled, helperText}) => {
-    const [ modalOpen, setModal ] = useState(false);
+const Autocomplete = ({label, options, placeholder, value, onChange, name, disabled, helperText, error}) => {
+    const [modalOpen, setModal] = useState(false);
     const classes = useStyles();
-    const selectedItem = options.find(o => o.value === value) || { name: '' };
+    const selectedItem = options.find(o => o.value === value) || {name: ''};
     console.log(helperText);
-    return(
+    return (
         <React.Fragment>
             <div className={classes.displayContainer}>
                 <TextField
@@ -28,12 +28,13 @@ const Autocomplete = ({label, options, placeholder, value, onChange, name, disab
                     label={label}
                     margin="normal"
                     helperText={helperText}
-                    error={!!helperText}
+                    error={error}
                     value={selectedItem.name}
                     disabled
+                    onClick={() => setModal(true)}
                 />
                 <IconButton onClick={() => setModal(true)} disabled={disabled} className={classes.button}>
-                    <SelectIcon />
+                    <SelectIcon/>
                 </IconButton>
             </div>
             <AutocompleteDialog
@@ -43,7 +44,7 @@ const Autocomplete = ({label, options, placeholder, value, onChange, name, disab
                 title={placeholder}
                 onSelect={onChange}
                 options={options}
-                name={name} />
+                name={name}/>
         </React.Fragment>
 
     )
