@@ -6,7 +6,6 @@ import ConnectionList from '../components/ConnectionList';
 import TimeTable from "../components/TimeTable";
 import StyledPaper from "../components/StyledPaper";
 import Grid from "@material-ui/core/Grid";
-import Router from "../types/Router";
 import * as React from 'react';
 
 const useStyles = makeStyles(theme => ({
