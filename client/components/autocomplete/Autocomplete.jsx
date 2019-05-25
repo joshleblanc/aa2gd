@@ -7,6 +7,7 @@ import AutocompleteDialog from "./AutocompleteDialog";
 import Button from "../Button";
 import classnames from 'classnames';
 import Typography from "@material-ui/core/Typography";
+import TextField from "../TextField";
 
 const useStyles = makeStyles(theme => ({
     displayContainer: {
@@ -26,20 +27,20 @@ const Autocomplete = ({label, options, placeholder, value, onChange, name, disab
     const selectedItem = options.find(o => o.value === value) || {name: ''};
     return (
       <React.Fragment>
-          <div className={classes.displayContainer}>
-              <div className="nes-field" onClick={() => setModal(true)}>
-                  <label>{label}</label>
-                  <div className={classes.flex}>
-                      <input type="text" className="nes-input" disabled value={selectedItem.name}/>
-                      <Button onClick={() => setModal(true)} disabled={disabled} className={classes.button}
-                              variant="primary">
-                          +
-                      </Button>
-                  </div>
-                  <Typography variant="caption" color="error">{error && helperText}</Typography>
-
-              </div>
-          </div>
+          <TextField
+            label={label}
+            value={selectedItem.name}
+            onClick={() => setModal(true)}
+            disabled
+            adornment={
+                <Button disabled={disabled} className={classes.button}
+                        variant="primary">
+                    +
+                </Button>
+            }
+          >
+              <Typography variant="caption" color="error">{error && helperText}</Typography>
+          </TextField>
           <AutocompleteDialog
             open={modalOpen}
             label={label}
