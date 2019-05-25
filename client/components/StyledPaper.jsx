@@ -2,14 +2,12 @@ import React from "react";
 import {Paper} from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles';
 import Typography from "@material-ui/core/Typography";
+import classnames from 'classnames';
 
 const useStyles = makeStyles(({spacing}) => ({
     root: {
         padding: spacing(1.5),
         margin: spacing(2),
-        borderRadius: 0,
-        border: '4px solid black',
-        backgroundColor: 'inherit'
     },
     title: {
         display: 'table',
@@ -21,10 +19,18 @@ const useStyles = makeStyles(({spacing}) => ({
 
 export default ({children, title, className}) => {
     const classes = useStyles();
+    const classNames = classnames({
+        "nes-container": true,
+        "with-title": !!title,
+        [className]: !!className,
+        [classes.root]: true
+    });
     return (
-        <Paper className={className + ' ' + classes.root} elevation={0}>
-            <Typography variant={"h6"} className={classes.title}>{title}</Typography>
-            {children}
-        </Paper>
+      <div className={classNames}>
+          <p className="title">
+              {title}
+          </p>
+          {children}
+      </div>
     )
 };

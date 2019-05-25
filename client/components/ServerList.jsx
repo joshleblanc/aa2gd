@@ -4,7 +4,7 @@ import ServerListItem from "./ServerListItem";
 
 export default ({ servers }) => {
     return (
-        <FixedHeightList height={835} title="Servers">
+        <FixedHeightList height={835}>
             { 
                 servers.map(s => {
                     return <ServerListItem server={s} key={s.id}/>

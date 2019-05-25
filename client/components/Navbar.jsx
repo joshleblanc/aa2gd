@@ -1,10 +1,11 @@
 import React from "react";
-import { AppBar, Toolbar, Button, Typography } from '@material-ui/core';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import Link from 'next/link';
 import useToken from "../hooks/useToken";
 import useHost from "../hooks/useHost";
 import DrawerButton from "./DrawerButton";
+import Button from "./Button";
 
 
 const useStyles = makeStyles(theme => ({
@@ -40,7 +41,7 @@ export default () => {
         {
           token 
             ? <Link href={'/create'}>
-                <Button component="a" href={'/create'}>
+                <Button component="a" href={'/create'} variant="primary">
                   Create Event
                 </Button>
               </Link>

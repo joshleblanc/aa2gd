@@ -40,12 +40,12 @@ export default () => {
                 <Grid item xs={12} sm={12} md={6}>
                     <Grid container>
                         <Grid item xs={12} sm={12} lg={6}>
-                            <StyledPaper>
+                            <StyledPaper title="Servers">
                                 <ServerList servers={data.currentUser.servers}/>
                             </StyledPaper>
                         </Grid>
                         <Grid item xs={12} sm={12} lg={6}>
-                            <StyledPaper>
+                            <StyledPaper title="Connections">
                                 <ConnectionList connections={data.currentUser.connections}/>
                             </StyledPaper>
                         </Grid>

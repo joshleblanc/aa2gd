@@ -4,7 +4,7 @@ import secondary from "@material-ui/core/colors/yellow";
 
 const theme = createMuiTheme({
   palette: {
-    type: 'dark',
+    type: 'light',
     primary: primary,
     secondary: secondary
   },
@@ -21,6 +21,7 @@ const theme = createMuiTheme({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(','),
+    fontSize: 11
 
   }
 });

@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {Field, Form, Formik} from "formik";
-import {TextField} from 'formik-material-ui';
 import StyledPaper from "../components/StyledPaper";
 import Typography from "@material-ui/core/Typography";
 import useCurrentUser, {GET_CURRENT_USER} from "../hooks/useCurrentUser";
@@ -17,6 +16,7 @@ import {FormControl, FormHelperText} from "@material-ui/core";
 import moment from 'moment';
 import * as Yup from 'yup';
 import {makeStyles} from "@material-ui/styles";
+import TextField from "../components/TextField";
 
 const useStyles = makeStyles(theme => ({
    submitButton: {
@@ -71,7 +71,7 @@ export default () => {
     if (loading) return "Loading...";
     return (
         <MuiPickersUtilsProvider utils={MomentUtils}>
-            <StyledPaper>
+            <StyledPaper title="Create a new event!">
                 <Formik initialValues={initialValues}
                         validationSchema={validation}
                         onSubmit={async (fields, form) => {
@@ -87,13 +87,19 @@ export default () => {
                         }}
                         render={({submitForm, isSubmitting, values, setFieldValue}) => (
                             <Form>
-                                <Typography variant={"h5"}>Create a new event!</Typography>
                                 <Field
-                                    label={"Name"}
-                                    fullWidth
                                     name={'name'}
-                                    margin="normal"
-                                    component={TextField}
+                                    render={({field, form}) => {
+                                        return(
+                                          <TextField
+                                            {...field}
+                                            helperText={form.touched.name && form.errors.name}
+                                            error={form.touched.name && form.errors.name}
+                                            disabled={form.isSubmitting}
+                                            label={"Name"}
+                                          />
+                                        )
+                                    }}
                                 />
                                 <Field
                                     name={'server'}

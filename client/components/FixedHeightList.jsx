@@ -7,11 +7,10 @@ const useStyles = makeStyles({
     }
 });
 
-const FixedHeightList = ({children, title, height}) => {
+const FixedHeightList = ({children, height}) => {
     const classes = useStyles();
     return(
         <div>
-            <Typography variant="h4">{title}</Typography>
             <List dense className={classes.serverList} style={{height}}>
                 {children}
             </List>
