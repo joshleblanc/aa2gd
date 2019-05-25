@@ -44,7 +44,6 @@ const resolvers = {
                             return user.timeTable[day].includes(timeString) ? total + 1 : total;
                         }, 0);
                     });
-                    console.log(times);
                 }
                 return JSON.stringify(times);
             }
@@ -147,7 +146,6 @@ const resolvers = {
                         "servers": new mongoose.Types.ObjectId(id)
                     }
                 }]);
-                console.log(users);
 
                 server.users = users;
                 return server;

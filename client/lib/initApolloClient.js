@@ -21,7 +21,6 @@ function create(initialState, host) {
     }).restore(initialState || {});
     const authLink = setContext((_, {headers}) => {
         const { token } = cache.readQuery({ query: GET_TOKEN });
-        console.log("auth token:", token);
         return {
             headers: {
                 ...headers,

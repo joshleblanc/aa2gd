@@ -42,7 +42,6 @@ export default ({editable, timeTable, _id}) => {
     const classes = useStyles();
     return (
         <React.Fragment>
-            <Typography variant="h4">Times Available</Typography>
             {
                 editable && <Typography variant="caption">Tap a square to edit</Typography>
             }

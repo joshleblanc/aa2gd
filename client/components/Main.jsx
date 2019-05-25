@@ -4,7 +4,8 @@ import React from "react";
 const useStyles = makeStyles({
     content: {
         flexGrow: 1,
-        width: '100%'
+        width: '100%',
+        margin:'4em'
       }
 });
 

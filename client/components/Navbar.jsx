@@ -13,6 +13,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${240}px)`,
     },
+    borderBottom: '1px solid black'
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -30,7 +31,7 @@ export default () => {
   const host = useHost();
   const classes = useStyles();
   return (
-    <AppBar position="fixed" className={token && classes.appBar}>
+    <AppBar position="fixed" className={token && classes.appBar} elevation={0} color="inherit">
       <Toolbar>
         <DrawerButton />
         <Typography variant="h6" color="inherit" noWrap className={classes.grow}>

@@ -122,7 +122,6 @@ export default () => {
                                 <Field
                                     name="game"
                                     render={({field, form}) => {
-                                        console.log(form);
                                         return (
                                             <Autocomplete
                                                 {...field}

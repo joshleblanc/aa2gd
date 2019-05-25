@@ -44,8 +44,7 @@ export default class extends App {
         apolloHost = host;
       }
     }
-    // console.log(global);  
-    // console.log(host)
+
     const { token } = nextCookie(pageProps.ctx);
 
     const apollo = initApollo(null, apolloHost);
@@ -55,7 +54,7 @@ export default class extends App {
         drawerOpen: false,
         host
       }
-    })
+    });
     
     // Run all GraphQL queries in the component tree
     // and extract the resulting data
@@ -91,9 +90,9 @@ export default class extends App {
 
       // getDataFromTree does not call componentWillUnmount
       // head side effect therefore need to be cleared manually
-      Head.rewind()
+      Head.rewind();
     }
-    const apolloState = apollo.cache.extract()
+    const apolloState = apollo.cache.extract();
     return {
       apolloState: apolloState,
       host: apolloHost

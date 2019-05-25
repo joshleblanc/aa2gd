@@ -19,7 +19,6 @@ const Autocomplete = ({label, options, placeholder, value, onChange, name, disab
     const [modalOpen, setModal] = useState(false);
     const classes = useStyles();
     const selectedItem = options.find(o => o.value === value) || {name: ''};
-    console.log(helperText);
     return (
         <React.Fragment>
             <div className={classes.displayContainer}>

@@ -33,7 +33,7 @@ export default () => {
             </Grid>
             <Grid container>
                 <Grid item xs={12} sm={12} md={6}>
-                    <StyledPaper>
+                    <StyledPaper title={"Times Available"}>
                         <TimeTable editable timeTable={data.currentUser.timeTable} _id={data.currentUser._id}/>
                     </StyledPaper>
                 </Grid>

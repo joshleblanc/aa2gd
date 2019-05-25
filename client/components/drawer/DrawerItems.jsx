@@ -20,15 +20,12 @@ export default () => {
                         }).map(s => {
                             return(
                                 <Link key={s._id} href={`/server?id=${s._id}`}>
-                                    <ServerListItem server={s} href={`/server?id=${s._id}`} />
+                                    <ServerListItem button server={s} href={`/server?id=${s._id}`} />
                                 </Link>
                             )
                         })
                     : "Loading..."
                 }
-                <LinkListItem href={'/servers'}>
-                    <ListItemText primary={"Servers"} />
-                </LinkListItem>
             </List>
         </div>
     )
