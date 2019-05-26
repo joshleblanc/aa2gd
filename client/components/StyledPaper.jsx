@@ -17,19 +17,24 @@ const useStyles = makeStyles(({spacing}) => ({
     }
 }), {withTheme: true});
 
-export default ({children, title, className}) => {
+export default ({children, title, className, rounded}) => {
     const classes = useStyles();
     const classNames = classnames({
         "nes-container": true,
         "with-title": !!title,
+        [classes.root]: true,
+        "is-rounded": rounded,
         [className]: !!className,
-        [classes.root]: true
     });
     return (
       <div className={classNames}>
-          <p className="title">
-              {title}
-          </p>
+          {
+              title &&
+              <p className="title">
+                  {title}
+              </p>
+          }
+
           {children}
       </div>
     )

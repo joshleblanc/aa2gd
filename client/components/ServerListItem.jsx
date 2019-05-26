@@ -8,20 +8,25 @@ const useStyles = makeStyles({
     primaryEventText: {
         display: "block"
     },
-    avatar: {
-        width: 25,
-        height: 25
+    item: {
+        width: 'calc(100% - 16px)',
+        padding: '0 !important',
+        margin: '8px !important',
+    },
+    overflow: {
+        textOverflow: 'ellipsis'
     }
+
 });
 
 export default ({server:s, ...props}) => {
     const classes = useStyles();
     return(
-        <ListItem {...props}>
+        <ListItem {...props} className={"nes-container is-rounded " + classes.item}>
             <ListItemAvatar>
                 <ServerAvatar server={s} />
             </ListItemAvatar>
-            <ListItemText primary={s.name} secondary={
+            <ListItemText className={classes.overflow} primary={s.name} secondary={
                 <React.Fragment>
                     <Typography color="textPrimary" component="span" className={classes.primaryEventText} variant="body2">{s.currentEvents.length} ongoing</Typography>
                     {s.futureEvents.length} upcoming
