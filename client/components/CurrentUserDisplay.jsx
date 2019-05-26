@@ -14,7 +14,7 @@ export default () => {
         <ListItemAvatar>
           <Avatar component="div" src={data.currentUser.avatarUrl} alt={"profile picture"} />
         </ListItemAvatar>
-        <ListItemText primary={data.currentUser.username} secondary={data.currentUser.email} />
+        <ListItemText primary={data.currentUser.username} />
       </ListItem>
     </Link>
     

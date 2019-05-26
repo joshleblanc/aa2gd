@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const Autocomplete = ({label, options, placeholder, value, onChange, name, disabled, helperText, error}) => {
+const Autocomplete = ({label, options, placeholder, value, onChange, name, disabled, helperText, error, fullWidth}) => {
     const [modalOpen, setModal] = useState(false);
     const classes = useStyles();
     const selectedItem = options.find(o => o.value === value) || {name: ''};
@@ -31,6 +31,9 @@ const Autocomplete = ({label, options, placeholder, value, onChange, name, disab
             label={label}
             value={selectedItem.name}
             onClick={() => setModal(true)}
+            fullWidth={fullWidth}
+            error={error}
+            helperText={helperText}
             disabled
             adornment={
                 <Button disabled={disabled} className={classes.button}
@@ -39,7 +42,7 @@ const Autocomplete = ({label, options, placeholder, value, onChange, name, disab
                 </Button>
             }
           >
-              <Typography variant="caption" color="error">{error && helperText}</Typography>
+
           </TextField>
           <AutocompleteDialog
             open={modalOpen}

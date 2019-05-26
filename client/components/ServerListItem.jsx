@@ -7,6 +7,10 @@ import {makeStyles} from "@material-ui/styles";
 const useStyles = makeStyles({
     primaryEventText: {
         display: "block"
+    },
+    avatar: {
+        width: 25,
+        height: 25
     }
 });
 
@@ -19,7 +23,7 @@ export default ({server:s, ...props}) => {
             </ListItemAvatar>
             <ListItemText primary={s.name} secondary={
                 <React.Fragment>
-                    <Typography color="textPrimary" component="span" className={classes.primaryEventText} variant="body2">{s.currentEvents.length} events ongoing</Typography>
+                    <Typography color="textPrimary" component="span" className={classes.primaryEventText} variant="body2">{s.currentEvents.length} ongoing</Typography>
                     {s.futureEvents.length} upcoming
                 </React.Fragment>
             } />

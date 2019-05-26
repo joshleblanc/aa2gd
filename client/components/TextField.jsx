@@ -1,6 +1,7 @@
 import React from "react";
 import classnames from 'classnames';
 import makeStyles from "@material-ui/styles/makeStyles";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -9,30 +10,41 @@ const useStyles = makeStyles(theme => ({
     },
     children: {
         display: 'flex'
+    },
+    fullWidth: {
+        width: '100%'
     }
 }));
 
-export default ({label, inline, variant, adornment, children, onClick, ...props}) => {
+const TextField = React.forwardRef(({label, inline, variant, adornment, children, onClick, fullWidth, helperText, error, ...props}, ref) => {
     const classes = useStyles();
     const containerClassNames = classnames({
         'nes-field': true,
         'is-inline': inline,
+        [classes.fullWidth]: !!fullWidth
     });
     const inputClassNames = classnames({
         'nes-input': true,
         [`is-${variant}`]: !!variant
     });
+    const helperTextColor = error ? 'error' : 'primary';
     return(
       <div className={classes.container} onClick={onClick}>
           <div className={containerClassNames}>
               <label>{label}</label>
               <div className={classes.children}>
-                  <input type='text' className={inputClassNames} {...props} />
+                  <input type='text' ref={ref} className={inputClassNames} {...props} />
                   {adornment}
               </div>
-              {children}
+              {
+                  helperText &&
+                  <Typography variant="caption" color={helperTextColor}>{helperText}</Typography>
+              }
+
           </div>
       </div>
 
     )
-}
+});
+
+export default TextField;

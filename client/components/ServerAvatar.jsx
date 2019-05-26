@@ -1,7 +1,10 @@
 import {Avatar} from "@material-ui/core";
 import React from "react";
+import {makeStyles} from "@material-ui/styles";
+
 
 export default ({server}) => {
+    const classes = useStyles();
     return (
         <React.Fragment>
             {

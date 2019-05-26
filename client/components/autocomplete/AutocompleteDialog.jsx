@@ -1,6 +1,5 @@
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
-import TextField from "@material-ui/core/TextField";
 import {Typography} from "@material-ui/core";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -13,6 +12,7 @@ import Dialog from "@material-ui/core/Dialog";
 import React, {useCallback, useMemo, useState} from "react";
 import withMobileDialog from "@material-ui/core/withMobileDialog/withMobileDialog";
 import {makeStyles} from "@material-ui/styles";
+import TextField from "../TextField";
 
 const useStyles = makeStyles({
     list: {
@@ -55,14 +55,11 @@ export default withMobileDialog()(({fullScreen, label, options, open, onClose, t
             <DialogContent className={classes.listContainer}>
                 <TextField
                     fullWidth
-                    label={label}
                     margin="normal"
                     onChange={e => setSearch(e.target.value)}
-                    inputProps={{
-                        onKeyUp: e => {
-                            if(e.keyCode === 13) {
-                                selectItem(filteredOptions[0]);
-                            }
+                    onKeyUp={e => {
+                        if(e.keyCode === 13) {
+                            selectItem(filteredOptions[0]);
                         }
                     }}
                     value={search}

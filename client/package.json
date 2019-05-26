@@ -34,6 +34,7 @@
     "next-cookies": "^1.1.2",
     "node-fetch": "^2.3.0",
     "notistack": "^0.6.1",
+    "pickerjs": "^1.2.1",
     "react": "^16.8.6",
     "react-apollo": "^2.5.4",
     "react-apollo-hooks": "^0.4.5",
