@@ -5,7 +5,6 @@ const useStyles = makeStyles({
     content: {
         flexGrow: 1,
         width: '100%',
-        backgroundColor: 'white'
     }
 });
 

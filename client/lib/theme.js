@@ -6,7 +6,10 @@ const theme = createMuiTheme({
   palette: {
     type: 'light',
     primary: primary,
-    secondary: secondary
+    secondary: secondary,
+    background: {
+      default: 'white'
+    }
   },
   typography: {
     fontFamily: [

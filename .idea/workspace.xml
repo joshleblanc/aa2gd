@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aa029ff1-2f60-481c-8345-30b4dc743d92" name="Default" comment="remove bad import">
+    <list default="true" id="aa029ff1-2f60-481c-8345-30b4dc743d92" name="Default" comment="fix margin on create page on mobile">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/ServerAvatar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/ServerAvatar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/create.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/create.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/lib/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/lib/theme.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -98,8 +97,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/components/Main.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="304">
-                  <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+                <state relative-caret-position="288">
+                  <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
                   <folding>
                     <element signature="e#0#49#0" expanded="true" />
                   </folding>
@@ -108,10 +107,25 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/lib/theme.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="224">
+                  <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+                  <folding>
+                    <element signature="e#0#49#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/pages/create.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="48">
-                  <caret line="3" selection-start-line="3" selection-end-line="3" />
+                <state relative-caret-position="288">
+                  <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+                  <folding>
+                    <element signature="e#0#38#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -123,18 +137,6 @@
                   <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/lib/initApolloClient.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="800">
-                  <caret line="57" selection-start-line="57" selection-end-line="57" />
-                  <folding>
-                    <element signature="e#0#49#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -281,11 +283,11 @@
         <option value="$PROJECT_DIR$/client/components/autocomplete/Autocomplete.jsx" />
         <option value="$PROJECT_DIR$/client/components/DatePicker.jsx" />
         <option value="$PROJECT_DIR$/client/components/CurrentUserDisplay.jsx" />
-        <option value="$PROJECT_DIR$/client/lib/theme.js" />
         <option value="$PROJECT_DIR$/client/components/ServerListItem.jsx" />
         <option value="$PROJECT_DIR$/client/components/ServerAvatar.jsx" />
-        <option value="$PROJECT_DIR$/client/components/Main.jsx" />
         <option value="$PROJECT_DIR$/client/pages/create.jsx" />
+        <option value="$PROJECT_DIR$/client/components/Main.jsx" />
+        <option value="$PROJECT_DIR$/client/lib/theme.js" />
       </list>
     </option>
   </component>
@@ -427,13 +429,6 @@
       <workItem from="1558536174721" duration="208000" />
       <workItem from="1558812881891" duration="1168000" />
       <workItem from="1558891547311" duration="2749000" />
-    </task>
-    <task id="LOCAL-00002" summary="wip">
-      <created>1556619019807</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1556619019807</updated>
     </task>
     <task id="LOCAL-00003" summary="add servers as separate collection">
       <created>1556706693416</created>
@@ -771,11 +766,18 @@
       <option name="project" value="LOCAL" />
       <updated>1558817700629</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="fix margin on create page on mobile">
+      <created>1558910717203</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1558910717206</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87281000" />
+    <option name="totallyTimeSpent" value="87353000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -872,7 +874,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix autocomplete not rendering on initial ssr" />
     <MESSAGE value="select top search result if enter pressed in autoselect" />
     <MESSAGE value="memorize filtered options" />
     <MESSAGE value="memoize filtered options" />
@@ -897,7 +898,8 @@
     <MESSAGE value="wip making things more nes-y" />
     <MESSAGE value="Shoehorning nes.css in" />
     <MESSAGE value="make reusable textfield" />
-    <option name="LAST_COMMIT_MESSAGE" value="make reusable textfield" />
+    <MESSAGE value="fix margin on create page on mobile" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix margin on create page on mobile" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -997,7 +999,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/components/drawer/DesktopDrawer.tsx" />
     <entry file="file://$PROJECT_DIR$/client/components/drawer/StyledDrawer.tsx" />
     <entry file="file://$PROJECT_DIR$/client/components/drawer/Drawer.tsx" />
     <entry file="file://$PROJECT_DIR$/client/components/drawer/DrawerToolbar.tsx" />
@@ -1299,16 +1300,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/lib/theme.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/node_modules/@material-ui/core/ListItemAvatar/ListItemAvatar.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1354,16 +1345,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/Main.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/pages/server.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="412">
@@ -1376,8 +1357,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/pages/create.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="288">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/Main.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/lib/initApolloClient.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="800">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/lib/theme.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
