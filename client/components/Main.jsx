@@ -1,17 +1,17 @@
-import { makeStyles } from '@material-ui/styles';
+import {makeStyles} from '@material-ui/styles';
 import React from "react";
 
 const useStyles = makeStyles({
     content: {
         flexGrow: 1,
         width: '100%',
-        margin:'4em'
-      }
+        backgroundColor: 'white'
+    }
 });
 
-export default ({ children }) => {
+export default ({children}) => {
     const classes = useStyles();
-    return(
+    return (
         <main className={classes.content}>
             {children}
         </main>

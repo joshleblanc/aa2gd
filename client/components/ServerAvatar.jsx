@@ -4,7 +4,6 @@ import {makeStyles} from "@material-ui/styles";
 
 
 export default ({server}) => {
-    const classes = useStyles();
     return (
         <React.Fragment>
             {
