@@ -16,6 +16,7 @@ class MyDocument extends Document {
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
         />
         <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet"/>
+        <link href="https://unpkg.com/nes.css@2.1.0/css/nes.min.css" rel="stylesheet" />
         {/* PWA primary color */}
         <meta name="theme-color" content={theme.palette.primary.main}/>
         <link

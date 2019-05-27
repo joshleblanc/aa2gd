@@ -14,7 +14,6 @@ import Drawer from '../components/drawer/Drawer';
 import DrawerToolbar from '../components/drawer/DrawerToolbar';
 import Main from '../components/Main';
 import 'react-virtualized-select/styles.css';
-import 'nes.css/css/nes.css';
 import 'pickerjs/dist/picker.css';
 import '../global.css';
 
