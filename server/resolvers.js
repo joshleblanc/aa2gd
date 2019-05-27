@@ -104,11 +104,6 @@ const resolvers = {
                 return await Server.findOneAndUpdate({id: s.id}, s, {upsert: true, new: true});
             }));
 
-            const steamConnection = connections.find(c => c.type === 'steam');
-            let games = [];
-            if (steamConnection) {
-                games = await getGames(steamConnection.id);
-            }
             const newUser = await User.findOneAndUpdate({id: user.id}, {
                 ...user,
                 avatarUrl: `http://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`,
@@ -116,7 +111,9 @@ const resolvers = {
                 servers,
             }, {upsert: true, new: true});
 
+            const steamConnection = connections.find(c => c.type === 'steam');
             if (steamConnection) {
+                const games = await getGames(steamConnection.id);
                 newUser.update({games});
             }
 
