@@ -7,6 +7,7 @@ import Link from "../components/Link";
 import Typography from "@material-ui/core/Typography";
 import useCurrentUser from "../hooks/useCurrentUser";
 import SteamForm from "../components/SteamForm";
+import Button from "../components/Button";
 
 const GET_DISCORD_TOKEN = gql`
     query GetDiscordToken($code: String!) {
@@ -43,12 +44,16 @@ export default ({router}) => {
     }
     return (
       <StyledPaper>
-          <Typography>
+          <Typography gutterBottom>
               You're all set.
           </Typography>
           <Typography>
+
               <Link href={'/profile'}>
-                  Click here
+                  <Button variant="info">
+                      Click here
+                  </Button>
+
               </Link>
               to go to your profile.
           </Typography>
