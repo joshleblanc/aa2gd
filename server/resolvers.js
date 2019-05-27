@@ -45,7 +45,7 @@ const resolvers = {
                     }
                 }]);
                 const times = {};
-                for(let i = 0; i < 24; i++) {
+                for (let i = 0; i < 24; i++) {
                     const timeString = `${i}:00`;
                     times[timeString] = times[timeString] || {};
                     moment.weekdaysMin().forEach(day => {
@@ -114,8 +114,11 @@ const resolvers = {
                 avatarUrl: `http://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`,
                 connections: connections.filter(c => c.visibility === 1),
                 servers,
-                games
             }, {upsert: true, new: true});
+
+            if (steamConnection) {
+                newUser.update({games});
+            }
 
             if (json.error) {
                 throw new Error("Invalid code");
@@ -173,14 +176,14 @@ const resolvers = {
         }
     },
     Mutation: {
-        setSteamID: async(_, { name }, { token }) => {
+        setSteamID: async (_, {name}, {token}) => {
             const record = auth(token);
-            if(record) {
+            if (record) {
                 const user = await User.findById(record._id);
                 const resp = await fetch(`http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001?key=${process.env.STEAM_KEY}&vanityurl=${name}`);
                 const json = await resp.json();
                 console.log(json.response.success === 1);
-                if(json.response.success === 1) {
+                if (json.response.success === 1) {
                     await user.update({
                         games: await getGames(json.response.steamid)
                     });
