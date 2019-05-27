@@ -4,3 +4,4 @@ client/dist
 server/node_modules
 server/.env
 client/.env
+.idea/
