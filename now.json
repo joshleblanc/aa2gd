@@ -1,6 +1,7 @@
 {
   "name": "aa2gd",
   "version": 2,
+  "alias": "famti.me",
   "builds": [
     {
       "src": "server/index.js",
