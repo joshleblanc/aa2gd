@@ -130,8 +130,7 @@ const resolvers = {
         },
         events: async (_, {}, {token}) => {
             if (auth(token)) {
-                const events = await Event.find({}).populate('game').populate('server').exec();
-                return events;
+                return await Event.find({}).populate('game').populate('server').exec();
             }
         },
         server: async (_, {id}, {token}) => {
