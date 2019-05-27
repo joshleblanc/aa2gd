@@ -6,4 +6,3 @@ server/.env
 client/.env
 .env
 .env.build
-.idea/workspace.xml
