@@ -15,6 +15,7 @@ const typeDefs = gql`
         register(email: String!, password: String!, confirmPassword: String!): Boolean!
         updateTimetable(time: String, day: String): User
         createEvent(name: String!, server: ID!, game: ID!, date: String!): Event!
+        setSteamID(name: String!): User!
     }
     type Event {
         _id: ID!

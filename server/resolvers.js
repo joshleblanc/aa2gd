@@ -26,6 +26,15 @@ function auth(token) {
     }
 }
 
+async function getGames(id) {
+    const gamesResponse = await fetch(`http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${process.env.STEAM_KEY}&steamid=${id}&format=json&include_appinfo=1&include_played_free_games=1`);
+    const gamesResponseJson = await gamesResponse.json();
+    const games = gamesResponseJson.response.games;
+    return await Promise.all(games.map(g => {
+        return Game.findOneAndUpdate({appid: g.appid}, g, {upsert: true, new: true});
+    }));
+}
+
 const resolvers = {
     Query: {
         availableTimeTable: async (_, {id}, {token}) => {
@@ -98,16 +107,8 @@ const resolvers = {
             const steamConnection = connections.find(c => c.type === 'steam');
             let games = [];
             if (steamConnection) {
-                const gamesResponse = await fetch(`http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${process.env.STEAM_KEY}&steamid=${steamConnection.id}&format=json&include_appinfo=1&include_played_free_games=1`);
-                const gamesResponseJson = await gamesResponse.json();
-                games = gamesResponseJson.response.games;
+                games = await getGames(steamConnection.id);
             }
-
-
-            games = await Promise.all(games.map(async g => {
-                return await Game.findOneAndUpdate({appid: g.appid}, g, {upsert: true, new: true});
-            }));
-
             const newUser = await User.findOneAndUpdate({id: user.id}, {
                 ...user,
                 avatarUrl: `http://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`,
@@ -172,6 +173,22 @@ const resolvers = {
         }
     },
     Mutation: {
+        setSteamID: async(_, { name }, { token }) => {
+            const record = auth(token);
+            if(record) {
+                const user = await User.findById(record._id);
+                const resp = await fetch(`http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001?key=${process.env.STEAM_KEY}&vanityurl=${name}`);
+                const json = await resp.json();
+                console.log(json.response.success === 1);
+                if(json.response.success === 1) {
+                    await user.update({
+                        games: await getGames(json.response.steamid)
+                    });
+                    console.log(user);
+                    return user;
+                }
+            }
+        },
         createEvent: async (_, fields, {token}) => {
             const record = auth(token);
             if (record) {
