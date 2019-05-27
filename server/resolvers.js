@@ -185,7 +185,13 @@ const resolvers = {
                         games: await getGames(json.response.steamid)
                     });
                     console.log(user);
-                    return user;
+                    return User.findById(record._id).populate({
+                        path: 'servers',
+                        populate: {path: 'events'}
+                    }).populate({
+                        path: 'games',
+                        populate: {path: 'events'}
+                    }).exec();
                 }
             }
         },
