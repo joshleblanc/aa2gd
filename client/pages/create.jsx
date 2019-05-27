@@ -32,7 +32,7 @@ const initialValues = {
     name: '',
     server: '',
     game: '',
-    date: moment().format('YYYY-MM-DD HH:00')
+    date: moment()
 };
 
 const validation = Yup.object().shape({
@@ -163,6 +163,7 @@ export default () => {
                                         render={({field, form}) => {
                                             const onChange = e => {
                                                 field.onChange({target: {value: e, name: 'date'}});
+                                                console.log(e, date);
                                                 if (date.hour() !== e.hour()) {
                                                     setDate(e);
                                                 }
@@ -172,7 +173,7 @@ export default () => {
                                                     <DatePicker
                                                         label={"Date and Time"}
                                                         onChange={onChange}
-                                                        value={field.value}
+                                                        value={field.value.format('YYYY-MM-DD HH:00')}
                                                         name="date"
                                                         fullWidth
                                                         margin="normal"
