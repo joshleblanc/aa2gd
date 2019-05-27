@@ -1,34 +1,43 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
 
-const UserSchema = mongoose.Schema({
-  email: { type: String, required: true, index: { unique: true } },
-  password: { type: String, required: true },
+const Connection = mongoose.Schema({
+    id: {type: String, required: true},
+    name: {type: String, required: true},
+    type: {type: String, required: true},
+    revoked: {type: Boolean, required: false},
+    visibility: {type: Number, required: true}
 });
 
-UserSchema.pre('save', function(next) {
-  const user = this;
-
-  // only hash the password if it has been modified (or is new)
-  if (!user.isModified('password')) return next();
-
-  // generate a salt
-  bcrypt.genSalt(10, function(err, salt) {
-    if (err) return next(err);
-
-    // hash the password using our new salt
-    bcrypt.hash(user.password, salt, function(err, hash) {
-      if (err) return next(err);
-
-      // override the cleartext password with the hashed one
-      user.password = hash;
-      next();
-    });
-  });
+const TimeTable = mongoose.Schema({
+    Mo: {type: Array, default: []},
+    Tu: {type: Array, default: []},
+    We: {type: Array, default: []},
+    Th: {type: Array, default: []},
+    Fr: {type: Array, default: []},
+    Sa: {type: Array, default: []},
+    Su: {type: Array, default: []},
 });
 
-UserSchema.methods.comparePassword = function(candidatePassword, cb) {
-  return bcrypt.compare(candidatePassword, this.password);
-};
+const User = mongoose.Schema({
+    email: {type: String, required: true},
+    id: {type: String, required: true},
+    username: {type: String, required: true},
+    avatar: {type: String},
+    avatarUrl: {type: String},
+    connections: [Connection],
+    servers: [{type: mongoose.Schema.Types.ObjectId, ref: "Server"}],
+    timeTable: {
+        type: TimeTable, default: {
+            Mo: [],
+            Tu: [],
+            We: [],
+            Th: [],
+            Fr: [],
+            Sa: [],
+            Su: []
+        },
+    },
+    games: [{type: mongoose.Schema.Types.ObjectId, ref: "Game"}]
+});
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = User;

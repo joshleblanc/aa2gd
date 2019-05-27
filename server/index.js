@@ -1,16 +1,25 @@
-require('dotenv').config()
+require('dotenv').config();
+require('./mongoose');
 const {ApolloServer} = require("apollo-server");
 const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
-require('./mongoose');
 
 const context = async ({ req }) => {
   let token = '';
+  let host;
+  console.log(process.env.NODE_ENV);
+  if(process.env.NODE_ENV === 'development') {
+    host = "http://localhost:3000"
+  } else {
+    host = req.headers.source
+  }
+  console.log(req.headers)
   if(req.headers.authorization) {
     token = req.headers.authorization.split(' ')[1];
   }
   return {
-    token
+    token,
+    origin: host
   }
   
 }

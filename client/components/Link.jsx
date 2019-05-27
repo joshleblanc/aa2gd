@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { makeStyles, Link as MuiLink } from '@material-ui/core';
+import * as React from "react";
 
 const useStyles = makeStyles({
     link: {
         cursor: 'pointer'
     }
-})
+});
 
 export default ({ href, children }) => {
     const classes = useStyles();

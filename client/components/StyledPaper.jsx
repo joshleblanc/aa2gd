@@ -1,18 +1,41 @@
 import React from "react";
 import {Paper} from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles';
+import Typography from "@material-ui/core/Typography";
+import classnames from 'classnames';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    padding: theme.spacing(1),
-    margin: theme.spacing(1)
-  }
-}), {withTheme: true})
+const useStyles = makeStyles(({spacing}) => ({
+    root: {
+        padding: spacing(1.5),
+        margin: spacing(2),
+    },
+    title: {
+        display: 'table',
+        padding: '0 0.5rem',
+        margin: '-1.8rem 0 1rem',
+        backgroundColor: "#303030"
+    }
+}), {withTheme: true});
 
-export default ({children}) => {
-  const classes = useStyles();
+export default ({children, title, className, rounded}) => {
+    const classes = useStyles();
+    const classNames = classnames({
+        "nes-container": true,
+        "with-title": !!title,
+        [classes.root]: true,
+        "is-rounded": rounded,
+        [className]: !!className,
+    });
+    return (
+      <div className={classNames}>
+          {
+              title &&
+              <p className="title">
+                  {title}
+              </p>
+          }
 
-  return (
-    <Paper classes={classes}>{children}</Paper>
-  )
-}
+          {children}
+      </div>
+    )
+};

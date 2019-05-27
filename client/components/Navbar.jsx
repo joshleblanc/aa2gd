@@ -1,33 +1,56 @@
 import React from "react";
-import {AppBar, Toolbar, Button} from '@material-ui/core';
-import LinkButton from './LinkButton';
-import gql from 'graphql-tag';
-import { useQuery, useMutation } from "react-apollo-hooks";
-import CurrentUserName from './CurrentUserName';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
+import Link from 'next/link';
+import useToken from "../hooks/useToken";
+import useHost from "../hooks/useHost";
+import DrawerButton from "./DrawerButton";
+import Button from "./Button";
 
-const GET_TOKEN = gql`
-  {
-    token @client
-  }
-`;
 
-const LOGOUT = gql`
-  mutation Logout {
-    logout @client
+const useStyles = makeStyles(theme => ({
+  appBar: {
+    marginLeft: 240,
+    [theme.breakpoints.up('sm')]: {
+      width: `calc(100% - ${240}px)`,
+    },
+    borderBottom: '1px solid black'
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
+  },
+  grow: {
+    flexGrow: 1
   }
-`;
+}));
 
 export default () => {
-  const { data } = useQuery(GET_TOKEN);
-  const logout = useMutation(LOGOUT);
-  return(
-    <AppBar position={"static"}>
-    <Toolbar>
-      <LinkButton href='/'>Home</LinkButton>
-      <Button component='a' href={`https://discordapp.com/api/oauth2/authorize?client_id=${process.env.DISCORD_CLIENT_ID}&redirect_uri=${process.env.DISCORD_REDIRECT_URL}&response_type=code&scope=email identify guilds connections`}>Login with Discord</Button>
-      <CurrentUserName />
-    </Toolbar>
-  </AppBar>
+  const token = useToken();
+  const host = useHost();
+  const classes = useStyles();
+  return (
+    <AppBar position="fixed" className={token && classes.appBar} elevation={0} color="inherit">
+      <Toolbar>
+        <DrawerButton />
+        <Typography variant="h6" color="inherit" noWrap className={classes.grow}>
+          Famti.me
+        </Typography>
+        {
+          token 
+            ? <Link href={'/create'}>
+                <Button component="a" href={'/create'} variant="primary">
+                  Create Event
+                </Button>
+              </Link>
+            : <Button component="a" href={`https://discordapp.com/api/oauth2/authorize?client_id=${process.env.DISCORD_CLIENT_ID}&redirect_uri=${host + "/authenticate"}&response_type=code&scope=email identify guilds connections`}>
+                Login with discord
+              </Button>
+        }
+      </Toolbar>
+    </AppBar>
   )
-  
+
 }

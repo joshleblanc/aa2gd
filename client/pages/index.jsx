@@ -1,36 +1,26 @@
 import React from 'react';
-import gql from 'graphql-tag';
-import { useSnackbar } from 'notistack';
 import StyledPaper from '../components/StyledPaper';
-import { useQuery } from 'react-apollo-hooks';
-import { LinearProgress, Button } from '@material-ui/core';
-
-const HELLO_QUERY = gql`
-  {
-    hello
-  }
-`
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 
 export default () => {
-  const { data, error, loading } = useQuery(HELLO_QUERY);
-  const { enqueueSnackbar } = useSnackbar();
-  const handleClick = React.useCallback(() => {
-    enqueueSnackbar("A notification!", { variant: "success" })
-  });
-
-  if(loading) {
-    return <LinearProgress />;
-  }
-  if(error) {
-    return "This shouldn't actually happen";
-  }
-
-  return(
-    <React.Fragment>
-      <StyledPaper>
-        {data.hello}
-        <Button onClick={handleClick}>Click me for a notification!</Button>
-      </StyledPaper>
-    </React.Fragment>
-  )
+    return (
+        <Grid container>
+            <Grid item xs={12}>
+                <StyledPaper>
+                    <Typography variant="h6" gutterBottom>
+                        Login to get started
+                    </Typography>
+                    <Typography variant="body2" gutterBottom>
+                        Sign in with discord and create events for any of the channels you're apart of.
+                        Enter your availability to let event creators know when you're available.
+                    </Typography>
+                    <Typography variant="body2">
+                        Our system will let the event creator know how many people are available based on the server,
+                        game, date, and time selected.
+                    </Typography>
+                </StyledPaper>
+            </Grid>
+        </Grid>
+    )
 }

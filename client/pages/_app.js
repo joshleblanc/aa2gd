@@ -10,6 +10,13 @@ import { ApolloProvider, getMarkupFromTree } from 'react-apollo-hooks';
 import { renderToString } from 'react-dom/server';
 import theme from '../lib/theme';
 import { ThemeProvider } from "@material-ui/styles";
+import Drawer from '../components/drawer/Drawer';
+import DrawerToolbar from '../components/drawer/DrawerToolbar';
+import Main from '../components/Main';
+import 'react-virtualized-select/styles.css';
+import 'nes.css/css/nes.css';
+import 'pickerjs/dist/picker.css';
+import '../global.css';
 
 export default class extends App {
 
@@ -26,27 +33,31 @@ export default class extends App {
     }
   }
 
-  static async getInitialProps({ Component, ...pageProps }) {
-    let host;
+  static async getInitialProps({ Component, classes, ...pageProps }) {
+    let apolloHost, host;
     if(process.env.NODE_ENV === 'development') {
-      host = "http://localhost:4000/graphql";
+      apolloHost = "http://localhost:4000";
+      host = "http://localhost:3000";
     } else {
       if(process.browser) {
-        host = `https://${window.location.hostname}/graphql`;
+        host = `https://${window.location.hostname}`;
+        apolloHost = host;
       } else {
-        host = `https://${pageProps.ctx.req.headers.host}/graphql`;
+        host = `https://${pageProps.ctx.req.headers.host}`;
+        apolloHost = host;
       }
     }
-    // console.log(global);
-    // console.log(host)
+
     const { token } = nextCookie(pageProps.ctx);
 
-    const apollo = initApollo(null, host);
+    const apollo = initApollo(null, apolloHost);
     apollo.cache.writeData({
       data: {
         token: token || null,
+        drawerOpen: false,
+        host
       }
-    })
+    });
     
     // Run all GraphQL queries in the component tree
     // and extract the resulting data
@@ -59,9 +70,15 @@ export default class extends App {
             <ThemeProvider theme={theme}>
               <SnackbarProvider>
                 <ApolloProvider client={apollo}>
-                  <CssBaseline />
-                  <Navbar />
-                  <Component {...pageProps} />
+                  <div style={{display: 'flex'}}>
+                    <CssBaseline />
+                    <Navbar />
+                    <Drawer /> 
+                    <Main>
+                      <DrawerToolbar />
+                      <Component {...pageProps} />
+                    </Main>
+                  </div>
                 </ApolloProvider>
               </SnackbarProvider>
             </ThemeProvider>
@@ -76,12 +93,12 @@ export default class extends App {
 
       // getDataFromTree does not call componentWillUnmount
       // head side effect therefore need to be cleared manually
-      Head.rewind()
+      Head.rewind();
     }
-    const apolloState = apollo.cache.extract()
+    const apolloState = apollo.cache.extract();
     return {
       apolloState: apolloState,
-      host
+      host: apolloHost
     }
   }
 
@@ -92,9 +109,15 @@ export default class extends App {
         <ThemeProvider theme={theme}>
           <SnackbarProvider>
             <ApolloProvider client={this.apolloClient}>
-              <CssBaseline />
-              <Navbar />
-              <Component {...pageProps} />
+              <div style={{display: 'flex'}}>
+                <CssBaseline />
+                <Navbar />
+                <Drawer /> 
+                <Main>
+                  <DrawerToolbar />
+                  <Component {...pageProps} />
+                </Main>
+              </div>
             </ApolloProvider>
           </SnackbarProvider>
         </ThemeProvider>

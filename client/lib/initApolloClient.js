@@ -1,12 +1,11 @@
 import { createHttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import fetch from 'node-fetch'
-import resolvers from '../lib/resolvers';
+import resolvers from './resolvers';
 import ApolloClient from "apollo-client";
 import { setContext } from 'apollo-link-context';
 import { onError } from "apollo-link-error";
 import Cookies from 'js-cookie';
-import Router from 'next/router';
 import gql from 'graphql-tag';
 
 const GET_TOKEN = gql`
@@ -17,14 +16,16 @@ const GET_TOKEN = gql`
 
 let client = null;
 function create(initialState, host) {
-    const cache = new InMemoryCache().restore(initialState || {});
+    const cache = new InMemoryCache({
+        dataIdFromObject: object => object._id || null
+    }).restore(initialState || {});
     const authLink = setContext((_, {headers}) => {
         const { token } = cache.readQuery({ query: GET_TOKEN });
-        console.log("auth token:", token);
         return {
             headers: {
                 ...headers,
-                authorization: token ? `Bearer ${token}` : ''
+                authorization: token ? `Bearer ${token}` : '',
+                source: host
             }
         }
     })
@@ -38,12 +39,11 @@ function create(initialState, host) {
                 }
             });
             Cookies.remove('token');
-            Router.push('/');
         }
     })
 
     const link = createHttpLink({
-        uri: host,
+        uri: host + "/graphql",
         fetch: fetch,
         credentials: 'same-origin'
     })
