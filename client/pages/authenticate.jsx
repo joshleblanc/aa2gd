@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import gql from 'graphql-tag';
 import {useQuery, useMutation} from 'react-apollo-hooks';
 import StyledPaper from '../components/StyledPaper';
@@ -36,7 +36,7 @@ export default ({router}) => {
     setToken({variables: {token: data.getDiscordToken}});
     Cookies.set('token', data.getDiscordToken);
     console.log(currentUserQuery.data);
-    if (currentUserQuery.data.currentUser.games.length > 0) {
+    if (currentUserQuery.data.currentUser.games.length === 0) {
         return (
           <SteamForm />
         )

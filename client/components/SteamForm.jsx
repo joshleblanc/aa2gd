@@ -11,6 +11,16 @@ const SET_STEAM_ID = gql`
   mutation SetSteamID($name: String!) {
     setSteamID(name: $name) {
         _id
+        games {
+            _id
+            name
+            logoUrl
+            iconUrl
+            events {
+              _id
+              date
+            }
+        }
     }
   }
 `;
