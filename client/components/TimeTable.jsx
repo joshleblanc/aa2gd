@@ -6,6 +6,7 @@ import {useMutation} from "react-apollo-hooks";
 import TableHead from "@material-ui/core/TableHead";
 import {GET_CURRENT_USER} from "../hooks/useCurrentUser";
 import useToken from "../hooks/useToken";
+import moment from 'moment';
 
 const useStyles = makeStyles({
     table: {
@@ -43,6 +44,8 @@ export default ({editable, timeTable, _id}) => {
     const updateTimetable = useMutation(UPDATE_TIMETABLE);
     const token = useToken();
     const classes = useStyles();
+    console.log(new Date().getTimezoneOffset());
+    console.log(moment.parseZone('9:00 +0180', 'HH:mm'));
     return (
       <React.Fragment>
           {
