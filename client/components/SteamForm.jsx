@@ -38,10 +38,19 @@ export default () => {
           <Typography>
               Looks like you need to connect your steam account!
           </Typography>
-          <Typography>
-              Enter your steam name below to get your games
+          <Typography paragraph>
+              Enter your steam ID below to get your games
           </Typography>
-          <TextField label="Steam name" value={steamName} onChange={e => setSteamName(e.target.value)}/>
+          <Typography variant="caption" paragraph>
+              Your ID looks like:
+              <br />
+              https://steamcommunity/id/{"<YOUR ID HERE>"}
+              <br />
+              or
+              <br />
+              https://steamcommunity/profiles/{"<YOUR ID HERE>"}
+          </Typography>
+          <TextField label="Steam ID" value={steamName} onChange={e => setSteamName(e.target.value)}/>
           <Button onClick={async () => {
               try {
                   setSubmitting(true);
@@ -49,7 +58,7 @@ export default () => {
                   enqueueSnackbar("All done!", {variant: "success"});
               } catch (e) {
                   console.log(e);
-                  enqueueSnackbar("No user found with that nickname", {variant: "error"});
+                  enqueueSnackbar("No user found with that ID", {variant: "error"});
               } finally {
                   setSubmitting(false);
               }
