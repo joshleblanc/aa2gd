@@ -172,26 +172,34 @@ const resolvers = {
         }
     },
     Mutation: {
-        setSteamID: async (_, {name}, {token}) => {
+        setSteamID: async (_, {id}, {token}) => {
             const record = auth(token);
             if (record) {
                 const user = await User.findById(record._id);
-                const resp = await fetch(`http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001?key=${process.env.STEAM_KEY}&vanityurl=${name}`);
-                const json = await resp.json();
-                console.log(json.response.success === 1);
-                if (json.response.success === 1) {
-                    await user.update({
-                        games: await getGames(json.response.steamid)
-                    });
-                    console.log(user);
-                    return User.findById(record._id).populate({
-                        path: 'servers',
-                        populate: {path: 'events'}
-                    }).populate({
-                        path: 'games',
-                        populate: {path: 'events'}
-                    }).exec();
+                let games;
+                try {
+                    games = await getGames(id);
+                } catch (e) {
+                    const resp = await fetch(`http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001?key=${process.env.STEAM_KEY}&vanityurl=${id}`);
+                    const json = await resp.json();
+                    if (json.response.success === 1) {
+                        games = await getGames(json.response.steamid);
+                    } else {
+                        throw new Error("Invalid steam id");
+                    }
                 }
+
+                await user.update({
+                    games: games
+                });
+                console.log(user);
+                return User.findById(record._id).populate({
+                    path: 'servers',
+                    populate: {path: 'events'}
+                }).populate({
+                    path: 'games',
+                    populate: {path: 'events'}
+                }).exec();
             }
         },
         createEvent: async (_, fields, {token}) => {
