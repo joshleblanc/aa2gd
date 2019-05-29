@@ -11,9 +11,9 @@ import HeaderPaper from "../components/HeaderPaper";
 import Button from "../components/Button";
 import {Dialog} from "@material-ui/core";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import SteamForm from "../components/SteamForm";
 import DialogActions from "@material-ui/core/DialogActions";
+import Typography from "@material-ui/core/Typography";
 
 const LOGOUT = gql`
     mutation Logout {
@@ -45,6 +45,9 @@ export default () => {
             <Grid container>
                 <Grid item xs={12} sm={12} md={6}>
                     <StyledPaper title={"Times Available"}>
+                        <Typography>
+                            Select your timezone
+                        </Typography>
                         <TimeTable editable timeTable={data.currentUser.timeTable} _id={data.currentUser._id}/>
                     </StyledPaper>
                 </Grid>

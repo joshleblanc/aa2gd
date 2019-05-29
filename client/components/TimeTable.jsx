@@ -4,7 +4,6 @@ import {makeStyles} from "@material-ui/styles";
 import gql from "graphql-tag";
 import {useMutation} from "react-apollo-hooks";
 import TableHead from "@material-ui/core/TableHead";
-import {GET_CURRENT_USER} from "../hooks/useCurrentUser";
 import useToken from "../hooks/useToken";
 import moment from 'moment';
 
@@ -27,8 +26,8 @@ export const makeTimes = () => {
 };
 
 const UPDATE_TIMETABLE = gql`
-    mutation UpdateTimetable($day: String, $time: String) {
-        updateTimetable(day: $day, time: $time) {
+    mutation UpdateTimetable($day: String!, $time: String!, $offset: Int!) {
+        updateTimetable(day: $day, time: $time, offset: $offset) {
             _id
             timeTable {
                 Mo, Tu, We, Th, Fr, Sa, Su
@@ -37,21 +36,17 @@ const UPDATE_TIMETABLE = gql`
         }
     }
 `;
-
 const daysOfWeek = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
 export default ({editable, timeTable, _id}) => {
     const updateTimetable = useMutation(UPDATE_TIMETABLE);
-    const token = useToken();
     const classes = useStyles();
-    console.log(new Date().getTimezoneOffset());
-    console.log(moment.parseZone('9:00 +0180', 'HH:mm'));
+    const utcOffset = moment().utcOffset();
     return (
       <React.Fragment>
           {
               editable && <Typography variant="caption">Tap a square to edit</Typography>
           }
-
           <Table className={classes.table} size="small">
               <TableHead>
                   <TableRow>
@@ -62,6 +57,8 @@ export default ({editable, timeTable, _id}) => {
               <TableBody>
                   {
                       makeTimes().map(time => {
+                          const utcHours = moment.utc(time, "HH:mm").utcOffset(utcOffset).hours();
+                          const utcTime = `${utcHours}:00`;
                           return (
                             <TableRow key={time}>
                                 <TableCell colSpan={2}>{time}</TableCell>
@@ -73,16 +70,17 @@ export default ({editable, timeTable, _id}) => {
                                             onClick={() => {
                                                 if (!editable) return;
                                                 const newTimeTable = {...timeTable};
-                                                if (newTimeTable[day].includes(time)) {
-                                                    newTimeTable[day] = newTimeTable[day].filter(newT => time !== newT);
+                                                if (newTimeTable[day].includes(utcTime)) {
+                                                    newTimeTable[day] = newTimeTable[day].filter(newT => utcTime !== newT);
                                                 } else {
-                                                    newTimeTable[day] = [...newTimeTable[day], time];
+                                                    newTimeTable[day] = [...newTimeTable[day], utcTime];
                                                 }
                                                 console.log(newTimeTable);
                                                 updateTimetable({
                                                     variables: {
                                                         time: time,
-                                                        day: day
+                                                        day: day,
+                                                        offset: utcOffset
                                                     },
                                                     optimisticResponse: {
                                                         __typename: "Mutation",
@@ -97,7 +95,7 @@ export default ({editable, timeTable, _id}) => {
                                                     },
                                                 });
                                             }}
-                                            style={{backgroundColor: timeTable[day].includes(time) ? 'rgb(0, 100, 0)' : 'rgb(100,0,0)'}}
+                                            style={{backgroundColor: timeTable[day].includes(utcTime) ? 'rgb(0, 100, 0)' : 'rgb(100,0,0)'}}
                                             className={classes.cell}
                                             key={day}
                                           >

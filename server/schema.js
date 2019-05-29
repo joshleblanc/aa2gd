@@ -13,7 +13,7 @@ const typeDefs = gql`
     type Mutation {
         login(email: String!, password: String!): String!
         register(email: String!, password: String!, confirmPassword: String!): Boolean!
-        updateTimetable(time: String, day: String): User
+        updateTimetable(time: String!, day: String!, offset: Int!): User
         createEvent(name: String!, server: ID!, game: ID!, date: String!): Event!
         setSteamID(name: String!): User!
     }

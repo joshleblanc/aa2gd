@@ -221,14 +221,21 @@ const resolvers = {
                 return event;
             }
         },
-        updateTimetable: async (_, {time, day}, {token}) => {
+        updateTimetable: async (_, {time, day, offset}, {token}) => {
             const record = auth(token);
+            const daysOfWeek = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+            const momentTime = moment(time, "HH:mm");
+            momentTime.set('day', day);
+            const utc = moment.utc(time, "HH:mm").utcOffset(offset);
+            const utcHours = utc.hours();
+            const utcDay = utc.day();
+            const utcTime = `${utcHours}:00`;
             if (record) {
                 const user = await User.findOne({_id: record._id});
-                if (user.timeTable[day].includes(time)) {
-                    user.timeTable[day] = user.timeTable[day].filter(t => t !== time);
+                if (user.timeTable[day].includes(utcTime)) {
+                    user.timeTable[day] = user.timeTable[day].filter(t => t !== utcTime);
                 } else {
-                    user.timeTable[day].push(time);
+                    user.timeTable[day].push(utcTime);
                 }
                 user.save();
                 return user;
