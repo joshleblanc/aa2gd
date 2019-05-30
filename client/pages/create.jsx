@@ -163,8 +163,7 @@ export default () => {
                                         render={({field, form}) => {
                                             const onChange = e => {
                                                 field.onChange({target: {value: e, name: 'date'}});
-                                                console.log(e, date);
-                                                if (date.hour() !== e.hour()) {
+                                                if (e.diff(date, 'hours') !== 0) {
                                                     setDate(e);
                                                 }
                                             };
