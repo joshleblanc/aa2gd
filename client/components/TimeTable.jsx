@@ -41,6 +41,7 @@ export default ({editable, timeTable, _id}) => {
     const updateTimetable = useMutation(UPDATE_TIMETABLE);
     const classes = useStyles();
     const utcOffset = moment().utcOffset();
+    console.log("utcOffset", utcOffset);
     return (
       <React.Fragment>
           {
