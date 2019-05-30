@@ -226,16 +226,19 @@ const resolvers = {
             const daysOfWeek = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
             const momentTime = moment(time, "HH:mm");
             momentTime.set('day', day);
-            const utc = moment.utc(time, "HH:mm").utcOffset(offset);
-            const utcHours = utc.hours();
-            const utcDay = utc.day();
-            const utcTime = `${utcHours}:00`;
+            momentTime.utcOffset(offset);
+            momentTime.parseZone();
+            momentTime.local();
+            const utcHour = momentTime.hour();
+            const utcDay = daysOfWeek[momentTime.day()];
+            const utcTime = `${utcHour}:00`;
+            console.log(utcHour, utcDay);
             if (record) {
                 const user = await User.findOne({_id: record._id});
-                if (user.timeTable[day].includes(utcTime)) {
-                    user.timeTable[day] = user.timeTable[day].filter(t => t !== utcTime);
+                if (user.timeTable[utcDay].includes(utcTime)) {
+                    user.timeTable[utcDay] = user.timeTable[utcDay].filter(t => t !== utcTime);
                 } else {
-                    user.timeTable[day].push(utcTime);
+                    user.timeTable[utcDay].push(utcTime);
                 }
                 user.save();
                 return user;

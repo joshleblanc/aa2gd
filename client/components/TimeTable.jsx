@@ -4,7 +4,6 @@ import {makeStyles} from "@material-ui/styles";
 import gql from "graphql-tag";
 import {useMutation} from "react-apollo-hooks";
 import TableHead from "@material-ui/core/TableHead";
-import useToken from "../hooks/useToken";
 import moment from 'moment';
 
 const useStyles = makeStyles({
@@ -57,25 +56,30 @@ export default ({editable, timeTable, _id}) => {
               <TableBody>
                   {
                       makeTimes().map(time => {
-                          const utcHours = moment.utc(time, "HH:mm").utcOffset(utcOffset).hours();
-                          const utcTime = `${utcHours}:00`;
                           return (
                             <TableRow key={time}>
                                 <TableCell colSpan={2}>{time}</TableCell>
                                 {
                                     daysOfWeek.map(day => {
+                                        const momentTime = moment(time, "HH:mm");
+                                        momentTime.set('day', day);
+                                        momentTime.utcOffset(utcOffset);
+                                        momentTime.parseZone();
+                                        momentTime.local();
+                                        const localDay = daysOfWeek[momentTime.day()];
+                                        const localHour = momentTime.hour();
+                                        const localTime = `${localHour}:00`;
                                         return (
                                           <TableCell
                                             align="center"
                                             onClick={() => {
                                                 if (!editable) return;
                                                 const newTimeTable = {...timeTable};
-                                                if (newTimeTable[day].includes(utcTime)) {
-                                                    newTimeTable[day] = newTimeTable[day].filter(newT => utcTime !== newT);
+                                                if (newTimeTable[localDay].includes(localTime)) {
+                                                    newTimeTable[localDay] = newTimeTable[localDay].filter(newT => localTime !== newT);
                                                 } else {
-                                                    newTimeTable[day] = [...newTimeTable[day], utcTime];
+                                                    newTimeTable[localDay] = [...newTimeTable[localDay], localTime];
                                                 }
-                                                console.log(newTimeTable);
                                                 updateTimetable({
                                                     variables: {
                                                         time: time,
@@ -95,7 +99,7 @@ export default ({editable, timeTable, _id}) => {
                                                     },
                                                 });
                                             }}
-                                            style={{backgroundColor: timeTable[day].includes(utcTime) ? 'rgb(0, 100, 0)' : 'rgb(100,0,0)'}}
+                                            style={{backgroundColor: timeTable[localDay].includes(localTime) ? 'rgb(0, 100, 0)' : 'rgb(100,0,0)'}}
                                             className={classes.cell}
                                             key={day}
                                           >
