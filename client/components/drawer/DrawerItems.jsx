@@ -5,15 +5,23 @@ import useServers from "../../hooks/useServers";
 import ServerListItem from "../ServerListItem";
 import Link from 'next/link';
 import ListItem from "@material-ui/core/ListItem";
+import {makeStyles} from "@material-ui/styles";
+
+const useStyles = makeStyles({
+    divider: {
+        backgroundColor: 'black'
+    }
+});
 
 export default () => {
     const servers = useServers();
+    const classes = useStyles();
     if (!servers) return "Loading...";
     const serversWithEvents = servers.filter(server => server.currentEvents.length + server.futureEvents.length > 0);
     return (
       <div>
           <CurrentUserDisplay/>
-          <Divider component="hr"/>
+          <Divider component="hr" className={classes.divider} />
           <List component="ul">
               {
                   serversWithEvents.length > 0 ?
