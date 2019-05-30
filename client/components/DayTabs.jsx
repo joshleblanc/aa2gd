@@ -74,7 +74,7 @@ export default ({id, max}) => {
                                             if (count === 0) {
                                                 color = `rgb(100, 0, 0)`;
                                             } else {
-                                                color = `rgb(0, ${(count / max) * 100}, 0)`;
+                                                color = `rgb(0, ${(count / max) * 255}, 0)`;
                                             }
                                             return (
                                                 <TableCell key={day} align="center" style={{backgroundColor: color}}
