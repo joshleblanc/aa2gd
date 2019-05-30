@@ -62,7 +62,6 @@ export default ({editable, timeTable, _id}) => {
                                 <TableCell colSpan={2}>{time}</TableCell>
                                 {
                                     daysOfWeek.map(day => {
-                                        const tmp = moment(time, "HH:mm");
                                         const momentTime = moment(time, "HH:mm");
                                         momentTime.utcOffset(utcOffset);
                                         momentTime.set('day', day);

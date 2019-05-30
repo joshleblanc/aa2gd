@@ -4,6 +4,8 @@ import {makeTimes} from "./TimeTable";
 import {makeStyles} from "@material-ui/styles";
 import gql from "graphql-tag";
 import {useQuery} from "react-apollo-hooks";
+import moment from 'moment';
+import useOffset from '../hooks/useOffset';
 
 const days = [
     "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa",
@@ -31,6 +33,7 @@ export default ({id, max}) => {
     const {data, loading, error} = useQuery(GET_AVAILABLE_TIMETABLE, {
         variables: {id}
     });
+    const utcOffset = useOffset();
     if (loading || error) {
         return <Typography>Loading...</Typography>;
     }
@@ -58,7 +61,15 @@ export default ({id, max}) => {
                                     <TableCell colSpan={2}>{time}</TableCell>
                                     {
                                         days.map(day => {
-                                            const count = timeTable[time][day];
+                                            const momentTime = moment(time, "HH:mm");
+                                            momentTime.utcOffset(utcOffset);
+                                            momentTime.set('day', day);
+                                            momentTime.set('hour', time.split(':')[0]);
+                                            momentTime.utc();
+                                            const localDay = moment.weekdaysMin()[momentTime.day()];
+                                            const localHour = momentTime.hour();
+                                            const localTime = `${localHour}:00`;
+                                            const count = timeTable[localTime][localDay];
                                             let color;
                                             if (count === 0) {
                                                 color = `rgb(100, 0, 0)`;
