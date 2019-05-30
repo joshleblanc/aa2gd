@@ -122,7 +122,7 @@ const resolvers = {
             if (steamConnection) {
                 const games = await getGames(steamConnection.id);
                 console.log(games.length);
-                newUser.update({games});
+                await newUser.update({games});
             }
 
             if (json.error) {
