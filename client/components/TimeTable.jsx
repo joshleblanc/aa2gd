@@ -62,14 +62,17 @@ export default ({editable, timeTable, _id}) => {
                                 <TableCell colSpan={2}>{time}</TableCell>
                                 {
                                     daysOfWeek.map(day => {
+                                        const tmp = moment(time, "HH:mm");
                                         const momentTime = moment(time, "HH:mm");
                                         momentTime.set('day', day);
                                         momentTime.utcOffset(utcOffset);
                                         momentTime.utc();
-                                        console.log(momentTime);
                                         const localDay = daysOfWeek[momentTime.day()];
                                         const localHour = momentTime.hour();
                                         const localTime = `${localHour}:00`;
+                                        if(timeTable[localDay].includes(localTime)) {
+                                            console.log(tmp, momentTime, localDay, localTime, day, time);
+                                        }
                                         const color = timeTable[localDay].includes(localTime) ? 'rgb(0, 100, 0)' : 'rgb(100,0,0)';
                                         return (
                                           <TableCell
