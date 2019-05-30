@@ -22,6 +22,7 @@ export default ({onChange, ...props}) => {
     return (
       <TextField
         ref={ref}
+        onChange={onChange}
         {...props}
       />
     )
