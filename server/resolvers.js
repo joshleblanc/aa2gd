@@ -223,14 +223,12 @@ const resolvers = {
         },
         updateTimetable: async (_, {time, day, offset}, {token}) => {
             const record = auth(token);
-            const daysOfWeek = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
             const momentTime = moment(time, "HH:mm");
             momentTime.set('day', day);
             momentTime.utcOffset(offset);
-            momentTime.parseZone();
-            momentTime.local();
+            momentTime.utc();
             const utcHour = momentTime.hour();
-            const utcDay = daysOfWeek[momentTime.day()];
+            const utcDay = moment.weekdaysMin()[momentTime.day()];
             const utcTime = `${utcHour}:00`;
             if (record) {
                 const user = await User.findOne({_id: record._id});
