@@ -31,7 +31,7 @@ async function getGames(id) {
     const gamesResponseJson = await gamesResponse.json();
     const games = gamesResponseJson.response.games;
     console.log(id);
-    if(games) {
+    if (games) {
         return await Promise.all(games.map(async g => {
             return await Game.findOneAndUpdate({appid: g.appid}, g, {upsert: true, new: true});
         }));
@@ -73,9 +73,10 @@ const resolvers = {
                           "servers": new mongoose.Types.ObjectId(serverId)
                       }
                   }, {
-                      $match: {
-                          "games": new mongoose.Types.ObjectId(gameId)
-                      }
+                      $or: [
+                          {"games": new mongoose.Types.ObjectId(gameId)},
+                          {"games": null}
+                      ]
                   }]);
                   const momentDate = moment(date);
                   momentDate.utc();
@@ -125,7 +126,7 @@ const resolvers = {
                   const steamConnection = connections.find(c => c.type === 'steam');
                   if (steamConnection) {
                       const games = await getGames(steamConnection.id);
-                      if(games) {
+                      if (games) {
                           await newUser.update({games});
                       }
                   }
