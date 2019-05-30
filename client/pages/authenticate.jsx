@@ -36,7 +36,6 @@ export default ({router}) => {
     if (error || currentUserQuery.error) return "Error";
     setToken({variables: {token: data.getDiscordToken}});
     Cookies.set('token', data.getDiscordToken);
-    console.log(currentUserQuery.data);
     if (currentUserQuery.data.currentUser && currentUserQuery.data.currentUser.games.length === 0) {
         return (
           <SteamForm />

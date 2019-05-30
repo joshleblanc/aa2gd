@@ -71,16 +71,12 @@ export default ({editable, timeTable, _id}) => {
                                         const localDay = daysOfWeek[momentTime.day()];
                                         const localHour = momentTime.hour();
                                         const localTime = `${localHour}:00`;
-                                        if(timeTable[localDay].includes(localTime)) {
-                                            console.log(tmp, momentTime, localDay, localTime, day, time);
-                                        }
                                         const color = timeTable[localDay].includes(localTime) ? 'rgb(0, 100, 0)' : 'rgb(100,0,0)';
                                         return (
                                           <TableCell
                                             align="center"
                                             onClick={() => {
                                                 if (!editable) return;
-                                                console.log(localDay, localTime);
 
                                                 const newTimeTable = {...timeTable};
                                                 if (newTimeTable[localDay].includes(localTime)) {
