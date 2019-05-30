@@ -130,6 +130,7 @@ const resolvers = {
                   if (json.error) {
                       throw new Error("Invalid code");
                   } else {
+                      console.log(json);
                       return jwt.sign({...json, _id: newUser._id}, process.env.JWT_SECRET, {expiresIn: json.expires_in});
                   }
               } catch (e) {
