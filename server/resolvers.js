@@ -53,7 +53,12 @@ const resolvers = {
                       times[timeString] = times[timeString] || {};
                       moment.weekdaysMin().forEach(day => {
                           times[timeString][day] = users.reduce((total, user) => {
-                              return user.timeTable[day].includes(timeString) ? total + 1 : total;
+                              if(user.timeTable) {
+                                  return user.timeTable[day].includes(timeString) ? total + 1 : total;
+                              } else {
+                                  return total;
+                              }
+
                           }, 0);
                       });
                   }
