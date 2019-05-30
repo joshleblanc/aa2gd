@@ -38,16 +38,12 @@ export default () => {
                         data.currentUser.games.length === 0 &&
                         <Button onClick={() => setSteamDialog(true)}>Connect Steam</Button>
                     }
-
                     <Button onClick={logout} variant="error">Logout</Button>
                 </HeaderPaper>
             </Grid>
             <Grid container>
                 <Grid item xs={12} sm={12} md={6}>
                     <StyledPaper title={"Times Available"}>
-                        <Typography>
-                            Select your timezone
-                        </Typography>
                         <TimeTable editable timeTable={data.currentUser.timeTable} _id={data.currentUser._id}/>
                     </StyledPaper>
                 </Grid>

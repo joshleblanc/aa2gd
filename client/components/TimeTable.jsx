@@ -5,7 +5,6 @@ import gql from "graphql-tag";
 import {useMutation} from "react-apollo-hooks";
 import TableHead from "@material-ui/core/TableHead";
 import moment from 'moment';
-import nextCookie from 'next-cookies';
 import useOffset from "../hooks/useOffset";
 
 const useStyles = makeStyles({
@@ -63,7 +62,6 @@ export default ({editable, timeTable, _id}) => {
                                 <TableCell colSpan={2}>{time}</TableCell>
                                 {
                                     daysOfWeek.map(day => {
-                                        const tmp = moment(time, "HH:mm");
                                         const momentTime = moment(time, "HH:mm");
                                         momentTime.set('day', day);
                                         momentTime.utcOffset(utcOffset);
@@ -72,9 +70,6 @@ export default ({editable, timeTable, _id}) => {
                                         const localDay = daysOfWeek[momentTime.day()];
                                         const localHour = momentTime.hour();
                                         const localTime = `${localHour}:00`;
-                                        if(timeTable[localDay].includes(localTime)) {
-                                            console.log(localDay, localTime, momentTime, tmp, timeTable);
-                                        }
                                         const color = timeTable[localDay].includes(localTime) ? 'rgb(0, 100, 0)' : 'rgb(100,0,0)';
                                         return (
                                           <TableCell
