@@ -66,6 +66,7 @@ export default ({editable, timeTable, _id}) => {
                                         momentTime.set('day', day);
                                         momentTime.utcOffset(utcOffset);
                                         momentTime.utc();
+                                        console.log(momentTime);
                                         const localDay = daysOfWeek[momentTime.day()];
                                         const localHour = momentTime.hour();
                                         const localTime = `${localHour}:00`;
