@@ -34,7 +34,6 @@ export default class extends App {
       jssStyles.parentNode.removeChild(jssStyles);
     }
     Cookies.set('offset', moment().utcOffset());
-    console.log("Setting timezone");
   }
 
   static async getInitialProps({ Component, classes, ...pageProps }) {
@@ -52,12 +51,13 @@ export default class extends App {
       }
     }
 
-    const { token } = nextCookie(pageProps.ctx);
+    const { token, offset } = nextCookie(pageProps.ctx);
 
     const apollo = initApollo(null, apolloHost);
     apollo.cache.writeData({
       data: {
         token: token || null,
+        offset: parseInt(offset) || moment().utcOffset(),
         drawerOpen: false,
         host
       }

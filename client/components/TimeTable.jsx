@@ -6,6 +6,7 @@ import {useMutation} from "react-apollo-hooks";
 import TableHead from "@material-ui/core/TableHead";
 import moment from 'moment';
 import nextCookie from 'next-cookies';
+import useOffset from "../hooks/useOffset";
 
 const useStyles = makeStyles({
     table: {
@@ -41,8 +42,7 @@ const daysOfWeek = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 export default ({editable, timeTable, _id}) => {
     const updateTimetable = useMutation(UPDATE_TIMETABLE);
     const classes = useStyles();
-    const utcOffset = parseInt(nextCookie().offset);
-    console.log("utcOffset", nextCookie().offset);
+    const utcOffset = useOffset();
     return (
       <React.Fragment>
           {
