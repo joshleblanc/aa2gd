@@ -232,7 +232,6 @@ const resolvers = {
             const utcHour = momentTime.hour();
             const utcDay = daysOfWeek[momentTime.day()];
             const utcTime = `${utcHour}:00`;
-            console.log(utcHour, utcDay);
             if (record) {
                 const user = await User.findOne({_id: record._id});
                 if (user.timeTable[utcDay].includes(utcTime)) {
