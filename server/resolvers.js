@@ -225,10 +225,11 @@ const resolvers = {
         },
         updateTimetable: async (_, {time, day, offset}, {token}) => {
             const record = auth(token);
-            const momentTime = moment.parseZone(time, "HH:mm");
+            const momentTime = moment(time, "HH:mm");
             momentTime.set('day', day);
             momentTime.utcOffset(offset);
             momentTime.utc();
+            console.log(day, time, momentTime.format());
             const utcHour = momentTime.hour();
             const utcDay = moment.weekdaysMin()[momentTime.day()];
             const utcTime = `${utcHour}:00`;
