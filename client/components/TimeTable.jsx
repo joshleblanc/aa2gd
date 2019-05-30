@@ -74,6 +74,7 @@ export default ({editable, timeTable, _id}) => {
                                         if(timeTable[localDay].includes(localTime)) {
                                             console.log(localDay, localTime, momentTime, tmp, timeTable);
                                         }
+                                        const color = timeTable[localDay].includes(localTime) ? 'rgb(0, 100, 0)' : 'rgb(100,0,0)';
                                         return (
                                           <TableCell
                                             align="center"
@@ -106,7 +107,7 @@ export default ({editable, timeTable, _id}) => {
                                                     },
                                                 });
                                             }}
-                                            style={{backgroundColor: timeTable[localDay].includes(localTime) ? 'rgb(0, 100, 0)' : 'rgb(100,0,0)'}}
+                                            style={{backgroundColor: color }}
                                             className={classes.cell}
                                             key={day}
                                           >
