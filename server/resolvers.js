@@ -227,8 +227,8 @@ const resolvers = {
             const record = auth(token);
             const momentTime = moment(time, "HH:mm");
             console.log(momentTime);
-            momentTime.set('day', day);
             momentTime.utcOffset(offset);
+            momentTime.set('day', day);
             momentTime.set('hour', time.split(':')[0]);
             momentTime.utc();
             console.log(day, time, momentTime.format());

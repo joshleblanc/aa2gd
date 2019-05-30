@@ -64,8 +64,8 @@ export default ({editable, timeTable, _id}) => {
                                     daysOfWeek.map(day => {
                                         const tmp = moment(time, "HH:mm");
                                         const momentTime = moment(time, "HH:mm");
-                                        momentTime.set('day', day);
                                         momentTime.utcOffset(utcOffset);
+                                        momentTime.set('day', day);
                                         momentTime.set('hour', time.split(':')[0]);
                                         momentTime.utc();
                                         const localDay = daysOfWeek[momentTime.day()];
