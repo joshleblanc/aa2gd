@@ -30,8 +30,8 @@ async function getGames(id) {
     const gamesResponse = await fetch(`http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${process.env.STEAM_KEY}&steamid=${id}&format=json&include_appinfo=1&include_played_free_games=1`);
     const gamesResponseJson = await gamesResponse.json();
     const games = gamesResponseJson.response.games;
-    return await Promise.all(games.map(g => {
-        return Game.findOneAndUpdate({appid: g.appid}, g, {upsert: true, new: true});
+    return await Promise.all(games.map(async g => {
+        return await Game.findOneAndUpdate({appid: g.appid}, g, {upsert: true, new: true});
     }));
 }
 
@@ -106,7 +106,6 @@ const resolvers = {
             const connections = await connectionsRequest.json();
             const serversRequest = await discord_req("users/@me/guilds", json.access_token);
             let servers = await serversRequest.json();
-
             servers = await Promise.all(servers.map(async s => {
                 return await Server.findOneAndUpdate({id: s.id}, s, {upsert: true, new: true});
             }));
@@ -121,6 +120,7 @@ const resolvers = {
             const steamConnection = connections.find(c => c.type === 'steam');
             if (steamConnection) {
                 const games = await getGames(steamConnection.id);
+                console.log(games.length);
                 newUser.update({games});
             }
 

@@ -27,7 +27,7 @@ export default ({imgUrl, title, children}) => {
             <Grid container>
                 <Grid item xs={12} md={4} className={classes.nameContainer}>
                     <Avatar src={imgUrl} className={classes.avatar} />
-                    <Typography variant="h4" gutterBottom className={classes.name}>{title}</Typography>
+                    <Typography variant="h4" gutterBottom className={classes.name}> {title}</Typography>
                 </Grid>
                 <Grid item xs={12} md={8} className={classes.nameContainer}>
                     <div className={classes.grow} />
