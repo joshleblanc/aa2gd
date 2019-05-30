@@ -225,7 +225,7 @@ const resolvers = {
         },
         updateTimetable: async (_, {time, day, offset}, {token}) => {
             const record = auth(token);
-            const momentTime = moment(time, "HH:mm");
+            const momentTime = moment.parseZone(time, "HH:mm");
             momentTime.set('day', day);
             momentTime.utcOffset(offset);
             momentTime.utc();
