@@ -8,7 +8,7 @@ import DayTabs from "../components/DayTabs";
 import HeaderPaper from "../components/HeaderPaper";
 
 export default ({router}) => {
-    const { data, error, loading } = useServer(router.query.id );
+    const { data, error, loading } = useServer(router.query.id);
     if(error) return "Error";
     if(loading) return "Loading...";
     return(
