@@ -1,7 +1,6 @@
-import {Divider, List, ListItemText, Typography} from '@material-ui/core';
+import {Divider, List, ListItemText} from '@material-ui/core';
 import CurrentUserDisplay from '../CurrentUserDisplay';
 import React from "react";
-import LinkListItem from "../LinkListItem";
 import useServers from "../../hooks/useServers";
 import ServerListItem from "../ServerListItem";
 import Link from 'next/link';
