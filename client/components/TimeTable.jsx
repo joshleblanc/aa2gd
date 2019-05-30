@@ -5,6 +5,7 @@ import gql from "graphql-tag";
 import {useMutation} from "react-apollo-hooks";
 import TableHead from "@material-ui/core/TableHead";
 import moment from 'moment';
+import nextCookie from 'next-cookies';
 
 const useStyles = makeStyles({
     table: {
@@ -40,8 +41,8 @@ const daysOfWeek = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 export default ({editable, timeTable, _id}) => {
     const updateTimetable = useMutation(UPDATE_TIMETABLE);
     const classes = useStyles();
-    const utcOffset = moment().utcOffset();
-    console.log("utcOffset", utcOffset);
+    const utcOffset = parseInt(nextCookie().offset);
+    console.log("utcOffset", nextCookie().offset);
     return (
       <React.Fragment>
           {

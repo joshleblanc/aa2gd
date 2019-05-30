@@ -16,6 +16,9 @@ import Main from '../components/Main';
 import 'react-virtualized-select/styles.css';
 import 'pickerjs/dist/picker.css';
 import '../global.css';
+import Cookies from 'js-cookie';
+import moment from 'moment';
+
 
 export default class extends App {
 
@@ -30,6 +33,8 @@ export default class extends App {
     if (jssStyles) {
       jssStyles.parentNode.removeChild(jssStyles);
     }
+    Cookies.set('offset', moment().utcOffset());
+    console.log("Setting timezone");
   }
 
   static async getInitialProps({ Component, classes, ...pageProps }) {
@@ -57,7 +62,7 @@ export default class extends App {
         host
       }
     });
-    
+
     // Run all GraphQL queries in the component tree
     // and extract the resulting data
     if (!process.browser) {
@@ -72,7 +77,7 @@ export default class extends App {
                   <div style={{display: 'flex'}}>
                     <CssBaseline />
                     <Navbar />
-                    <Drawer /> 
+                    <Drawer />
                     <Main>
                       <DrawerToolbar />
                       <Component {...pageProps} />
@@ -111,7 +116,7 @@ export default class extends App {
               <div style={{display: 'flex'}}>
                 <CssBaseline />
                 <Navbar />
-                <Drawer /> 
+                <Drawer />
                 <Main>
                   <DrawerToolbar />
                   <Component {...pageProps} />
