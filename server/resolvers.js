@@ -79,6 +79,7 @@ const resolvers = {
                 const day = moment.weekdaysMin()[momentDate.day()];
                 const hour = momentDate.hour();
                 const time = `${hour}:00`;
+                console.log("Available at:", `${day}, ${time}`, users);
                 return users.reduce((total, user) => {
                     return user.timeTable[day].includes(time) ? total + 1 : total;
                 }, 0).toString();
