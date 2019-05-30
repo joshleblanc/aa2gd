@@ -9,5 +9,5 @@ const GET_OFFSET = gql`
 
 export default () => {
     const { data } = useQuery(GET_OFFSET);
-    return data.offset;
+    return parseInt(data.offset);
 }

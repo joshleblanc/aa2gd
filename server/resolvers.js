@@ -226,6 +226,7 @@ const resolvers = {
         updateTimetable: async (_, {time, day, offset}, {token}) => {
             const record = auth(token);
             const momentTime = moment(time, "HH:mm");
+            console.log(momentTime);
             momentTime.set('day', day);
             momentTime.utcOffset(offset);
             momentTime.utc();
