@@ -7,6 +7,7 @@ const typeDefs = gql`
         server(id: ID!): Server
         user(id: ID!): User
         events: [Event]!
+        games: [Game]!
         availableUsers(serverId: ID!, gameId: ID!, date: String!): String!
         availableTimeTable(id: ID!): String
     }

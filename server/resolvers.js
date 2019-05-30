@@ -58,6 +58,11 @@ const resolvers = {
             }
             return null;
         },
+        games: async (_, _ctx, { token }) => {
+            if(auth(token)) {
+                return await Game.find();
+            }
+        },
         availableUsers: async (_, {serverId, gameId, date}, {token}) => {
             if (auth(token) && serverId && gameId) {
                 const users = await User.aggregate([{

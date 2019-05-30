@@ -55,8 +55,21 @@ const GET_AVAILABLE_USERS = gql`
         availableUsers(date: $date, serverId: $serverId, gameId: $gameId)
     }
 `;
+
+const GET_GAMES = gql`
+    {
+        games {
+            _id
+            name
+            logoUrl
+            iconUrl
+        }
+    }
+`;
+
 export default () => {
     const {data, error, loading} = useCurrentUser();
+    const gamesQuery = useQuery(GET_GAMES);
     const [serverId, setServerId] = useState("");
     const [gameId, setGameId] = useState("");
     const [date, setDate] = useState(moment());
@@ -71,8 +84,8 @@ export default () => {
     const {enqueueSnackbar} = useSnackbar();
     const createEvent = useMutation(CREATE_EVENT);
     const token = useToken();
-    if (error) return "Error";
-    if (loading) return "Loading...";
+    if (error || gamesQuery.error) return "Error";
+    if (loading || gamesQuery.loading) return "Loading...";
     return (
         <div className={classes.container}>
             <MuiPickersUtilsProvider utils={MomentUtils}>
@@ -144,7 +157,7 @@ export default () => {
                                                         field.onChange(e);
                                                         setGameId(e.target.value);
                                                     }}
-                                                    options={data.currentUser.games.map(g => ({
+                                                    options={gamesQuery.data.games.map(g => ({
                                                         value: g._id,
                                                         name: g.name,
                                                         image: g.iconUrl
