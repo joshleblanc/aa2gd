@@ -70,10 +70,12 @@ const resolvers = {
                     }
                 }]);
                 const momentDate = moment(date);
+                momentDate.utc();
                 const day = moment.weekdaysMin()[momentDate.day()];
                 const hour = momentDate.hour();
+                const time = `${hour}:00`;
                 return users.reduce((total, user) => {
-                    return user.timeTable[day].includes(`${hour}:00`) ? total + 1 : total;
+                    return user.timeTable[day].includes(time) ? total + 1 : total;
                 }, 0).toString();
             }
 
