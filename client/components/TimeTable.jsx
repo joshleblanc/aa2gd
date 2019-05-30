@@ -71,7 +71,7 @@ export default ({editable, timeTable, _id}) => {
                                         const localHour = momentTime.hour();
                                         const localTime = `${localHour}:00`;
                                         if(timeTable[localDay].includes(localTime)) {
-                                            console.log(localDay, localTime, momentTime, tmp);
+                                            console.log(localDay, localTime, momentTime, tmp, timeTable);
                                         }
                                         return (
                                           <TableCell
