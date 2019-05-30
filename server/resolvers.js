@@ -230,6 +230,7 @@ const resolvers = {
             momentTime.set('day', day);
             momentTime.utcOffset(offset);
             momentTime.set('hour', time.split(':')[0]);
+            momentTime.utc();
             console.log(day, time, momentTime.format());
             const utcHour = momentTime.hour();
             const utcDay = moment.weekdaysMin()[momentTime.day()];
