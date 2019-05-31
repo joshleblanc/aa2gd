@@ -1,7 +1,5 @@
 import React from "react";
-import {Paper} from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles';
-import Typography from "@material-ui/core/Typography";
 import classnames from 'classnames';
 
 const useStyles = makeStyles(({spacing}) => ({
@@ -17,7 +15,7 @@ const useStyles = makeStyles(({spacing}) => ({
     }
 }), {withTheme: true});
 
-export default ({children, title, className, rounded}) => {
+export default ({children, title, className}) => {
     const classes = useStyles();
     const classNames = classnames({
         "nes-container": true,
