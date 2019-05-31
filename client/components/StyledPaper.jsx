@@ -6,8 +6,8 @@ import classnames from 'classnames';
 
 const useStyles = makeStyles(({spacing}) => ({
     root: {
-        padding: spacing(1.5),
-        margin: spacing(2),
+        padding: [spacing(1.5), '!important'],
+        margin: [spacing(2), '!important'],
     },
     title: {
         display: 'table',
@@ -23,7 +23,7 @@ export default ({children, title, className, rounded}) => {
         "nes-container": true,
         "with-title": !!title,
         [classes.root]: true,
-        "is-rounded": rounded,
+        "is-rounded": true,
         [className]: !!className,
     });
     return (
