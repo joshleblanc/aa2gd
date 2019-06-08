@@ -7,12 +7,12 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import DialogActions from "@material-ui/core/DialogActions";
-import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import React, {useCallback, useMemo, useState} from "react";
 import withMobileDialog from "@material-ui/core/withMobileDialog/withMobileDialog";
 import {makeStyles} from "@material-ui/styles";
 import TextField from "../TextField";
+import Button from "../Button";
 
 const useStyles = makeStyles({
     list: {
