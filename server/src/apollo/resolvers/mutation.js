@@ -4,7 +4,7 @@ const { getGames, auth } = require('../utils');
 const jwt = require('jsonwebtoken');
 
 const User = model('User');
-const Game = model('Game');
+const Game = model('GameEntity');
 const Server = model('Server');
 
 module.exports = {
@@ -43,7 +43,7 @@ module.exports = {
         const record = auth(token);
         if (record) {
             const game = await Game.findOne({_id: fields.game});
-            const server = await Server.findOne({_id: fields.server});
+            const server = await Server.findOne({_id: fields.ServerEntity});
             const event = new Event({
                 name: fields.name,
                 date: fields.date,

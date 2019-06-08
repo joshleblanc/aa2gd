@@ -1,12 +1,7 @@
 const moment = require('moment');
-const { model, Types } = require('mongoose');
+const { Types } = require('mongoose');
 const jwt = require('jsonwebtoken');
 const { getGames, discordReq, auth } = require('../utils');
-
-const Game = model('Game');
-const Webhook = model('Webhook');
-const User = model('User');
-const Server = model('Server');
 
 module.exports = {
     availableTimeTable: async (_, {id}, {token}) => {
@@ -128,7 +123,7 @@ module.exports = {
     },
     events: async (_, {}, {token}) => {
         if (auth(token)) {
-            return await Event.find({}).populate('game').populate('server').exec();
+            return await Event.find({}).populate('game').populate('ServerEntity.ts.ts').exec();
         }
     },
     server: async (_, {id}, {token}) => {

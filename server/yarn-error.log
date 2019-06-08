@@ -35,7 +35,7 @@ npm manifest:
       "mongoose": "^5.4.0",
     },
     "scripts": {
-      "start": "nodemon index.js"
+      "start": "nodemon index.ts"
     },
     "devDependencies": {
       "nodemon": "^1.18.11"
