@@ -69,21 +69,21 @@ export default ({router}) => {
                 <CardMedia
                     className={classes.avatar}
                     component="img"
-                    image={data.user.avatarUrl}
+                    image={data.UserEntity.avatarUrl}
                 />
                 <CardContent>
-                    <Typography variant="h6">{data.user.username}</Typography>
+                    <Typography variant="h6">{data.UserEntity.username}</Typography>
                 </CardContent>
             </Card>
             <Grid container>
                 <Grid item xs={12}>
                     <StyledPaper>
-                        <TimeTable timeTable={data.user.timeTable}/>
+                        <TimeTable timeTable={data.UserEntity.timeTable}/>
                     </StyledPaper>
                 </Grid>
                 <Grid item xs={12}>
                     <StyledPaper>
-                        <ConnectionList connections={data.user.connections}/>
+                        <ConnectionList connections={data.UserEntity.connections}/>
                     </StyledPaper>
                 </Grid>
             </Grid>

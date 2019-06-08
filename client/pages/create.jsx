@@ -122,7 +122,7 @@ export default () => {
                                         }}
                                     />
                                     <Field
-                                        name={'server'}
+                                        name={'ServerEntity.ts.ts'}
                                         render={({field, form}) => {
                                             return (
                                                 <Autocomplete
@@ -137,8 +137,8 @@ export default () => {
                                                         name: s.name,
                                                         image: s.iconUrl
                                                     }))}
-                                                    helperText={form.touched.server && form.errors.server}
-                                                    error={form.touched.server && form.errors.server}
+                                                    helperText={form.touched.ServerEntity && form.errors.ServerEntity}
+                                                    error={form.touched.ServerEntity && form.errors.ServerEntity}
                                                     label="Server"
                                                     placeholder="Select a server"
                                                     disabled={form.isSubmitting}
