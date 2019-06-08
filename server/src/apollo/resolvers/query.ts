@@ -1,3 +1,9 @@
+import {Game} from "../../models/GameEntity";
+import {User} from "../../models/UserEntity";
+import {Webhook} from "../../models/WebhookEntity";
+import {Server} from "../../models/ServerEntity";
+import {Event} from '../../models/EventEntity';
+
 const moment = require('moment');
 const { Types } = require('mongoose');
 const jwt = require('jsonwebtoken');
@@ -134,12 +140,14 @@ module.exports = {
                     path: "game"
                 }
             }).exec();
-            server.users = await User.aggregate([{
-                $match: {
-                    "servers": new Types.ObjectId(id)
-                }
-            }]);
-            return server;
+            return {
+                ...server,
+                users: await User.aggregate([{
+                    $match: {
+                        "servers": new Types.ObjectId(id)
+                    }
+                }])
+            };
         } else {
             return null;
         }
