@@ -7,12 +7,12 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import DialogActions from "@material-ui/core/DialogActions";
-import Dialog from "@material-ui/core/Dialog";
 import React, {useCallback, useMemo, useState} from "react";
 import withMobileDialog from "@material-ui/core/withMobileDialog/withMobileDialog";
 import {makeStyles} from "@material-ui/styles";
 import TextField from "../TextField";
 import Button from "../Button";
+import Dialog from "../Dialog";
 
 const useStyles = makeStyles({
     list: {
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     }
 });
 
-export default withMobileDialog()(({fullScreen, label, options, open, onClose, title, onSelect, name}) => {
+export default ({options, open, onClose, title, onSelect, name}) => {
     const [ search, setSearch ] = useState('');
     const classes = useStyles();
 
@@ -50,7 +50,7 @@ export default withMobileDialog()(({fullScreen, label, options, open, onClose, t
     }, [options, search]);
 
     return(
-        <Dialog fullScreen={fullScreen} open={open} fullWidth onClose={onClose} classes={{ paper: "nes-dialog" }} PaperComponent="dialog">
+        <Dialog open={open} onClose={onClose}>
             <DialogTitle>{title}</DialogTitle>
             <DialogContent className={classes.listContainer}>
                 <TextField
@@ -88,4 +88,4 @@ export default withMobileDialog()(({fullScreen, label, options, open, onClose, t
             </DialogActions>
         </Dialog>
     )
-});
+};
