@@ -50,7 +50,7 @@ export default withMobileDialog()(({fullScreen, label, options, open, onClose, t
     }, [options, search]);
 
     return(
-        <Dialog fullScreen={fullScreen} open={open} fullWidth onClose={onClose}>
+        <Dialog fullScreen={fullScreen} open={open} fullWidth onClose={onClose} classes={{ paper: "nes-dialog" }} PaperComponent="dialog">
             <DialogTitle>{title}</DialogTitle>
             <DialogContent className={classes.listContainer}>
                 <TextField
