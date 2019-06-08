@@ -8,6 +8,7 @@ const GET_SERVER = gql`
             id
             name
             iconUrl
+            owner
             users {
                 _id
                 id
