@@ -10,6 +10,7 @@ const typeDefs = gql`
         games: [Game]!
         availableUsers(serverId: ID!, gameId: ID!, date: String!): String!
         availableTimeTable(id: ID!): String
+        webhooks(serverId: ID!, userId: ID!): [Webhook]!
     }
     type Mutation {
         login(email: String!, password: String!): String!
