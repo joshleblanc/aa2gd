@@ -8,12 +8,15 @@ import DayTabs from "../components/DayTabs";
 import HeaderPaper from "../components/HeaderPaper";
 import Button from "../components/Button";
 import WebhookDialog from "../components/WebhookDialog";
+import useCurrentUser from "../hooks/useCurrentUser";
 
 export default ({router}) => {
+    const currentUserQuery = useCurrentUser();
     const {data, error, loading} = useServer(router.query.id);
     const [webhookDialogOpen, setWebhookDialogOpen] = useState(false);
-    if (error) return "Error";
-    if (loading) return "Loading...";
+    if (error || currentUserQuery.error) return "Error";
+    if (loading || currentUserQuery.loading) return "Loading...";
+    const userId = currentUserQuery.data.currentUser._id;
     return (
       <React.Fragment>
           <Grid container>
@@ -35,7 +38,12 @@ export default ({router}) => {
                   </StyledPaper>
               </Grid>
           </Grid>
-          <WebhookDialog open={webhookDialogOpen} onClose={() => setWebhookDialogOpen(false)} />
+          <WebhookDialog
+            userId={userId}
+            serverId={data.server._id}
+            open={webhookDialogOpen}
+            onClose={() => setWebhookDialogOpen(false)}
+          />
       </React.Fragment>
     )
 }
