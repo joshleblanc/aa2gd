@@ -69,6 +69,7 @@ const typeDefs = gql`
         creator: User!
         server: Server!
         url: String!
+        name: String!
     }
     type Server {
         _id: ID!
