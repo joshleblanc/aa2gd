@@ -2,7 +2,7 @@ import Dialog from "./Dialog";
 import React from "react";
 
 export default ({open, onClose}) => {
-    return(
+    return (
       <Dialog open={open} onClose={onClose}>
 
       </Dialog>
