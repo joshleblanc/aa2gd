@@ -6,6 +6,7 @@ import EventTabs from "../components/EventTabs";
 import useServer from "../hooks/useServer";
 import DayTabs from "../components/DayTabs";
 import HeaderPaper from "../components/HeaderPaper";
+import Button from "../components/Button";
 
 export default ({router}) => {
     const { data, error, loading } = useServer(router.query.id);
@@ -14,7 +15,9 @@ export default ({router}) => {
     return(
         <Grid container>
             <Grid item xs={12}>
-                <HeaderPaper title={data.server.name} imgUrl={data.server.iconUrl} />
+                <HeaderPaper title={data.server.name} imgUrl={data.server.iconUrl} >
+                    <Button>Webhooks</Button>
+                </HeaderPaper>
             </Grid>
             <Grid item xs={12} md={6}>
                 <StyledPaper>

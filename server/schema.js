@@ -64,6 +64,12 @@ const typeDefs = gql`
         revoked: Boolean!
         visibility: Int!
     }
+    type Webhook {
+        _id: ID!
+        creator: User!
+        server: Server!
+        url: String!
+    }
     type Server {
         _id: ID!
         id: String!
