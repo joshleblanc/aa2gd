@@ -8,6 +8,7 @@ const Server = mongoose.model('Server');
 const Game = mongoose.model('Game');
 const User = mongoose.model('User');
 const Event = mongoose.model('Event');
+const Webhook = mongoose.model('Webhook');
 
 async function discord_req(path, token) {
     const api_url = "https://discordapp.com/api";
@@ -66,9 +67,14 @@ const resolvers = {
               }
               return null;
           },
-          games: async (_, _ctx, {token}) => {
+          games: async (_, _params, {token}) => {
               if (auth(token)) {
                   return await Game.find();
+              }
+          },
+          webhooks: async (_, { userId, serverId }, { token }) => {
+              if(auth(token) && serverId && userId) {
+                  return await Webhook.find({ creator: userId, server: serverId });
               }
           },
           availableUsers: async (_, {serverId, gameId, date}, {token}) => {
