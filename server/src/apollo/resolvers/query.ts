@@ -49,16 +49,20 @@ module.exports = {
     },
     availableUsers: async (_, {serverId, gameId, date}, {token}) => {
         if (auth(token) && serverId && gameId) {
+            console.log(serverId, gameId);
             const users = await User.aggregate([{
                 $match: {
                     "servers": new Types.ObjectId(serverId)
                 }
             }, {
-                $or: [
-                    {"games": new Types.ObjectId(gameId)},
-                    {"games": null}
-                ]
+                $match: {
+                    $or: [
+                        {"games": new Types.ObjectId(gameId)},
+                        {"games": null}
+                    ]
+                }
             }]);
+            console.log(users[0].timeTable);
             const momentDate = moment(date);
             momentDate.utc();
             const day = moment.weekdaysMin()[momentDate.day()];
@@ -66,7 +70,11 @@ module.exports = {
             const time = `${hour}:00`;
             console.log("Available at:", `${day}, ${time}`, users);
             return users.reduce((total, user) => {
-                return user.timeTable[day].includes(time) ? total + 1 : total;
+                if(user.timeTable) {
+                    return user.timeTable[day].includes(time) ? total + 1 : total;
+                } else {
+                    return total;
+                }
             }, 0).toString();
         }
 
