@@ -34,8 +34,12 @@ export default ({router}) => {
     const currentUserQuery = useCurrentUser();
     if (loading || currentUserQuery.loading) return "Loading...";
     if (error || currentUserQuery.error) return "Error";
-    setToken({variables: {token: data.getDiscordToken}});
-    Cookies.set('token', data.getDiscordToken);
+    console.log(currentUserQuery, data);
+    if(data.getDiscordToken) {
+        setToken({variables: {token: data.getDiscordToken}});
+        Cookies.set('token', data.getDiscordToken);
+    }
+
     if (currentUserQuery.data.currentUser && currentUserQuery.data.currentUser.games.length === 0) {
         return (
           <SteamForm />

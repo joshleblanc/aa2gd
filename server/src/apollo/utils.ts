@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const fetch = require('node-fetch');
-
+import { Game } from '../models/GameEntity';
 module.exports = {
     discordReq: async function(path, token) {
         const api_url = "https://discordapp.com/api";
@@ -23,7 +23,7 @@ module.exports = {
         const games = gamesResponseJson.response.games;
         if (games) {
             return await Promise.all(games.map(async g => {
-                return await GameEntity.findOneAndUpdate({appid: g.appid}, g, {upsert: true, new: true});
+                return await Game.findOneAndUpdate({appid: g.appid}, g, {upsert: true, new: true});
             }));
         }
     }

@@ -4,6 +4,7 @@ import * as moment from 'moment';
 
 
 export class ServerEntity extends Typegoose {
+
     @prop({ required: true })
     id: string;
 
@@ -16,8 +17,8 @@ export class ServerEntity extends Typegoose {
     @prop({ required: true })
     owner: boolean;
 
-    @arrayProp({ itemsRef: EventEntity })
-    events: Ref<EventEntity>[];
+    @arrayProp({ itemsRef: "Event" })
+    events: Array<Ref<EventEntity>>;
 
     @prop()
     get iconUrl() {

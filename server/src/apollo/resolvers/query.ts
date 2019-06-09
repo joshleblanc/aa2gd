@@ -3,11 +3,13 @@ import {User} from "../../models/UserEntity";
 import {Webhook} from "../../models/WebhookEntity";
 import {Server} from "../../models/ServerEntity";
 import {Event} from '../../models/EventEntity';
+import fetch from 'node-fetch';
 
+const FormData = require('form-data');
 const moment = require('moment');
-const { Types } = require('mongoose');
+const {Types} = require('mongoose');
 const jwt = require('jsonwebtoken');
-const { getGames, discordReq, auth } = require('../utils');
+const {getGames, discordReq, auth} = require('../utils');
 
 module.exports = {
     availableTimeTable: async (_, {id}, {token}) => {
@@ -23,7 +25,7 @@ module.exports = {
                 times[timeString] = times[timeString] || {};
                 moment.weekdaysMin().forEach(day => {
                     times[timeString][day] = users.reduce((total, user) => {
-                        if(user.timeTable) {
+                        if (user.timeTable) {
                             return user.timeTable[day].includes(timeString) ? total + 1 : total;
                         } else {
                             return total;
@@ -41,9 +43,9 @@ module.exports = {
             return await Game.find();
         }
     },
-    webhooks: async (_, { userId, serverId }, { token }) => {
-        if(auth(token) && serverId && userId) {
-            return await Webhook.find({ creator: userId, server: serverId });
+    webhooks: async (_, {userId, serverId}, {token}) => {
+        if (auth(token) && serverId && userId) {
+            return await Webhook.find({creator: userId, server: serverId});
         }
     },
     availableUsers: async (_, {serverId, gameId, date}, {token}) => {
@@ -73,6 +75,7 @@ module.exports = {
     },
     getDiscordToken: async (_, {code}, {origin}) => {
         try {
+            console.log(FormData);
             const data = new FormData();
             data.append('client_id', process.env.DISCORD_CLIENT_ID);
             data.append('client_secret', process.env.DISCORD_CLIENT_SECRET);
@@ -86,12 +89,14 @@ module.exports = {
             });
 
             const json = await r.json();
+            console.log("OAUTH RESPONSE: " + JSON.stringify(json));
             const userRequest = await discordReq("users/@me", json.access_token);
             const user = await userRequest.json();
             const connectionsRequest = await discordReq("users/@me/connections", json.access_token);
             const connections = await connectionsRequest.json();
             const serversRequest = await discordReq("users/@me/guilds", json.access_token);
             let servers = await serversRequest.json();
+            console.log(JSON.stringify(servers));
             servers = await Promise.all(servers.map(async s => {
                 return await Server.findOneAndUpdate({id: s.id}, s, {upsert: true, new: true});
             }));
@@ -129,7 +134,7 @@ module.exports = {
     },
     events: async (_, {}, {token}) => {
         if (auth(token)) {
-            return await Event.find({}).populate('game').populate('ServerEntity.ts.ts').exec();
+            return await Event.find({}).populate('game').populate('server').exec();
         }
     },
     server: async (_, {id}, {token}) => {
@@ -140,14 +145,12 @@ module.exports = {
                     path: "game"
                 }
             }).exec();
-            return {
-                ...server,
-                users: await User.aggregate([{
-                    $match: {
-                        "servers": new Types.ObjectId(id)
-                    }
-                }])
-            };
+            // const users = await User.aggregate([{
+            //     $match: {
+            //         "servers": new Types.ObjectId(id)
+            //     }
+            // }]);
+            return server;
         } else {
             return null;
         }

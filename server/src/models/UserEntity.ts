@@ -46,8 +46,8 @@ export class UserEntity extends Typegoose {
     @prop()
     avatarUrl: string;
 
-    @arrayProp({ itemsRef: ConnectionEntity })
-    connections: Array<Ref<ConnectionEntity>>;
+    @arrayProp({ items: ConnectionEntity })
+    connections: Array<ConnectionEntity>;
 
     @arrayProp({ itemsRef: ServerEntity })
     servers: Array<Ref<ServerEntity>>;

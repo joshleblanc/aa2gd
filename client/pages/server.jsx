@@ -21,26 +21,26 @@ export default ({router}) => {
       <React.Fragment>
           <Grid container>
               <Grid item xs={12}>
-                  <HeaderPaper title={data.ServerEntity.name} imgUrl={data.ServerEntity.iconUrl}>
+                  <HeaderPaper title={data.server.name} imgUrl={data.server.iconUrl}>
                       <Button onClick={() => setWebhookDialogOpen(true)}>Webhooks</Button>
                   </HeaderPaper>
               </Grid>
               <Grid item xs={12} md={6}>
                   <StyledPaper>
                       <Typography variant={"h5"}>Events</Typography>
-                      <EventTabs events={data.ServerEntity.events}/>
+                      <EventTabs events={data.server.events}/>
                   </StyledPaper>
               </Grid>
               <Grid item xs={12} md={6}>
-                  <StyledPaper>
-                      <Typography variant="h5">User Availability</Typography>
-                      <DayTabs id={data.ServerEntity._id} max={data.ServerEntity.users.length}/>
-                  </StyledPaper>
+                  {/*<StyledPaper>*/}
+                  {/*    <Typography variant="h5">User Availability</Typography>*/}
+                  {/*    <DayTabs id={data.server._id} max={data.server.users.length}/>*/}
+                  {/*</StyledPaper>*/}
               </Grid>
           </Grid>
           <WebhookDialog
             userId={userId}
-            serverId={data.ServerEntity._id}
+            serverId={data.server._id}
             open={webhookDialogOpen}
             onClose={() => setWebhookDialogOpen(false)}
           />

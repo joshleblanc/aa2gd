@@ -9,7 +9,7 @@ export class EventEntity extends Typegoose {
     @prop({ required: true })
     date: Date;
 
-    @prop({ ref: ServerEntity })
+    @prop({ ref: "Server" })
     server: Ref<ServerEntity>;
 
     @prop()

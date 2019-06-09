@@ -9,10 +9,10 @@ export class WebhookEntity extends Typegoose {
     @prop({required: true})
     name: string;
 
-    @prop({ref: UserEntity})
+    @prop({ref: "User"})
     creator: Ref<UserEntity>;
 
-    @prop({ ref: ServerEntity })
+    @prop({ ref: "Server" })
     server: Ref<ServerEntity>;
 }
 
