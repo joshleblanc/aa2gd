@@ -61,9 +61,9 @@ export class UserEntity extends Typegoose {
             Fr: [],
             Sa: [],
             Su: []
-        }
+        },
     })
-    timeTable: Ref<TimeTableEntity>;
+    timeTable: TimeTableEntity;
 
     @arrayProp({ itemsRef: GameEntity })
     games: Array<Ref<GameEntity>>;
