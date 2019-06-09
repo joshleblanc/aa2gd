@@ -15,7 +15,7 @@
   "routes": [
     {
       "src": "/graphql",
-      "dest": "server/index.js"
+      "dest": "server/index.ts"
     },
     {
       "src": "/(.*)",
