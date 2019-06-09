@@ -122,23 +122,23 @@ export default () => {
                                         }}
                                     />
                                     <Field
-                                        name={'ServerEntity.ts.ts'}
+                                        name={'server'}
                                         render={({field, form}) => {
                                             return (
                                                 <Autocomplete
                                                     {...field}
                                                     fullWidth
                                                     onChange={e => {
-                                                        setServerId(e.target.value);
                                                         field.onChange(e);
+                                                        setServerId(e.target.value);
                                                     }}
                                                     options={data.currentUser.servers.map(s => ({
                                                         value: s._id,
                                                         name: s.name,
                                                         image: s.iconUrl
                                                     }))}
-                                                    helperText={form.touched.ServerEntity && form.errors.ServerEntity}
-                                                    error={form.touched.ServerEntity && form.errors.ServerEntity}
+                                                    helperText={form.touched.server && form.errors.server}
+                                                    error={form.touched.server && form.errors.server}
                                                     label="Server"
                                                     placeholder="Select a server"
                                                     disabled={form.isSubmitting}

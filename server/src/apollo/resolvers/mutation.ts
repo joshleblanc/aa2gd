@@ -43,7 +43,7 @@ module.exports = {
         const record = auth(token);
         if (record) {
             const game = await Game.findOne({_id: fields.game});
-            const server = await Server.findOne({_id: fields.ServerEntity});
+            const server = await Server.findOne({_id: fields.server});
             const event = new Event({
                 name: fields.name,
                 date: fields.date,
