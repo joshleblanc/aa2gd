@@ -4,7 +4,7 @@
   "alias": "famti.me",
   "builds": [
     {
-      "src": "server/index.js",
+      "src": "server/index.ts",
       "use": "@now/node-server"
     },
     {
