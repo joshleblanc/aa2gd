@@ -32,10 +32,10 @@ export default ({router}) => {
                   </StyledPaper>
               </Grid>
               <Grid item xs={12} md={6}>
-                  {/*<StyledPaper>*/}
-                  {/*    <Typography variant="h5">User Availability</Typography>*/}
-                  {/*    <DayTabs id={data.server._id} max={data.server.users.length}/>*/}
-                  {/*</StyledPaper>*/}
+                  <StyledPaper>
+                      <Typography variant="h5">User Availability</Typography>
+                      <DayTabs id={data.server._id} max={data.server.users.length}/>
+                  </StyledPaper>
               </Grid>
           </Grid>
           <WebhookDialog

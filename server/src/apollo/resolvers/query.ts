@@ -4,12 +4,11 @@ import {Webhook} from "../../models/WebhookEntity";
 import {Server} from "../../models/ServerEntity";
 import {Event} from '../../models/EventEntity';
 import fetch from 'node-fetch';
-
 const FormData = require('form-data');
 const moment = require('moment');
-const {Types} = require('mongoose');
+const { Types } = require('mongoose');
 const jwt = require('jsonwebtoken');
-const {getGames, discordReq, auth} = require('../utils');
+const { getGames, discordReq, auth } = require('../utils');
 
 module.exports = {
     availableTimeTable: async (_, {id}, {token}) => {
@@ -25,7 +24,7 @@ module.exports = {
                 times[timeString] = times[timeString] || {};
                 moment.weekdaysMin().forEach(day => {
                     times[timeString][day] = users.reduce((total, user) => {
-                        if (user.timeTable) {
+                        if(user.timeTable) {
                             return user.timeTable[day].includes(timeString) ? total + 1 : total;
                         } else {
                             return total;
@@ -43,9 +42,9 @@ module.exports = {
             return await Game.find();
         }
     },
-    webhooks: async (_, {userId, serverId}, {token}) => {
-        if (auth(token) && serverId && userId) {
-            return await Webhook.find({creator: userId, server: serverId});
+    webhooks: async (_, { userId, serverId }, { token }) => {
+        if(auth(token) && serverId && userId) {
+            return await Webhook.find({ creator: userId, server: serverId });
         }
     },
     availableUsers: async (_, {serverId, gameId, date}, {token}) => {
@@ -145,12 +144,12 @@ module.exports = {
                     path: "game"
                 }
             }).exec();
-            // const users = await User.aggregate([{
-            //     $match: {
-            //         "servers": new Types.ObjectId(id)
-            //     }
-            // }]);
-            return server;
+            const users = await User.aggregate([{
+                $match: {
+                    "servers": new Types.ObjectId(id)
+                }
+            }]);
+            return { ...server.toObject(), users };
         } else {
             return null;
         }
