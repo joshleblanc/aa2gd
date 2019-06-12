@@ -16,4 +16,8 @@ export class WebhookEntity extends Typegoose {
     server: Ref<ServerEntity>;
 }
 
-export const Webhook = new WebhookEntity().getModelForClass(WebhookEntity);
+export const Webhook = new WebhookEntity().getModelForClass(WebhookEntity, {
+    schemaOptions: {
+        collection: "webhooks"
+    }
+});

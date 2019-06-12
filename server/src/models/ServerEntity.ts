@@ -67,6 +67,7 @@ export const Server = new ServerEntity().getModelForClass(ServerEntity, {
         },
         toJSON: {
             virtuals: true
-        }
+        },
+        collection: "servers"
     }
 });

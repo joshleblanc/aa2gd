@@ -16,4 +16,8 @@ export class EventEntity extends Typegoose {
     game: Ref<GameEntity>;
 }
 
-export const Event = new EventEntity().getModelForClass(EventEntity);
+export const Event = new EventEntity().getModelForClass(EventEntity, {
+    schemaOptions: {
+        collection: "events"
+    }
+});

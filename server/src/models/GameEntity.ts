@@ -45,6 +45,7 @@ export const Game = new GameEntity().getModelForClass(GameEntity, {
         },
         toJSON: {
             virtuals: true
-        }
+        },
+        collection: "games"
     }
 });

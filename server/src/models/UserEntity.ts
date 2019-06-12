@@ -69,4 +69,8 @@ export class UserEntity extends Typegoose {
     games: Array<Ref<GameEntity>>;
 }
 
-export const User = new UserEntity().getModelForClass(UserEntity);
+export const User = new UserEntity().getModelForClass(UserEntity, {
+    schemaOptions: {
+        collection: "users"
+    }
+});
