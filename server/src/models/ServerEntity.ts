@@ -17,7 +17,7 @@ export class ServerEntity extends Typegoose {
     @prop({ required: true })
     owner: boolean;
 
-    @arrayProp({ itemsRef: "Event" })
+    @arrayProp({ itemsRef: EventEntity })
     events: Array<Ref<EventEntity>>;
 
     @prop()
@@ -28,34 +28,29 @@ export class ServerEntity extends Typegoose {
     @prop()
     get pastEvents() {
         const today = moment();
-        return this.events.filter(event => {
-            if(event instanceof EventEntity) {
-                const eventDate = moment(event.date);
-                return eventDate.diff(today, 'hours') < -3;
-            }
+        return this.events.filter((event:EventEntity) => {
+            const eventDate = moment(event.date);
+            return eventDate.diff(today, 'hours') < -3;
         })
     }
 
     @prop()
     get futureEvents() {
         const today = moment();
-        return this.events.filter(event => {
-            if(event instanceof EventEntity) {
-                const eventDate = moment(event.date);
-                return eventDate.isAfter(today);
-            }
+        console.log(this.name, this.events);
+        return this.events.filter((event:EventEntity) => {
+            const eventDate = moment(event.date);
+            return eventDate.isAfter(today);
         })
     }
 
     @prop()
     get currentEvents() {
         const today = moment();
-        return this.events.filter(event => {
-            if(event instanceof EventEntity) {
-                const eventDate = moment(event.date);
-                const diff = eventDate.diff(today, 'hours');
-                return diff > -3 && diff <= 0;
-            }
+        return this.events.filter((event:EventEntity) => {
+            const eventDate = moment(event.date);
+            const diff = eventDate.diff(today, 'hours');
+            return diff > -3 && diff <= 0;
         });
     }
 }

@@ -1,18 +1,18 @@
 import {prop, Ref, Typegoose} from "typegoose";
-import { ServerEntity } from "./ServerEntity";
-import { GameEntity } from "./GameEntity";
+import {ServerEntity} from "./ServerEntity";
+import {GameEntity} from "./GameEntity";
 
 export class EventEntity extends Typegoose {
-    @prop({ required: true })
+    @prop({required: true})
     name: string;
 
-    @prop({ required: true })
+    @prop({required: true})
     date: Date;
 
-    @prop({ ref: "Server" })
+    @prop({ref: ServerEntity})
     server: Ref<ServerEntity>;
 
-    @prop()
+    @prop({ref: GameEntity})
     game: Ref<GameEntity>;
 }
 

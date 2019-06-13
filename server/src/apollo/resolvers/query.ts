@@ -136,12 +136,12 @@ module.exports = {
     },
     user: async (_, {id}, {token}) => {
         if (auth(token)) {
-            return await User.findOne({id});
+            return User.findOne({id});
         }
     },
     events: async (_, {}, {token}) => {
         if (auth(token)) {
-            return await Event.find({}).populate('game').populate('server').exec();
+            return Event.find({}).populate('game').populate('server').exec();
         }
     },
     server: async (_, {id}, {token}) => {
