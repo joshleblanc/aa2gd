@@ -1,8 +1,9 @@
 require('dotenv').config();
 require('./src/mongoose');
 const {ApolloServer} = require("apollo-server");
-const typeDefs = require('./src/apollo/schema');
-const resolvers = require('./src/apollo/resolvers');
+
+import resolvers from './src/apollo/resolvers';
+import typeDefs from './src/apollo/schema';
 
 const context = async ({req}) => {
     let token = '';

@@ -10,7 +10,7 @@ const { Types } = require('mongoose');
 const jwt = require('jsonwebtoken');
 const { getGames, discordReq, auth } = require('../utils');
 
-module.exports = {
+export default {
     availableTimeTable: async (_, {id}, {token}) => {
         if (auth(token) && id) {
             const users = await User.aggregate([{

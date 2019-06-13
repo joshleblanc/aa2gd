@@ -22,7 +22,7 @@ module.exports = {
         const gamesResponseJson = await gamesResponse.json();
         const games = gamesResponseJson.response.games;
         if (games) {
-            return await Promise.all(games.map(async g => {
+            return Promise.all(games.map(async g => {
                 return await Game.findOneAndUpdate({appid: g.appid}, g, {upsert: true, new: true});
             }));
         }
