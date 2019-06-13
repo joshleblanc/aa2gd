@@ -4,7 +4,7 @@
   "alias": "famti.me",
   "builds": [
     {
-      "src": "server/index.ts",
+      "src": "server/src/index.ts",
       "use": "@now/node-server"
     },
     {
@@ -15,7 +15,7 @@
   "routes": [
     {
       "src": "/graphql",
-      "dest": "server/index.ts"
+      "dest": "server/src/index.ts"
     },
     {
       "src": "/(.*)",

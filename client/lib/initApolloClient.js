@@ -31,7 +31,7 @@ function create(initialState, host) {
     })
     const errorLink = onError(({ graphQLErrors }) => {
         console.log("Something went wrong with the query: ", graphQLErrors);
-        if(graphQLErrors && graphQLErrors.some(e => e.message === "Not authorized")) {
+        if(graphQLErrors && graphQLErrors.some(e => e.message === "Access denied! You need to be authorized to perform this action!")) {
             console.log("Permission denied");
             cache.writeData({
                 data: {

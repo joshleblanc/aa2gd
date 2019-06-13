@@ -26,7 +26,7 @@ export default () => {
     const {data, loading, error} = useCurrentUser();
     const [steamDialog, setSteamDialog] = useState(false);
     if (loading) return "Loading...";
-    if (error) return "Error";
+    if (error) return "You need to be logged in to go here";
     if (!data.currentUser) {
         return "You're not logged in!"
     }
