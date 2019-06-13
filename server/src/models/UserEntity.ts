@@ -34,10 +34,10 @@ export class UserEntity extends Typegoose {
     @prop({required: true})
     email: string;
 
-    @prop({ required: true })
+    @prop({required: true})
     id: string;
 
-    @prop({ required: true })
+    @prop({required: true})
     username: string;
 
     @prop()
@@ -46,10 +46,10 @@ export class UserEntity extends Typegoose {
     @prop()
     avatarUrl: string;
 
-    @arrayProp({ items: ConnectionEntity })
+    @arrayProp({items: ConnectionEntity})
     connections: Array<ConnectionEntity>;
 
-    @arrayProp({ itemsRef: ServerEntity })
+    @arrayProp({itemsRef: {name: "ServerEntity"}})
     servers: Array<Ref<ServerEntity>>;
 
     @prop({
@@ -65,7 +65,7 @@ export class UserEntity extends Typegoose {
     })
     timeTable: TimeTableEntity;
 
-    @arrayProp({ itemsRef: GameEntity })
+    @arrayProp({itemsRef: {name: "GameEntity"}})
     games: Array<Ref<GameEntity>>;
 }
 

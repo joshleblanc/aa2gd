@@ -9,10 +9,10 @@ export class EventEntity extends Typegoose {
     @prop({required: true})
     date: Date;
 
-    @prop({ref: ServerEntity})
+    @prop({ref: {name: "ServerEntity"}})
     server: Ref<ServerEntity>;
 
-    @prop({ref: GameEntity})
+    @prop({ref: {name: "GameEntity"}})
     game: Ref<GameEntity>;
 }
 

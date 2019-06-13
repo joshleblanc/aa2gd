@@ -24,7 +24,7 @@ export class GameEntity extends Typegoose {
     @prop()
     has_community_visible_stats: boolean;
 
-    @arrayProp({itemsRef: "Event"})
+    @arrayProp({itemsRef: { name: "EventEntity" }})
     events: Array<Ref<EventEntity>>;
 
     @prop()

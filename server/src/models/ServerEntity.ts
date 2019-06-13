@@ -17,7 +17,7 @@ export class ServerEntity extends Typegoose {
     @prop({ required: true })
     owner: boolean;
 
-    @arrayProp({ itemsRef: EventEntity })
+    @arrayProp({ itemsRef: { name: "EventEntity" } })
     events: Array<Ref<EventEntity>>;
 
     @prop()
