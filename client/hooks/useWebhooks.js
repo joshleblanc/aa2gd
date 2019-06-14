@@ -7,6 +7,13 @@ const GET_WEBHOOKS = gql`
             _id
             name
             url
+            creator {
+                _id
+            }
+            server {
+                _id
+            }
+
         }
     }
 `;

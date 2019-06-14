@@ -7,4 +7,10 @@ export class WebhookService {
   async getForUserAndServer(userId:ObjectID, serverId:ObjectID): Promise<Array<Webhook>> {
     return WebhookModel.find({ creator: userId, server: serverId });
   }
+
+  async create(params) {
+    const webhook = new WebhookModel(params);
+    await webhook.save();
+    return webhook;
+  }
 }
