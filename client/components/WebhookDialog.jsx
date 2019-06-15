@@ -2,8 +2,8 @@ import Dialog from "./Dialog";
 import React from "react";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
-import useWebhooks from "../hooks/useWebhooks";
-import { Typography, ListItem, ListItemText } from "@material-ui/core";
+import useWebhooks, { GET_WEBHOOKS } from "../hooks/useWebhooks";
+import { Typography, ListItem, ListItemText, ListItemIcon } from "@material-ui/core";
 import Button from "./Button";
 import TextField from "./TextField";
 import { Formik, Form, Field } from "formik";
@@ -13,18 +13,36 @@ import uuid from 'uuid/v1';
 import FixedHeightList from "./FixedHeightList";
 import { makeStyles } from '@material-ui/styles';
 import classnames from 'classnames';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles(theme => ({
   webhookList: {
     marginTop: theme.spacing(2)
   },
   webhookListItem: {
-    width: 'inherit'
+    width: 'inherit',
+    padding: '1em',
+  },
+  webhookDeleteIcon: {
+    marginLeft: 'auto',
+    padding: 0,
+    fontSize: 36,
+    "-webkit-font-smoothing": "none",
   }
 }));
 
+
+const DELETE_WEBHOOK = gql`
+  mutation DeleteWebhook($id: ID!) {
+    deleteWebhook(id: $id) {
+      _id
+    }
+  } 
+`;
+
 const Content = ({userId, serverId}) => {
   const { data, error, loading } = useWebhooks(userId, serverId);
+  const deleteWebhook = useMutation(DELETE_WEBHOOK);
   const classes = useStyles();
   if(error || loading) return "Loading...";
   console.log(data);
@@ -40,6 +58,29 @@ const Content = ({userId, serverId}) => {
               return(
                 <ListItem className={classnames(classes.webhookListItem, "nes-container", "is-rounded")}>
                   <ListItemText primary={w.name} secondary={w.url} />
+                  <Button variant="error" onClick={() => {
+                    deleteWebhook({ 
+                      variables: { id: w._id },
+                      optimisticResponse: {
+                        __typename: "Mutation",
+                        deleteWebhook: {
+                          __typename: "Webhook",
+                          _id: w._id
+                        }
+                      },
+                      update: (proxy, { data: { deleteWebhook }}) => {
+                        const data = proxy.readQuery({ query: GET_WEBHOOKS, variables: { userId, serverId }});
+                        console.log(data);
+                        proxy.writeQuery({ 
+                          query: GET_WEBHOOKS, 
+                          variables: { userId, serverId }, 
+                          data: {
+                            webhooks: data.webhooks.filter(webhook => webhook._id !== deleteWebhook._id)
+                          },
+                        })
+                      }
+                    })
+                  }}>Delete</Button>
                 </ListItem>
               )
             })

@@ -45,4 +45,10 @@ export class WebhookResolver {
   async createWebhook(@Args() params: CreateWebhookArgs): Promise<Webhook> {
     return this.webhookService.create(params);
   }
+
+  @Authorized()
+  @Mutation(returns => Webhook)
+  async deleteWebhook(@Arg("id", type => ID) id: string): Promise<Webhook> {
+    return this.webhookService.delete(id);
+  }
 }

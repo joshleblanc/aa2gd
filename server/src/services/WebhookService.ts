@@ -13,4 +13,9 @@ export class WebhookService {
     await webhook.save();
     return webhook;
   }
+
+  async delete(id: string): Promise<Webhook> {
+    const webhook = await WebhookModel.findById(id);
+    return webhook.remove();
+  }
 }
