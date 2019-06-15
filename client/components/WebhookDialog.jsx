@@ -13,7 +13,6 @@ import uuid from 'uuid/v1';
 import FixedHeightList from "./FixedHeightList";
 import { makeStyles } from '@material-ui/styles';
 import classnames from 'classnames';
-import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles(theme => ({
   webhookList: {
