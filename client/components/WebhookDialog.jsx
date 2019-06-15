@@ -45,7 +45,6 @@ const Content = ({userId, serverId}) => {
   const deleteWebhook = useMutation(DELETE_WEBHOOK);
   const classes = useStyles();
   if(error || loading) return "Loading...";
-  console.log(data);
   if (data.webhooks.length === 0) {
     return <Typography gutterBottom>No webhooks registered</Typography>;
   } else {
