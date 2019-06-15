@@ -70,7 +70,6 @@ const Content = ({userId, serverId}) => {
                       },
                       update: (proxy, { data: { deleteWebhook }}) => {
                         const data = proxy.readQuery({ query: GET_WEBHOOKS, variables: { userId, serverId }});
-                        console.log(data);
                         proxy.writeQuery({ 
                           query: GET_WEBHOOKS, 
                           variables: { userId, serverId }, 
