@@ -3,21 +3,51 @@ import React from "react";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import useWebhooks from "../hooks/useWebhooks";
-import { Typography } from "@material-ui/core";
+import { Typography, ListItem, ListItemText } from "@material-ui/core";
 import Button from "./Button";
 import TextField from "./TextField";
 import { Formik, Form, Field } from "formik";
 import gql from 'graphql-tag';
 import { useMutation } from 'react-apollo-hooks';
+import uuid from 'uuid/v1';
+import FixedHeightList from "./FixedHeightList";
+import { makeStyles } from '@material-ui/styles';
+import classnames from 'classnames';
+
+const useStyles = makeStyles(theme => ({
+  webhookList: {
+    marginTop: theme.spacing(2)
+  },
+  webhookListItem: {
+    width: 'inherit'
+  }
+}));
 
 const Content = ({userId, serverId}) => {
   const { data, error, loading } = useWebhooks(userId, serverId);
+  const classes = useStyles();
   if(error || loading) return "Loading...";
   console.log(data);
   if (data.webhooks.length === 0) {
     return <Typography gutterBottom>No webhooks registered</Typography>;
   } else {
-      return null;
+      return(
+        <div className={classes.webhookList}>
+          <Typography variant="h5">Registered Webhooks</Typography>
+          <FixedHeightList height={350}>
+          {
+            data.webhooks.map(w => {
+              return(
+                <ListItem className={classnames(classes.webhookListItem, "nes-container", "is-rounded")}>
+                  <ListItemText primary={w.name} secondary={w.url} />
+                </ListItem>
+              )
+            })
+          }
+        </FixedHeightList>
+        </div>
+        
+      );
   }
 };
 
@@ -52,6 +82,22 @@ export default ({ open, onClose, userId, serverId }) => {
               ...fields,
               creator: userId,
               server: serverId
+          },
+          optimisticResponse: {
+            __typename: "Mutation",
+            createWebhook: {
+              _id: uuid(),
+              __typename: "Webhook",
+              ...fields,
+              creator: {
+                __typename: "User",
+                _id: userId
+              },
+              server: {
+                __typename: "Server",
+                _id: serverId
+              }
+            }
           }
       })
       form.setSubmitting(false);
