@@ -43,7 +43,9 @@ export class WebhookResolver {
   @Authorized()
   @Mutation(returns => Webhook)
   async createWebhook(@Args() params: CreateWebhookArgs): Promise<Webhook> {
-    return this.webhookService.create(params);
+    if(params.url.match(/^https:\/\/discordapp\.com\/api\/webhooks\/\d*\/\w*$/)) {
+      return this.webhookService.create(params);
+    }
   }
 
   @Authorized()
