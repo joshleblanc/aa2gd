@@ -13,6 +13,8 @@ import uuid from 'uuid/v1';
 import FixedHeightList from "./FixedHeightList";
 import { makeStyles } from '@material-ui/styles';
 import classnames from 'classnames';
+import { useSnackbar } from 'notistack';
+import * as yup from 'yup';
 
 const useStyles = makeStyles(theme => ({
   webhookList: {
@@ -30,7 +32,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-
 const DELETE_WEBHOOK = gql`
   mutation DeleteWebhook($id: ID!) {
     deleteWebhook(id: $id) {
@@ -41,6 +42,7 @@ const DELETE_WEBHOOK = gql`
 
 const Content = ({userId, serverId}) => {
   const { data, error, loading } = useWebhooks(userId, serverId);
+  const { enqueueSnackbar } = useSnackbar();
   const deleteWebhook = useMutation(DELETE_WEBHOOK);
   const classes = useStyles();
   if(error || loading) return "Loading...";
@@ -56,8 +58,8 @@ const Content = ({userId, serverId}) => {
               return(
                 <ListItem className={classnames(classes.webhookListItem, "nes-container", "is-rounded")}>
                   <ListItemText primary={w.name} secondary={w.url} />
-                  <Button variant="error" onClick={() => {
-                    deleteWebhook({ 
+                  <Button variant="error" onClick={async () => {
+                    await deleteWebhook({ 
                       variables: { id: w._id },
                       optimisticResponse: {
                         __typename: "Mutation",
@@ -77,6 +79,7 @@ const Content = ({userId, serverId}) => {
                         })
                       }
                     })
+                    enqueueSnackbar("Webhook deleted", { variant: "success" });
                   }}>Delete</Button>
                 </ListItem>
               )
@@ -110,8 +113,14 @@ const initialValues = {
     url: ""
 }
 
+const validationSchema = yup.object().shape({
+  name: yup.string().required(),
+  url: yup.string().required()
+})
+
 export default ({ open, onClose, userId, serverId }) => {
   const createWebhook = useMutation(CREATE_WEBHOOK);
+  const { enqueueSnackbar } = useSnackbar();
   const handleSubmit = async (fields, form) => {
       console.log("Submitting");
       form.setSubmitting(true);
@@ -136,9 +145,21 @@ export default ({ open, onClose, userId, serverId }) => {
                 _id: serverId
               }
             }
+          },
+          update: (proxy, { data: { createWebhook } }) => {
+            const data = proxy.readQuery({ query: GET_WEBHOOKS, variables: { userId, serverId }});
+            proxy.writeQuery({
+              query: GET_WEBHOOKS,
+              variables: { userId, serverId },
+              data: {
+                webhooks: [ ...data.webhooks, createWebhook ]
+              }
+            });
           }
       })
       form.setSubmitting(false);
+      form.resetForm();
+      enqueueSnackbar("Webhook created", { variant: "success" })
   }
   return (
     <React.Fragment>
@@ -154,6 +175,7 @@ export default ({ open, onClose, userId, serverId }) => {
           <Formik
             initialValues={initialValues}
             onSubmit={handleSubmit}
+            validationSchema={validationSchema}
             render={form => (
               <Form>
                 <Field
