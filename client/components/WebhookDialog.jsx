@@ -29,6 +29,9 @@ const useStyles = makeStyles(theme => ({
     padding: 0,
     fontSize: 36,
     "-webkit-font-smoothing": "none",
+  },
+  webhookListItemText: {
+    wordBreak: "break-all"
   }
 }));
 
@@ -57,7 +60,10 @@ const Content = ({userId, serverId}) => {
             data.webhooks.map(w => {
               return(
                 <ListItem className={classnames(classes.webhookListItem, "nes-container", "is-rounded")}>
-                  <ListItemText primary={w.name} secondary={w.url} />
+                  <ListItemText 
+                    className={classes.webhookListItemText}
+                    primary={w.name} 
+                    secondary={w.url.split("/")[6]} />
                   <Button variant="error" onClick={async () => {
                     await deleteWebhook({ 
                       variables: { id: w._id },
