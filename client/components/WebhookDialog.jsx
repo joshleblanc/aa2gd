@@ -115,7 +115,7 @@ const initialValues = {
 
 const validationSchema = yup.object().shape({
   name: yup.string().required(),
-  url: yup.string().required()
+  url: yup.string().url().matches(/^https:\/\/discordapp\.com\/api\/webhooks\/\d*\/\w*$/, "A valid webhook URL is required").required()
 })
 
 export default ({ open, onClose, userId, serverId }) => {
