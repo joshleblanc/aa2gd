@@ -34,7 +34,6 @@ export default ({router}) => {
     const currentUserQuery = useCurrentUser();
     if (loading || currentUserQuery.loading) return "Loading...";
     if (error || currentUserQuery.error) return "Error";
-    console.log(currentUserQuery, data);
     if(data.getDiscordToken) {
         setToken({variables: {token: data.getDiscordToken}});
         Cookies.set('token', data.getDiscordToken);

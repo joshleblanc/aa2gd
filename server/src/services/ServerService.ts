@@ -6,7 +6,12 @@ import * as moment from "moment";
 
 @Service()
 export class ServerService {
-  async getServer(id: string): Promise<Server> {
+  async get(id: string): Promise<Server> {
+    const server = await ServerModel.findOne({ _id: id });
+    return server;
+  }
+
+  async getWithEvents(id: string): Promise<Server> {
     const server = await ServerModel.findOne({ _id: id })
       .populate({
         path: "events",

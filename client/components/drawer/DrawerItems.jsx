@@ -17,9 +17,7 @@ export default () => {
     const servers = useServers();
     const classes = useStyles();
     if (!servers) return "Loading...";
-    console.log(servers);
     const serversWithEvents = servers.filter(server => server.currentEvents.length + server.futureEvents.length > 0);
-    console.log(serversWithEvents);
     return (
       <div>
           <CurrentUserDisplay/>

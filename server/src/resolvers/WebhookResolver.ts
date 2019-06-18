@@ -3,6 +3,8 @@ import { Resolver, Query, Authorized, Arg, ID, ArgsType, Field, Args, Mutation }
 import { Webhook } from "../models/Webhook";
 import { WebhookService } from "../services/WebhookService";
 import { ObjectID } from "mongodb";
+import { fetch } from "apollo-env";
+import { ServerService } from "../services/ServerService";
 
 @ArgsType()
 class WebhooksArgs {

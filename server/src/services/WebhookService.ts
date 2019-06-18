@@ -8,6 +8,10 @@ export class WebhookService {
     return WebhookModel.find({ creator: userId, server: serverId });
   }
 
+  async find(params): Promise<Array<Webhook>> {
+    return WebhookModel.find(params);
+  }
+
   async create(params) {
     const webhook = new WebhookModel(params);
     await webhook.save();

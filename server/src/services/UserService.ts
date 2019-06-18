@@ -71,7 +71,6 @@ export class UserService {
       });
 
       const json = await r.json();
-      console.log("OAUTH RESPONSE: " + JSON.stringify(json));
       const userRequest = await discordReq("users/@me", json.access_token);
       const user = await userRequest.json();
       const connectionsRequest = await discordReq(
@@ -84,7 +83,6 @@ export class UserService {
         json.access_token
       );
       let servers = await serversRequest.json();
-      console.log(JSON.stringify(servers));
       servers = await Promise.all(
         servers.map(async s => {
           return await ServerModel.findOneAndUpdate({ id: s.id }, s, {
@@ -118,7 +116,6 @@ export class UserService {
       if (json.error) {
         throw new Error("Invalid code");
       } else {
-        console.log(json);
         return jwt.sign({ ...json, _id: newUser._id }, process.env.JWT_SECRET, {
           expiresIn: json.expires_in
         });

@@ -54,7 +54,6 @@ export class Server extends Typegoose {
     @Field(type => [Event], { nullable: true })
     futureEvents(): Array<Ref<Event>> {
         const today = moment();
-        console.log(this.name, this.events);
         return this.events.filter((event:Event) => {
             const eventDate = moment(event.date);
             return eventDate.isAfter(today);

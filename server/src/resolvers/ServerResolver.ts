@@ -13,7 +13,7 @@ export class ServerResolver {
   @Authorized()
   @Query(returns => Server)
   async server(@Arg("id", is => ID) id: string): Promise<Server> {
-    return this.serverService.getServer(id);
+    return this.serverService.getWithEvents(id);
   }
 
   @Authorized()
