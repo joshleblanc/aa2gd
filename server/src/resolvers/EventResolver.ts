@@ -78,7 +78,7 @@ export class EventResolver {
             },
             {
               name: "Time",
-              value: date.format("h:mm:ss a Z")
+              value: date.utc().format("h:mm:ss a UTC")
             }
           ]
         }
@@ -89,7 +89,6 @@ export class EventResolver {
       server: fields.server
     });
     const promises = webhooks.map(webhook => {
-      console.log(webhook.url, JSON.stringify(body));
       return fetch(webhook.url, {
         method: "POST",
         body: JSON.stringify(body),
