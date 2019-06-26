@@ -2,37 +2,38 @@ import Dialog from "./Dialog";
 import React from "react";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
-import useWebhooks, { GET_WEBHOOKS } from "../hooks/useWebhooks";
-import { Typography, ListItem, ListItemText, ListItemIcon } from "@material-ui/core";
+import useWebhooks, {GET_WEBHOOKS} from "../hooks/useWebhooks";
+import {Typography, ListItem, ListItemText, ListItemIcon} from "@material-ui/core";
 import Button from "./Button";
 import TextField from "./TextField";
-import { Formik, Form, Field } from "formik";
+import {Formik, Form, Field} from "formik";
 import gql from 'graphql-tag';
-import { useMutation } from 'react-apollo-hooks';
+import {useMutation} from 'react-apollo-hooks';
 import uuid from 'uuid/v1';
 import FixedHeightList from "./FixedHeightList";
-import { makeStyles } from '@material-ui/styles';
+import {makeStyles} from '@material-ui/styles';
 import classnames from 'classnames';
-import { useSnackbar } from 'notistack';
+import {useSnackbar} from 'notistack';
 import * as yup from 'yup';
+import DialogActions from "@material-ui/core/DialogActions";
 
 const useStyles = makeStyles(theme => ({
-  webhookList: {
-    marginTop: theme.spacing(2)
-  },
-  webhookListItem: {
-    width: 'inherit',
-    padding: '1em',
-  },
-  webhookDeleteIcon: {
-    marginLeft: 'auto',
-    padding: 0,
-    fontSize: 36,
-    "-webkit-font-smoothing": "none",
-  },
-  webhookListItemText: {
-    wordBreak: "break-all"
-  }
+    webhookList: {
+        marginTop: theme.spacing(2)
+    },
+    webhookListItem: {
+        width: 'inherit',
+        padding: '1em',
+    },
+    webhookDeleteIcon: {
+        marginLeft: 'auto',
+        padding: 0,
+        fontSize: 36,
+        "-webkit-font-smoothing": "none",
+    },
+    webhookListItemText: {
+        wordBreak: "break-all"
+    }
 }));
 
 const DELETE_WEBHOOK = gql`
@@ -44,58 +45,60 @@ const DELETE_WEBHOOK = gql`
 `;
 
 const Content = ({userId, serverId}) => {
-  const { data, error, loading } = useWebhooks(userId, serverId);
-  const { enqueueSnackbar } = useSnackbar();
-  const deleteWebhook = useMutation(DELETE_WEBHOOK);
-  const classes = useStyles();
-  if(error || loading) return "Loading...";
-  if (data.webhooks.length === 0) {
-    return <Typography gutterBottom>No webhooks registered</Typography>;
-  } else {
-      return(
-        <div className={classes.webhookList}>
-          <Typography variant="h5">Registered Webhooks</Typography>
-          <FixedHeightList height={350}>
-          {
-            data.webhooks.map(w => {
-              return(
-                <ListItem className={classnames(classes.webhookListItem, "nes-container", "is-rounded")}>
-                  <ListItemText 
-                    className={classes.webhookListItemText}
-                    primary={w.name} 
-                    secondary={w.url.split("/")[6]} />
-                  <Button variant="error" onClick={async () => {
-                    await deleteWebhook({ 
-                      variables: { id: w._id },
-                      optimisticResponse: {
-                        __typename: "Mutation",
-                        deleteWebhook: {
-                          __typename: "Webhook",
-                          _id: w._id
-                        }
-                      },
-                      update: (proxy, { data: { deleteWebhook }}) => {
-                        const data = proxy.readQuery({ query: GET_WEBHOOKS, variables: { userId, serverId }});
-                        proxy.writeQuery({ 
-                          query: GET_WEBHOOKS, 
-                          variables: { userId, serverId }, 
-                          data: {
-                            webhooks: data.webhooks.filter(webhook => webhook._id !== deleteWebhook._id)
-                          },
-                        })
-                      }
-                    })
-                    enqueueSnackbar("Webhook deleted", { variant: "success" });
-                  }}>Delete</Button>
-                </ListItem>
-              )
-            })
-          }
-        </FixedHeightList>
-        </div>
-        
-      );
-  }
+    const {data, error, loading} = useWebhooks(userId, serverId);
+    const {enqueueSnackbar} = useSnackbar();
+    const deleteWebhook = useMutation(DELETE_WEBHOOK);
+    const classes = useStyles();
+    if (error || loading) return "Loading...";
+    if (data.webhooks.length === 0) {
+        return <Typography gutterBottom>No webhooks registered</Typography>;
+    } else {
+        return (
+          <div className={classes.webhookList}>
+              <Typography variant="h5">Registered Webhooks</Typography>
+              <FixedHeightList height={350}>
+                  {
+                      data.webhooks.map(w => {
+                          return (
+                            <ListItem className={classnames(classes.webhookListItem, "nes-container", "is-rounded")}>
+                                <ListItemText
+                                  className={classes.webhookListItemText}
+                                  primary={w.name}
+                                  secondary={w.url.split("/")[6]}/>
+                                <Button variant="error" onClick={async () => {
+                                    await deleteWebhook({
+                                        variables: {id: w._id},
+                                        optimisticResponse: {
+                                            __typename: "Mutation",
+                                            deleteWebhook: {
+                                                __typename: "Webhook",
+                                                _id: w._id
+                                            }
+                                        },
+                                        update: (proxy, {data: {deleteWebhook}}) => {
+                                            const data = proxy.readQuery({
+                                                query: GET_WEBHOOKS,
+                                                variables: {userId, serverId}
+                                            });
+                                            proxy.writeQuery({
+                                                query: GET_WEBHOOKS,
+                                                variables: {userId, serverId},
+                                                data: {
+                                                    webhooks: data.webhooks.filter(webhook => webhook._id !== deleteWebhook._id)
+                                                },
+                                            })
+                                        }
+                                    });
+                                    enqueueSnackbar("Webhook deleted", {variant: "success"});
+                                }}>Delete</Button>
+                            </ListItem>
+                          )
+                      })
+                  }
+              </FixedHeightList>
+          </div>
+        );
+    }
 };
 
 const CREATE_WEBHOOK = gql`
@@ -120,107 +123,112 @@ const initialValues = {
 }
 
 const validationSchema = yup.object().shape({
-  name: yup.string().required(),
-  url: yup.string().url().matches(/^https:\/\/discordapp\.com\/api\/webhooks\/\d*\/\w*$/, "A valid webhook URL is required").required()
-})
+    name: yup.string().required(),
+    url: yup.string().url().matches(/^https:\/\/discordapp\.com\/api\/webhooks\/\d*\/\w*$/, "A valid webhook URL is required").required()
+});
 
-export default ({ open, onClose, userId, serverId }) => {
-  const createWebhook = useMutation(CREATE_WEBHOOK);
-  const { enqueueSnackbar } = useSnackbar();
-  const handleSubmit = async (fields, form) => {
-      console.log("Submitting");
-      form.setSubmitting(true);
-      await createWebhook({
-          variables: {
-              ...fields,
-              creator: userId,
-              server: serverId
-          },
-          optimisticResponse: {
-            __typename: "Mutation",
-            createWebhook: {
-              _id: uuid(),
-              __typename: "Webhook",
-              ...fields,
-              creator: {
-                __typename: "User",
-                _id: userId
-              },
-              server: {
-                __typename: "Server",
-                _id: serverId
-              }
+export default ({open, onClose, userId, serverId}) => {
+    const createWebhook = useMutation(CREATE_WEBHOOK);
+    const {enqueueSnackbar} = useSnackbar();
+    const handleSubmit = async (fields, form) => {
+        console.log("Submitting");
+        form.setSubmitting(true);
+        await createWebhook({
+            variables: {
+                ...fields,
+                creator: userId,
+                server: serverId
+            },
+            optimisticResponse: {
+                __typename: "Mutation",
+                createWebhook: {
+                    _id: uuid(),
+                    __typename: "Webhook",
+                    ...fields,
+                    creator: {
+                        __typename: "User",
+                        _id: userId
+                    },
+                    server: {
+                        __typename: "Server",
+                        _id: serverId
+                    }
+                }
+            },
+            update: (proxy, {data: {createWebhook}}) => {
+                const data = proxy.readQuery({query: GET_WEBHOOKS, variables: {userId, serverId}});
+                proxy.writeQuery({
+                    query: GET_WEBHOOKS,
+                    variables: {userId, serverId},
+                    data: {
+                        webhooks: [...data.webhooks, createWebhook]
+                    }
+                });
             }
-          },
-          update: (proxy, { data: { createWebhook } }) => {
-            const data = proxy.readQuery({ query: GET_WEBHOOKS, variables: { userId, serverId }});
-            proxy.writeQuery({
-              query: GET_WEBHOOKS,
-              variables: { userId, serverId },
-              data: {
-                webhooks: [ ...data.webhooks, createWebhook ]
-              }
-            });
-          }
-      })
-      form.setSubmitting(false);
-      form.resetForm();
-      enqueueSnackbar("Webhook created", { variant: "success" })
-  }
-  return (
-    <React.Fragment>
-      <Dialog open={open} onClose={onClose}>
-        <DialogTitle disableTypography>
-          <Typography variant="h5">Webhooks</Typography>
-          <Typography variant="caption" gutterBottom>
-            You can register webhooks here to get notifications of events in
-            your server.
-          </Typography>
-        </DialogTitle>
-        <DialogContent>
-          <Formik
-            initialValues={initialValues}
-            onSubmit={handleSubmit}
-            validationSchema={validationSchema}
-            render={form => (
-              <Form>
-                <Field
-                  name="name"
-                  render={({ field, form }) => {
-                    return (
-                      <TextField
-                        {...field}
-                        fullWidth
-                        helperText={form.touched.name && form.errors.name}
-                        error={form.touched.name && form.errors.name}
-                        disabled={form.isSubmitting}
-                        label="Name"
-                      />
-                    );
-                  }}
-                />
-                <Field 
-                    name="url"
-                    render={({field, form}) => {
-                        return(
-                            <TextField 
-                                {...field}
-                                fullWidth
-                                helperText={form.touched.url && form.errors.url}
-                                error={form.touched.url && form.errors.url}
-                                disabled={form.isSubmitting}
-                                label="Webhook URL"       
-                            />
-                        )
-                    }}
-                />
-                <Button type="submit">Add webhook</Button>
-              </Form>
-            )}
-          />
-          <Content userId={userId} serverId={serverId} />
-        </DialogContent>
-      </Dialog>
-    </React.Fragment>
-  );
+        });
+
+        form.setSubmitting(false);
+        form.resetForm();
+        enqueueSnackbar("Webhook created", {variant: "success"})
+    };
+
+    return (
+      <React.Fragment>
+          <Dialog open={open} onClose={onClose}>
+              <DialogTitle disableTypography>
+                  <Typography variant="h5">Webhooks</Typography>
+                  <Typography variant="caption" gutterBottom>
+                      You can register webhooks here to get notifications of events in
+                      your server.
+                  </Typography>
+              </DialogTitle>
+              <DialogContent>
+                  <Formik
+                    initialValues={initialValues}
+                    onSubmit={handleSubmit}
+                    validationSchema={validationSchema}
+                    render={form => (
+                      <Form>
+                          <Field
+                            name="name"
+                            render={({field, form}) => {
+                                return (
+                                  <TextField
+                                    {...field}
+                                    fullWidth
+                                    helperText={form.touched.name && form.errors.name}
+                                    error={form.touched.name && form.errors.name}
+                                    disabled={form.isSubmitting}
+                                    label="Name"
+                                  />
+                                );
+                            }}
+                          />
+                          <Field
+                            name="url"
+                            render={({field, form}) => {
+                                return (
+                                  <TextField
+                                    {...field}
+                                    fullWidth
+                                    helperText={form.touched.url && form.errors.url}
+                                    error={form.touched.url && form.errors.url}
+                                    disabled={form.isSubmitting}
+                                    label="Webhook URL"
+                                  />
+                                )
+                            }}
+                          />
+                          <Button type="submit">Add webhook</Button>
+                      </Form>
+                    )}
+                  />
+                  <Content userId={userId} serverId={serverId}/>
+              </DialogContent>
+              <DialogActions>
+                  <Button onClick={onClose}>Close</Button>
+              </DialogActions>
+          </Dialog>
+      </React.Fragment>
+    );
 };
