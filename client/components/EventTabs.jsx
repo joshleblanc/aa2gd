@@ -11,7 +11,7 @@ export default ({events}) => {
     const currentEvents = [];
     const currentDate = moment();
     events.forEach(s => {
-        const date = moment(parseInt(s.date));
+        const date = moment(s.date);
         if (date.diff(currentDate, 'hours') < -3 && pastEvents.length < 10) {
             pastEvents.push(s);
         } else if (date.isAfter(currentDate)) {

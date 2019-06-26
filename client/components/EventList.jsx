@@ -26,7 +26,7 @@ export default ({events}) => {
                                     <Typography color="textPrimary" component="span" className={classes.primaryEventText} variant="body2">
                                         {e.game.name}
                                     </Typography>
-                                    {moment(parseInt(e.date)).format("YYYY-MM-DD HH:mm")}
+                                    {moment(e.date).format("YYYY-MM-DD HH:mm")}
                                 </React.Fragment>
                             } />
                         </ListItem>
