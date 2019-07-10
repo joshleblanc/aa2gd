@@ -1,23 +1,25 @@
-import {config} from 'dotenv';
-config();
+console.log("wefnwef");
+import '../../mongoose';
+import {ApolloServer} from 'apollo-server-micro';
+import {buildSchemaSync} from 'type-graphql';
+import {Container} from 'typedi';
+import {EventResolver} from '../../resolvers/EventResolver';
+import {TypegooseMiddleware} from '../../middleware/TypegooseMiddleware';
+import {ObjectId} from 'mongodb';
+import {ObjectIdScalar} from '../../scalars/ObjectIdScalar';
+import {authChecker} from '../../lib/utils';
+import {UserResolver} from '../../resolvers/UserResolver';
+import {ServerResolver} from '../../resolvers/ServerResolver';
+import {WebhookResolver} from '../../resolvers/WebhookResolver';
+import {GameResolver} from '../../resolvers/GameResolver';
 
-import './mongoose';
-const { ApolloServer } = require('apollo-server-micro');
-import {buildSchema, buildSchemaSync} from 'type-graphql';
-import { Container } from 'typedi';
-import { EventResolver } from './resolvers/EventResolver';
-import { TypegooseMiddleware } from './middleware/TypegooseMiddleware';
-import { ObjectId } from 'mongodb';
-import { ObjectIdScalar } from './scalars/ObjectIdScalar';
-import { authChecker } from './lib/utils';
-import { UserResolver } from './resolvers/UserResolver';
-import { ServerResolver } from './resolvers/ServerResolver';
-import { WebhookResolver } from './resolvers/WebhookResolver';
-import { GameResolver } from './resolvers/GameResolver';
+console.log("wiepfjwef");
 
 const context = async ({req}) => {
+    console.log("owenfwefwf");
     let token = '';
     let host;
+    console.log("Test");
     if (process.env.NODE_ENV === 'development') {
         host = "http://localhost:3000"
     } else {
@@ -35,17 +37,23 @@ const context = async ({req}) => {
 const schema = buildSchemaSync({
     resolvers: [
         EventResolver,
-        UserResolver,
+        // UserResolver,
         ServerResolver,
-        WebhookResolver,
+        // WebhookResolver,
         GameResolver
     ],
     globalMiddlewares: [TypegooseMiddleware],
-    scalarsMap: [{ type: ObjectId, scalar: ObjectIdScalar }],
+    scalarsMap: [{type: ObjectId, scalar: ObjectIdScalar}],
     container: Container,
     authChecker: authChecker,
     validate: false
 });
+
+export const config = {
+    api: {
+        bodyParser: false
+    }
+};
 
 export default new ApolloServer({
     schema,
@@ -53,4 +61,4 @@ export default new ApolloServer({
     engine: {
         apiKey: process.env.ENGINE_API_KEY
     }
-}).createHandler();
+}).createHandler({ path: "/api/graphql" });

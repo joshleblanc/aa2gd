@@ -1,4 +1,4 @@
-import { Event, EventModel } from "../models/Event";
+import { Event } from "../models/Event";
 import {
   Query,
   Resolver,
@@ -15,7 +15,7 @@ import { Service } from "typedi";
 import { ServerService } from "../services/ServerService";
 import { WebhookService } from "../services/WebhookService";
 import { GameService } from "../services/GameService";
-import * as moment from "moment";
+import moment from "moment";
 import { fetch } from "apollo-server-env";
 
 @ArgsType()

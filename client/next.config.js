@@ -17,6 +17,11 @@ module.exports = {
     target: 'serverless',
     env: {
         DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
-        DISCORD_REDIRECT_URL: process.env.DISCORD_REDIRECT_URL
+        DISCORD_REDIRECT_URL: process.env.DISCORD_REDIRECT_URL,
+        FONTAWESOME_TOKEN: process.env.FONTAWESOME_TOKEN,
+        MONGO_URL: process.env.MONGO_URL,
+        JWT_SECRET: process.env.JWT_SECRET,
+        ENGINE_API_KEY: process.env.ENGINE_API_KEY,
+        DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
     }
 };

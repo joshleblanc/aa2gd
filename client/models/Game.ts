@@ -14,7 +14,7 @@ export class Game extends Typegoose {
     readonly _id: ObjectID;
 
     @prop({required: true})
-    @Field()
+    @Field(type => Number)
     appid: number;
 
     @prop({required: true})

@@ -1,5 +1,5 @@
 import '../server/mongoose'
-import { Event, EventModel } from '../server/src/models/Event';
+import { Event, EventModel } from '../client/models/Event';
 export default (req, res) => {
 
 }

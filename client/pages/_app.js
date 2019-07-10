@@ -39,7 +39,7 @@ export default class extends App {
   static async getInitialProps({ Component, classes, ...pageProps }) {
     let apolloHost, host;
     if(process.env.NODE_ENV === 'development') {
-      apolloHost = "http://localhost:4000";
+      apolloHost = "http://localhost:3000";
       host = "http://localhost:3000";
     } else {
       if(process.browser) {

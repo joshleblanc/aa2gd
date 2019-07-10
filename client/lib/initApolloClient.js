@@ -43,7 +43,7 @@ function create(initialState, host) {
     })
 
     const link = createHttpLink({
-        uri: host + "/graphql",
+        uri: host + "/api/graphql",
         fetch: fetch,
         credentials: 'same-origin'
     })

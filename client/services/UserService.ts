@@ -1,11 +1,11 @@
 import { Service } from "typedi";
 import { User, UserModel } from "../models/User";
-import * as jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import { discordReq, getGames, auth } from "../lib/utils";
 import { Types } from "mongoose";
-import * as moment from "moment";
+import moment from "moment";
 import { ServerModel } from "../models/Server";
-import * as FormData from "form-data";
+import FormData from "form-data";
 import fetch from "node-fetch";
 
 @Service()

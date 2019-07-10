@@ -1,7 +1,7 @@
 import {arrayProp, prop, Ref, Typegoose} from "typegoose";
 import { Event } from './Event';
-import * as moment from 'moment';
-import { ObjectType, Field, ID, FieldResolver, Root } from "type-graphql";
+import moment from 'moment';
+import { ObjectType, Field, ID, Root } from "type-graphql";
 import { ObjectId } from "mongodb";
 import { User } from "./User";
 
@@ -35,7 +35,7 @@ export class Server extends Typegoose {
     users?: Array<Ref<User>>;
 
     @prop()
-    @Field()
+    @Field(type => String)
     iconUrl(@Root() server:Server): string {
         return `https://cdn.discordapp.com/icons/${server.id}/${server.icon}.png`;
     }
