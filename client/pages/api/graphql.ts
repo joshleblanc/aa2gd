@@ -8,9 +8,9 @@ import {TypegooseMiddleware} from '../../middleware/TypegooseMiddleware';
 import {ObjectId} from 'mongodb';
 import {ObjectIdScalar} from '../../scalars/ObjectIdScalar';
 import {authChecker} from '../../lib/utils';
-import {UserResolver} from '../../resolvers/UserResolver';
+// import {UserResolver} from '../../resolvers/UserResolver';
 import {ServerResolver} from '../../resolvers/ServerResolver';
-import {WebhookResolver} from '../../resolvers/WebhookResolver';
+// import {WebhookResolver} from '../../resolvers/WebhookResolver';
 import {GameResolver} from '../../resolvers/GameResolver';
 
 console.log("wiepfjwef");
@@ -42,12 +42,13 @@ const schema = buildSchemaSync({
         // WebhookResolver,
         GameResolver
     ],
+    authChecker,
     globalMiddlewares: [TypegooseMiddleware],
     scalarsMap: [{type: ObjectId, scalar: ObjectIdScalar}],
     container: Container,
-    authChecker: authChecker,
-    validate: false
 });
+
+console.log(schema);
 
 export const config = {
     api: {

@@ -41,17 +41,17 @@ export class Game extends Typegoose {
     @Field(type => [Event], { nullable: true })
     events: Array<Ref<Event>>;
 
-    @prop()
-    @Field(type => String)
-    iconUrl() {
-        return makeUrl(this.appid, this.img_icon_url);
-    }
+    // @prop()
+    // @Field(type => String)
+    // iconUrl() {
+    //     return makeUrl(this.appid, this.img_icon_url);
+    // }
 
-    @prop()
-    @Field(type => String)
-    logoUrl() {
-        return makeUrl(this.appid, this.img_logo_url);
-    }
+    // @prop()
+    // @Field(type => String)
+    // logoUrl() {
+    //     return makeUrl(this.appid, this.img_logo_url);
+    // }
 }
 
 export const GameModel = new Game().getModelForClass(Game, {

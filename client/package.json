@@ -65,6 +65,6 @@
   "devDependencies": {
     "express": "^4.16.4",
     "http-proxy-middleware": "^0.19.1",
-    "typescript": "^3.5.3"
+    "typescript": "^3.5.1"
   }
 }

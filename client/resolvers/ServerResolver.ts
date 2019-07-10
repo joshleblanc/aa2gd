@@ -9,7 +9,6 @@ export class ServerResolver {
     constructor(private readonly serverService: ServerService) {
     }
 
-    @Authorized()
     @Query(returns => Server)
     async server(@Arg("id", is => ID) id: string): Promise<Server> {
         return this.serverService.getWithEvents(id);
